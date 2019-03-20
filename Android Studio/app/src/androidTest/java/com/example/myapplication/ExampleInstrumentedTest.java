@@ -16,11 +16,11 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
-    @Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.myapplication", appContext.getPackageName());
+    @Test
+    public void testButtonsVisible() {
+        onView(withId(R.id.bt_tictac)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_hangman)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_touchbox)).check(matches(isDisplayed()));
     }
 }

@@ -8,7 +8,7 @@
     tools:background="@android:color/holo_blue_light"
     tools:context=".SelectionMenu">
 
-    <TextView
+    ic<TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/WellcomeTictactoeBut"
+        android:id="@+id/bt_tictac"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/WellcomeHangmanBut"
+        android:id="@+id/bt_hangman"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/WellcomeTictactoeBut" />
 
     <Button
-        android:id="@+id/WellcomeTouchboxBut"
+        android:id="@+id/bt_touchbox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"

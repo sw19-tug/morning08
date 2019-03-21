@@ -17,10 +17,15 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
 
+    @Rule
+    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
+
     @Test
     public void testButtonsVisible() {
         onView(withId(R.id.bt_tictac)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_hangman)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_touchbox)).check(matches(isDisplayed()));
     }
+
+
 }

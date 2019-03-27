@@ -1,4 +1,4 @@
-package com.example.gamelibrary;
+package com.example.tic_tac_toe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

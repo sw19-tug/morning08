@@ -3,6 +3,9 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,24 +14,47 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Thread th = new Thread();
+        Button tictac = (Button) findViewById(R.id.bt_tictac);
+        Button hangman = (Button) findViewById(R.id.bt_hangman);
+        Button touchbox = (Button) findViewById(R.id.bt_touchbox);
+
+        tictac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTicTac();
+            }
+        });
+
+        hangman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openHangman();
+            }
+        });
+
+        touchbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTouchbox();
+            }
+        });
 
     }
-
-    void change_to_next_selectionscreen() {
-
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Intent intent = new Intent();
-        startActivity(intent);
-        finish();
+    //Activate buttons when class done
+    public void openTicTac() {
+        //Intent intent = new Intent(this, TicTacToe.class);
+        //startActivity(intent);
     }
 
-    void OnPressback() {
-
-        this.finish();
+    public void openHangman() {
+        //Intent intent = new Intent(this, HangMan.class);
+        //startActivity(intent);
     }
+
+    public void openTouchbox() {
+        //Intent intent = new Intent(this, Touchbox.class);
+        //startActivity(intent);
+    }
+
+
 }

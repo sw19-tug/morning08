@@ -14,21 +14,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button tictac = (Button) findViewById(R.id.bt_tictac);
+        Button hangman = (Button) findViewById(R.id.bt_hangman);
+        Button touchbox = (Button) findViewById(R.id.bt_touchbox);
 
-
-        // Wire up button to do stuff
-        // ..get the button
-        Button btn = (Button) findViewById(R.id.bt_tictac);
-        // ..set what happens when the user clicks.
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        tictac.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-
-                Log.i("MyApp","This is magic log messeage");
+            public void onClick(View v) {
+                openTicTac();
             }
         });
+
+        hangman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openHangman();
+            }
+        });
+
+        touchbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTouchbox();
+            }
+        });
+
+    }
+    //Activate buttons when class done
+    public void openTicTac() {
+        //Intent intent = new Intent(this, TicTacToe.class);
+        //startActivity(intent);
+    }
+
+    public void openHangman() {
+        //Intent intent = new Intent(this, HangMan.class);
+        //startActivity(intent);
+    }
+
+    public void openTouchbox() {
+        //Intent intent = new Intent(this, Touchbox.class);
+        //startActivity(intent);
     }
 
 

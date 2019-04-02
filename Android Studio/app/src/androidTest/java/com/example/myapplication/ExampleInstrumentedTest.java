@@ -34,5 +34,11 @@ public class ExampleInstrumentedTest {
         onView(withId(R.id.bt_touchbox)).check(matches(isDisplayed()));
     }
 
+    @Test
+    public void testButtonClick() {
+        onView(withId(R.id.bt_tictac)).perform(click());
+        onView(withId(R.id.bt_hangman)).perform(click());
+        onView(withId(R.id.bt_touchbox)).perform(click());
+    }
 
 }

@@ -47,7 +47,7 @@ public class MainActivityHangManTest
         onView(withId(R.id.txtInput)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
     }
     @Test
-    public void testGalgenVisible()
+    public void testGallowVisible()
     {
         onView(withId(R.id.imageViewGallow)).check(matches(isDisplayed()));
     }

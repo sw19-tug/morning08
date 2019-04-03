@@ -50,31 +50,31 @@ public class MainActivityEspressoTest
    @Test
     public void testButtonFunction(){
         onView(withId(R.id.button_1)).perform(click());
-        onView(withId(R.id.button_1)).check(matches(notNullValue()));
+        onView(withId(R.id.button_1)).check(matches(withText("O")));
         onView(withId(R.id.button_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_2)).perform(click());
-        onView(withId(R.id.button_2)).check(matches(notNullValue()));
+        onView(withId(R.id.button_2)).check(matches(withText("X")));
         onView(withId(R.id.button_2)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_3)).perform(click());
-        onView(withId(R.id.button_3)).check(matches(notNullValue()));
+        onView(withId(R.id.button_3)).check(matches(withText("O")));
         onView(withId(R.id.button_3)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_4)).perform(click());
-        onView(withId(R.id.button_4)).check(matches(notNullValue()));
+        onView(withId(R.id.button_4)).check(matches(withText("X")));
         onView(withId(R.id.button_4)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_5)).perform(click());
-        onView(withId(R.id.button_5)).check(matches(notNullValue()));
+        onView(withId(R.id.button_5)).check(matches(withText("O")));
         onView(withId(R.id.button_5)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_6)).perform(click());
-        onView(withId(R.id.button_6)).check(matches(notNullValue()));
+        onView(withId(R.id.button_6)).check(matches(withText("X")));
         onView(withId(R.id.button_6)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_7)).perform(click());
-        onView(withId(R.id.button_7)).check(matches(notNullValue()));
+        onView(withId(R.id.button_7)).check(matches(withText("O")));
         onView(withId(R.id.button_7)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_8)).perform(click());
-        onView(withId(R.id.button_8)).check(matches(notNullValue()));
+        onView(withId(R.id.button_8)).check(matches(withText("X")));
         onView(withId(R.id.button_8)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_9)).perform(click());
-        onView(withId(R.id.button_9)).check(matches(notNullValue()));
+        onView(withId(R.id.button_9)).check(matches(withText("O")));
         onView(withId(R.id.button_9)).check(matches(not(isEnabled())));
     }
 }

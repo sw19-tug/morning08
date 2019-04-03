@@ -1,5 +1,6 @@
 package com.example.hangman;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -30,8 +31,9 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Intent intent = getIntent();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_hangman);
 
         startButton = findViewById(R.id.btn_start);
         checkButton = findViewById(R.id.btn_check);
@@ -101,7 +103,10 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                         }
                     }
                     else
+                    {
+                        input.setText("");
                         Toast.makeText(this,"This letter is not a part of the searched word!",Toast.LENGTH_SHORT).show();
+                    }
 
                 }
                 else
@@ -111,7 +116,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.btn_retry:
                 hangman.initialize();
-                score.setText("Score: "+hangman.getScore());
+                score.setText("Score: " + hangman.getScore());
                 output.setText(hangman.getOutput());
                 input.setText("");
                 break;

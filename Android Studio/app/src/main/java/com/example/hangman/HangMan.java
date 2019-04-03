@@ -58,8 +58,6 @@ public class HangMan {
 
                     else if(outputarray[j] != '_')
                         continue;
-                    //else
-                    //  outputarray[j] = '_';
                 }
 
                 letterfound = true;

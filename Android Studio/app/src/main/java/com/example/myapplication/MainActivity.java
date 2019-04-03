@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.hangman.HangMan;
+import com.example.hangman.HangManActivity;
 import com.example.hangman.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openHangman() {
-        //Intent intent = new Intent(this, HangMan.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, HangManActivity.class);
+        startActivity(intent);
     }
 
     public void openTouchbox() {

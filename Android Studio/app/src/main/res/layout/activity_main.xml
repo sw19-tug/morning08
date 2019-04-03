@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageViewGalgen"
+        android:id="@+id/imageViewGallow"
         android:layout_width="408dp"
         android:layout_height="409dp"
         android:layout_marginTop="68dp"
@@ -170,7 +170,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewGalgen" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewGallow" />
 
     <TextView
         android:id="@+id/lblScore"

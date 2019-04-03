@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class HangManActivity extends AppCompatActivity implements View.OnClickListener {
 
     private HangMan hangman;
     private Button startButton;

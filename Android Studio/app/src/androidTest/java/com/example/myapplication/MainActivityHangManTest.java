@@ -6,6 +6,10 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.widget.TextView;
 
+import com.example.hangman.HangManActivity;
+import com.example.hangman.HangManActivity;
+import com.example.hangman.R;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +34,7 @@ import static org.hamcrest.Matchers.not;
 public class MainActivityHangManTest
 {
     @Rule
-    public ActivityTestRule<MainActivity> mainActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<HangManActivity> mainActivityTestRule = new ActivityTestRule<>(HangManActivity.class);
 
     @Test
     public void testButtonsVisible()

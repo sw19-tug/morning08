@@ -103,4 +103,15 @@ public class HangMan {
         else
             return false;
     }
+    public void setSearchedword(String searchedword) {
+        this.searchedword = searchedword;
+    }
+
+    public void setOutputarray(char[] outputarray) {
+        this.outputarray = outputarray;
+    }
+
+    public void setLetterguessed(int letterguessed) {
+        this.letterguessed = letterguessed;
+    }
 }

@@ -185,4 +185,16 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="444dp" />
 
+    <TextView
+        android:id="@+id/lblGuesses"
+        android:layout_width="160dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginLeft="212dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="444dp" />
+
 </android.support.constraint.ConstraintLayout>

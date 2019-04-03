@@ -8,10 +8,12 @@ public class HangMan {
     private char[] outputarray;
     private int score;
     private int letterguessed;
+    private int guessesleft;
 
     public HangMan(){
         score =0;
         letterguessed = 0;
+        guessesleft = 8;
     }
 
     public void initialize() {
@@ -23,6 +25,7 @@ public class HangMan {
         String[] words = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
         int randomnumber = random.nextInt(words.length);
         searchedword = words[randomnumber];
+        guessesleft = 8;
 
         System.out.println("Searchedword: " + searchedword);
 
@@ -69,8 +72,10 @@ public class HangMan {
             System.out.println("outputarray: " + outputarray);
             return true;
         }
-        else
+        else {
+            guessesleft--;         //letter not found -> one guess lesser
             return false;
+        }
 
     }
 
@@ -93,13 +98,19 @@ public class HangMan {
         return score;
     }
 
+    public int getGuessesLeft() {
+        return guessesleft;
+    }
+
     public boolean wordGuessed() {
         if(letterguessed == searchedword.length()){
             score++;
             return true;
         }
-        else
+        else {
+            score = score - 2;     //deduct two points if not guessed word
             return false;
+        }
     }
     public void setSearchedword(String searchedword) {
         this.searchedword = searchedword;
@@ -111,5 +122,8 @@ public class HangMan {
 
     public void setLetterguessed(int letterguessed) {
         this.letterguessed = letterguessed;
+    }
+    public void setScore(int score) {
+        this.score = score;
     }
 }

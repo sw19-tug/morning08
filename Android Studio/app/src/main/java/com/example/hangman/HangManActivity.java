@@ -27,6 +27,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
     private EditText input;
     private TextView output;
     private TextView score;
+    private TextView guesses;
 
 
     @Override
@@ -47,6 +48,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         rightHandImage = (ImageView) findViewById(R.id.imageViewRightHand);
         rightLegImage = (ImageView) findViewById(R.id.imageViewRightLeg);
         score = (TextView) findViewById(R.id.lblScore);
+        guesses = (TextView) findViewById(R.id.lblGuesses);
 
 
         startButton.setOnClickListener(this);
@@ -64,6 +66,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         retryButton.setVisibility(View.INVISIBLE);
 
         score.setVisibility(View.INVISIBLE);
+        guesses.setVisibility(View.INVISIBLE);
         input.setVisibility(View.INVISIBLE);
         output.setVisibility(View.INVISIBLE);
 
@@ -82,9 +85,11 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 checkButton.setVisibility(View.VISIBLE);
                 retryButton.setVisibility(View.VISIBLE);
                 score.setVisibility(View.VISIBLE);
+                guesses.setVisibility(View.VISIBLE);
                 input.setVisibility(View.VISIBLE);
                 output.setVisibility(View.VISIBLE);
                 score.setText("Score: "+hangman.getScore());
+                guesses.setText("Guesses: "+hangman.getGuessesLeft());
                 output.setText(hangman.getOutput());
                 break;
 
@@ -94,9 +99,10 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                         input.setText("");
                         output.setText(hangman.getOutput());
                         Toast.makeText(this,"This letter is a part of the searched word!",Toast.LENGTH_SHORT).show();
-
+                        guesses.setText("Guesses: "+hangman.getGuessesLeft());
                         if(hangman.wordGuessed()){
                             score.setText("Score: "+hangman.getScore());
+                            guesses.setText("Guesses: "+hangman.getGuessesLeft());
                             Toast.makeText(this,"Word Guessed!",Toast.LENGTH_LONG).show();
                             hangman.initialize();
                             output.setText(hangman.getOutput());
@@ -104,8 +110,24 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                     }
                     else
                     {
+                        if(hangman.getGuessesLeft() == 0)
+                        {
+                            Toast.makeText(this,"No more guesses left!",Toast.LENGTH_SHORT).show();
+                            /*if(hangman.getScore() < 2)
+                            {
+                                hangman.setScore(0);    //so score doesnt get negative
+                            }*/
+                            if(hangman.getScore() > 2)
+                            {
+                                score.setText("Score: "+hangman.getScore());
+                                guesses.setText("Guesses: "+hangman.getGuessesLeft());
+                            }
+                            //hangman = new HangMan(); ELSE END GAME
+                        }
                         input.setText("");
                         Toast.makeText(this,"This letter is not a part of the searched word!",Toast.LENGTH_SHORT).show();
+                        guesses.setText("Guesses: "+hangman.getGuessesLeft());
+
                     }
 
                 }
@@ -117,6 +139,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_retry:
                 hangman.initialize();
                 score.setText("Score: " + hangman.getScore());
+                guesses.setText("Guesses: "+hangman.getGuessesLeft());
                 output.setText(hangman.getOutput());
                 input.setText("");
                 break;

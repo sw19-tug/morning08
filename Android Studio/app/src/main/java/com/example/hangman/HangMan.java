@@ -8,6 +8,7 @@ public class HangMan {
     private char[] outputarray;
     private int score;
     private int letterguessed;
+    private int guessesleft;
 
     public HangMan(){
         score =0;
@@ -16,13 +17,13 @@ public class HangMan {
 
     public void initialize() {
 
-        //ToDo Logic
         System.out.println("Hangman.initialize()!");
 
         Random random = new Random();
         String[] words = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
         int randomnumber = random.nextInt(words.length);
         searchedword = words[randomnumber];
+        guessesleft = 8;
 
         System.out.println("Searchedword: " + searchedword);
 
@@ -31,7 +32,6 @@ public class HangMan {
             outputarray[i] = '_';
 
         letterguessed = 0;
-
 
     }
 
@@ -44,7 +44,6 @@ public class HangMan {
 
         for(int i = 0; i<searchedword.length(); i++)
         {
-            //TODO logic
             if(letter[0] == searchedwordarray[i]) {
                 if(letter[0] == outputarray[i])
                     break;
@@ -69,8 +68,10 @@ public class HangMan {
             System.out.println("outputarray: " + outputarray);
             return true;
         }
-        else
+        else {
+            guessesleft--;
             return false;
+        }
 
     }
 
@@ -93,13 +94,20 @@ public class HangMan {
         return score;
     }
 
+    public int getGuessesLeft() {
+        return guessesleft;
+    }
+
     public boolean wordGuessed() {
         if(letterguessed == searchedword.length()){
             score++;
             return true;
         }
-        else
+        else if(guessesleft == 0) {
+            score = score - 2;     //deduct two points if not guessed word
             return false;
+        }
+        return false;
     }
     public void setSearchedword(String searchedword) {
         this.searchedword = searchedword;
@@ -111,5 +119,8 @@ public class HangMan {
 
     public void setLetterguessed(int letterguessed) {
         this.letterguessed = letterguessed;
+    }
+    public void setScore(int score) {
+        this.score = score;
     }
 }

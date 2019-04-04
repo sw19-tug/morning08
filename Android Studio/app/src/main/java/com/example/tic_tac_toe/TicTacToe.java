@@ -1,9 +1,7 @@
 package com.example.tic_tac_toe;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -23,7 +21,7 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.TicTacToe);
 
         button[0][0] = (Button) findViewById(R.id.button_1);
         button[0][1] = (Button) findViewById(R.id.button_2);

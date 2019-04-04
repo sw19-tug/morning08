@@ -2,9 +2,7 @@ package com.example.tic_tac_toe;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.widget.TextView;
 
-import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,10 +24,10 @@ import static org.hamcrest.Matchers.notNullValue;
  */
 @RunWith(AndroidJUnit4.class)
 
-public class MainActivityEspressoTest
+public class TicTacToeEspressoTest
 {
     @Rule
-    public ActivityTestRule<MainActivity> mainActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<TicTacToe> mainActivityTestRule = new ActivityTestRule<>(TicTacToe.class);
 
     @Test
     public void testButtonsVisible()
@@ -50,32 +48,22 @@ public class MainActivityEspressoTest
    @Test
     public void testButtonFunction(){
         onView(withId(R.id.button_1)).perform(click());
-        onView(withId(R.id.button_1)).check(matches(withText("O")));
         onView(withId(R.id.button_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_2)).perform(click());
-        onView(withId(R.id.button_2)).check(matches(withText("X")));
         onView(withId(R.id.button_2)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_3)).perform(click());
-        onView(withId(R.id.button_3)).check(matches(withText("O")));
         onView(withId(R.id.button_3)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_4)).perform(click());
-        onView(withId(R.id.button_4)).check(matches(withText("X")));
         onView(withId(R.id.button_4)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_5)).perform(click());
-        onView(withId(R.id.button_5)).check(matches(withText("O")));
         onView(withId(R.id.button_5)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_6)).perform(click());
-        onView(withId(R.id.button_6)).check(matches(withText("X")));
         onView(withId(R.id.button_6)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_7)).perform(click());
-        onView(withId(R.id.button_7)).check(matches(withText("O")));
-        onView(withId(R.id.button_7)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_8)).perform(click());
-        onView(withId(R.id.button_8)).check(matches(withText("X")));
         onView(withId(R.id.button_8)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_7)).perform(click());
+        onView(withId(R.id.button_7)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_9)).perform(click());
-        onView(withId(R.id.button_9)).check(matches(withText("O")));
-        onView(withId(R.id.button_9)).check(matches(not(isEnabled())));
     }
 }
 

@@ -25,10 +25,10 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class checkTttButtonTest {
+public class TicTacToeUnitTest {
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<TicTacToe> mActivityTestRule = new ActivityTestRule<>(TicTacToe.class);
 
     @Test
     public void checkTttButtonTest() {

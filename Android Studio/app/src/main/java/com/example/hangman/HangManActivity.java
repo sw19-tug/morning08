@@ -112,17 +112,12 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                     {
                         if(hangman.getGuessesLeft() == 0)
                         {
+                            hangman.wordGuessed();
                             Toast.makeText(this,"No more guesses left!",Toast.LENGTH_SHORT).show();
-                            /*if(hangman.getScore() < 2)
-                            {
-                                hangman.setScore(0);    //so score doesnt get negative
-                            }*/
-                            if(hangman.getScore() > 2)
-                            {
-                                score.setText("Score: "+hangman.getScore());
-                                guesses.setText("Guesses: "+hangman.getGuessesLeft());
-                            }
-                            //hangman = new HangMan(); ELSE END GAME
+                            hangman.initialize();
+                            output.setText(hangman.getOutput());
+                            score.setText("Score: "+hangman.getScore());
+
                         }
                         input.setText("");
                         Toast.makeText(this,"This letter is not a part of the searched word!",Toast.LENGTH_SHORT).show();

@@ -132,14 +132,16 @@ public class HangManUnitTest {
             testOutputarray[i] = '_';
         hangman.setOutputarray(testOutputarray);
         hangman.setSearchedword(word);
-        for(int i = expected; i == 0; i--)
+        for(int i = 9; i > 0; i--) {
             hangman.checkLetter(input);
+            hangman.wordGuessed();
+        }
 
 
         int actual = hangman.getScore();
 
 
-        Assert.assertEquals(expected, actual-2);
+        Assert.assertEquals(expected, actual+2);
     }
 
 }

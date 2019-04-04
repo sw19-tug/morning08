@@ -13,12 +13,10 @@ public class HangMan {
     public HangMan(){
         score =0;
         letterguessed = 0;
-        guessesleft = 8;
     }
 
     public void initialize() {
 
-        //ToDo Logic
         System.out.println("Hangman.initialize()!");
 
         Random random = new Random();
@@ -35,7 +33,6 @@ public class HangMan {
 
         letterguessed = 0;
 
-
     }
 
 
@@ -47,7 +44,6 @@ public class HangMan {
 
         for(int i = 0; i<searchedword.length(); i++)
         {
-            //TODO logic
             if(letter[0] == searchedwordarray[i]) {
                 if(letter[0] == outputarray[i])
                     break;
@@ -73,7 +69,7 @@ public class HangMan {
             return true;
         }
         else {
-            guessesleft--;         //letter not found -> one guess lesser
+            guessesleft--;
             return false;
         }
 
@@ -107,10 +103,11 @@ public class HangMan {
             score++;
             return true;
         }
-        else {
+        else if(guessesleft == 0) {
             score = score - 2;     //deduct two points if not guessed word
             return false;
         }
+        return false;
     }
     public void setSearchedword(String searchedword) {
         this.searchedword = searchedword;

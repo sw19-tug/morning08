@@ -6,6 +6,8 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.widget.TextView;
 
+import com.example.R;
+import com.example.hangman.HangMan;
 import com.example.hangman.HangManActivity;
 import com.example.hangman.HangManActivity;
 import com.example.hangman.R;
@@ -62,5 +64,51 @@ public class MainActivityHangManTest
         onView(withId(R.id.btn_check)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_retry)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_start)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+    }
+    @Test
+    public void testHeadGraphicDisplayed()
+    {
+        private HangMan hangman = new HangMan();
+        String word = "fig";
+        String input = "x";
+
+        hangman.initialize();
+
+        char[] testOutputarray = new char[word.length()];
+
+        for(int i = 0; i < testOutputarray.length; i++) {
+            testOutputarray[i] = '_';
+        }
+        hangman.setOutputarray(testOutputarray);
+        hangman.setSearchedword(word);
+        hangman.checkLetter(input);
+
+        onView(withId(R.id.imageViewHead)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+    }
+    @Test
+    public void testWholeWordWithGraphic()
+    {
+        private HangMan hangman = new HangMan();
+        String word = "lemon";
+        String input = "x";
+
+        hangman.initialize();
+
+        char[] testOutputarray = new char[word.length()];
+        for(int i = 0; i < testOutputarray.length; i++) {
+            testOutputarray[i] = '_';
+        }
+        hangman.setOutputarray(testOutputarray);
+        hangman.setSearchedword(word);
+
+        for(int i = 6; i > 0; i--) {
+            hangman.checkLetter(input);
+        }
+
+        onView(withId(R.id.imageViewHead)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+        onView(withId(R.id.imageViewThroat)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+        onView(withId(R.id.imageViewBody)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+        onView(withId(R.id.imageViewRightHand)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+        onView(withId(R.id.imageViewLeftHand)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
     }
 }

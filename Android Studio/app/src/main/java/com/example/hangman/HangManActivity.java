@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.R;
 
 
 public class HangManActivity extends AppCompatActivity implements View.OnClickListener {

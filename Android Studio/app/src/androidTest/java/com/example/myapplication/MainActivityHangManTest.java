@@ -111,4 +111,33 @@ public class MainActivityHangManTest
         onView(withId(R.id.imageViewRightHand)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
         onView(withId(R.id.imageViewLeftHand)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
     }
+    @Test
+    public void testEveryGraphic()
+    {
+        private HangMan hangman = new HangMan();
+        String word = "apple";
+        String input = "x";
+
+        hangman.initialize();
+
+        char[] testOutputarray = new char[word.length()];
+        for(int i = 0; i < testOutputarray.length; i++) {
+            testOutputarray[i] = '_';
+        }
+        hangman.setOutputarray(testOutputarray);
+        hangman.setSearchedword(word);
+
+        for(int i = 9; i > 0; i--) {
+            hangman.checkLetter(input);
+        }
+
+        onView(withId(R.id.imageViewHead)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+        onView(withId(R.id.imageViewThroat)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+        onView(withId(R.id.imageViewBody)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+        onView(withId(R.id.imageViewRightHand)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+        onView(withId(R.id.imageViewLeftHand)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+        onView(withId(R.id.imageViewLeftLeg)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+        onView(withId(R.id.imageViewRightLeg)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+        onView(withId(R.id.imageViewSmile)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE);
+    }
 }

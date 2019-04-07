@@ -98,6 +98,20 @@ public class HangMan {
         return false;
     }
 
+    public void showrandomLetter() {
+
+        Random random = new Random();
+        int randomletter = random.nextInt(searchedword.length());
+
+        while(outputarray[randomletter] != '_')     //get next index if letter there
+            randomletter = random.nextInt(searchedword.length());
+
+        outputarray[randomletter] = searchedword.charAt(randomletter);
+
+        letterguessed++;
+        score = score - 3;
+    }
+
     public String getOutput() {
         return new String(outputarray);
     }

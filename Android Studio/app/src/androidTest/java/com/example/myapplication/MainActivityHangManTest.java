@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.hangman.HangManActivity;
 import com.example.hangman.HangManActivity;
-import com.example.hangman.R;
+import com.example.R;
 
 import org.junit.Rule;
 import org.junit.Test;

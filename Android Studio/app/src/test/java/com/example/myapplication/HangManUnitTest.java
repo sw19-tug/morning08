@@ -169,7 +169,7 @@ public class HangManUnitTest {
         int actual = hangman.getScore();
 
         Assert.assertEquals(initoutputcounter, finaloutputcounter+1);
-        Assert.assertEquals(initialscore, actual+2);
+        Assert.assertEquals(initialscore, actual+3);
     }
 
 }

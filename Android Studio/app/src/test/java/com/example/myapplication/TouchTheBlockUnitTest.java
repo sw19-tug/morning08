@@ -19,5 +19,4 @@ public class TouchTheBlockUnitTest {
         assertNotNull(touchtheblock);
     }
 
-
 }

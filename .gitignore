@@ -41,6 +41,7 @@ captures/
 .idea/dictionaries
 .idea/libraries
 .idea/caches
+/.idea
 Android Studio/.idea/misc.xml
 
 # Keystore files

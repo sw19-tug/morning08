@@ -2,15 +2,11 @@ package com.example.myapplication;
 
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
-
+import android.util.Log;
 import com.example.R;
-
-
 import com.example.touchtheblock.TouchTheBlock;
-
 import org.junit.Rule;
 import org.junit.Test;
-
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -23,23 +19,61 @@ public class MainActivityTouchTheBlockTest {
     public ActivityTestRule<TouchTheBlock> mainActivityTestRule = new ActivityTestRule<>(TouchTheBlock.class);
 
     @Test
-    public void testPlayButtonVisible()
+    public void testButtonsVisible()
     {
-        onView(withId(R.id.btnPlayBox)).check(matches(isDisplayed()));
+        Log.d("Testing: ", "In testButtonVisible");
+        onView(withId(R.id.btnPlayBox)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.btnEndGame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.btn_startgame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        Log.d("Testing: ", "Out testButtonVisible");
+    }
+
+
+    @Test
+    public void testLabelsVisible()
+    {
+        Log.d("Testing: ", "In testLabelsVisible");
+        onView(withId(R.id.tv_gamelost)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        Log.d("Testing: ", "Out testLabelsVisible");
     }
 
     @Test
-    public void testEndButtonVisible()
-    {
-        onView(withId(R.id.btnEndGame)).check(matches(isDisplayed()));
-    }
-
-    /*@Test
     public void testStartButtonClick()
     {
-        onView(withId(R.id.btn_start)).perform(click());
-        onView(withId(R.id.btn_check)).check(matches(isDisplayed()));
-        onView(withId(R.id.btn_retry)).check(matches(isDisplayed()));
-        onView(withId(R.id.btn_start)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
-    }*/
+        Log.d("Testing: ", "In testStartButtonClick");
+        onView(withId(R.id.btn_startgame)).perform(click());
+        onView(withId(R.id.btnPlayBox)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btnEndGame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btn_startgame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.tv_gamelost)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        Log.d("Testing: ", "Out testStartButtonClick");
+    }
+
+    @Test
+    public void testPlayButtonClick()
+    {
+        Log.d("Testing: ", "In testPlayButtonClick");
+        onView(withId(R.id.btn_startgame)).perform(click());
+        onView(withId(R.id.btnPlayBox)).perform(click());
+        onView(withId(R.id.btnPlayBox)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btnEndGame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btn_startgame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.tv_gamelost)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        Log.d("Testing: ", "Out testPlayButtonClick");
+    }
+
+
+
+    @Test
+    public void testEndButtonClick()
+    {
+        Log.d("Testing: ", "In testEndButtonClick");
+        onView(withId(R.id.btn_startgame)).perform(click());
+        onView(withId(R.id.btnEndGame)).perform(click());
+        onView(withId(R.id.btnPlayBox)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btnEndGame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btn_startgame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.tv_gamelost)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        Log.d("Testing: ", "Out testEndButtonClick");
+    }
 }

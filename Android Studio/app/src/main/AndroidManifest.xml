@@ -17,8 +17,11 @@
             </intent-filter>
         </activity>
 
+
         <activity android:label="@string/app_name" android:name=".hangman.HangManActivity"/>
+       <activity android:label="@string/app_name" android:name=".tic_tac_toe.TicTacToe"/>
         <activity android:label="@string/app_name" android:name=".touchtheblock.TouchTheBlock"/>
+
     </application>
 
 </manifest>

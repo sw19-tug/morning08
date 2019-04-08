@@ -23,15 +23,14 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TicTacToeUnitTest {
+public class TicTacToeUnitTest2 {
 
     @Rule
-    public ActivityTestRule<TicTacToe> mActivityTestRule = new ActivityTestRule<>(TicTacToe.class);
+    public ActivityTestRule<TicTacToeAutoPlayer> mActivityTestRule = new ActivityTestRule<>(TicTacToeAutoPlayer.class);
 
     @Test
     public void checkTttButtonTest() {
@@ -155,4 +154,30 @@ public class TicTacToeUnitTest {
         };
     }
 
+    //Idea from https://stackoverflow.com/questions/5009816/cant-create-handler-inside-thread-which-has-not-called-looper-prepare
+    @Test
+    public void testAutoplayer() {
+        Thread thread = new Thread() {
+            public void run() {
+                Looper.prepare();
+
+                final Handler h = new Handler();
+                h.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TicTacToeAutoPlayer tic = new TicTacToeAutoPlayer();
+                        int random = tic.Generator();
+
+                        Assert.assertTrue(random <= 3);
+
+                        h.removeCallbacks(this);
+                        Looper.myLooper().quit();
+                    }
+                }, 1000);
+                Looper.loop();
+            }
+        };
+        thread.start();
+    }
+    //end of idea
 }

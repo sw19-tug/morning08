@@ -1,6 +1,8 @@
 package com.example.tic_tac_toe;
 
 
+import android.os.Handler;
+import android.os.Looper;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -13,6 +15,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -151,4 +154,31 @@ public class TicTacToeUnitTest {
             }
         };
     }
+
+    //Idea from https://stackoverflow.com/questions/5009816/cant-create-handler-inside-thread-which-has-not-called-looper-prepare
+    @Test
+    public void testAutoplayer() {
+        Thread thread = new Thread() {
+            public void run() {
+                Looper.prepare();
+
+                final Handler h = new Handler();
+                h.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TicTacToe tic = new TicTacToe();
+                        int random = tic.Generator();
+
+                        Assert.assertTrue(random <= 3);
+
+                        h.removeCallbacks(this);
+                        Looper.myLooper().quit();
+                    }
+                }, 1000);
+                Looper.loop();
+            }
+        };
+        thread.start();
+    }
+    //end of idea
 }

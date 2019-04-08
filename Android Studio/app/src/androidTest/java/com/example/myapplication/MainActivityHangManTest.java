@@ -11,7 +11,11 @@ import com.example.R;
 import com.example.hangman.HangMan;
 import com.example.hangman.HangManActivity;
 import com.example.hangman.HangManActivity;
+
+import com.example.R;
+
 import static org.junit.Assert.assertEquals;
+
 
 import org.junit.Rule;
 import org.junit.Test;

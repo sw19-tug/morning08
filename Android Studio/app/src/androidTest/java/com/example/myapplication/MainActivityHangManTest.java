@@ -12,6 +12,11 @@ import com.example.hangman.HangMan;
 import com.example.hangman.HangManActivity;
 import com.example.hangman.HangManActivity;
 
+import com.example.R;
+
+import static org.junit.Assert.assertEquals;
+
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -148,5 +153,23 @@ public class MainActivityHangManTest
         onView(withId(R.id.imageViewRightHand)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
         onView(withId(R.id.imageViewRightLeg)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
         onView(withId(R.id.imageViewFace)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+    }
+    @Test
+    public void testTip()
+    {
+        onView(withId(R.id.btn_start)).perform(click());
+        onView(withId(R.id.btn_check)).perform(click());
+
+        TextView textviewoutput = mainActivityTestRule.getActivity().findViewById(R.id.lblOutput);
+        TextView textviewscore = mainActivityTestRule.getActivity().findViewById(R.id.lblScore);
+
+        String initialoutput = textviewoutput.getText().toString();
+        String initialscore = textviewscore.getText().toString();
+
+        onView(withId(R.id.btn_tip)).perform(click());
+
+        onView(withId(R.id.lblOutput)).check(matches(not(withText(initialoutput))));
+        onView(withId(R.id.lblScore)).check(matches(not(withText(initialscore))));
+
     }
 }

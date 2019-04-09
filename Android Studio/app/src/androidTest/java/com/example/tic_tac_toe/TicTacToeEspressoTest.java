@@ -3,6 +3,8 @@ package com.example.tic_tac_toe;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.example.R;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

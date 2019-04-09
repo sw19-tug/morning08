@@ -3,16 +3,21 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 
 import com.example.R;
 import com.example.hangman.HangMan;
 import com.example.hangman.HangManActivity;
+
+import com.example.touchtheblock.TouchTheBlock;
 import com.example.tic_tac_toe.TicTacToe;
 
+
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    //Activate buttons when class done
+
+
     public void openTicTac() {
         Intent intent = new Intent(this, TicTacToe.class);
         startActivity(intent);
@@ -57,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openTouchbox() {
-        //Intent intent = new Intent(this, Touchbox.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, TouchTheBlock.class);
+        startActivity(intent);
     }
 
 

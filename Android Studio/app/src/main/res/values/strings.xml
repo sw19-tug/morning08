@@ -1,5 +1,30 @@
 <resources>
 
     <string name="app_name">My Application</string>
+    <string name="btn00">btn00</string>
+    <string name="btn01">btn01</string>
+    <string name="btn02">btn02</string>
+    <string name="btn03">btn03</string>
 
+    <string name="btn10">btn10</string>
+    <string name="btn11">btn11</string>
+    <string name="btn12">btn12</string>
+    <string name="btn13">btn13</string>
+
+    <string name="btn20">btn20</string>
+    <string name="btn21">btn21</string>
+    <string name="btn22">btn22</string>
+    <string name="btn23">btn23</string>
+
+    <string name="btn30">btn30</string>
+    <string name="btn31">btn31</string>
+    <string name="btn32">btn32</string>
+    <string name="btn33">btn33</string>
+    <string name="colormustdiffer">The color for the block and background must always be different</string>
+    <string name="game_lost">GAME LOST</string>
+    <string name="background">Background</string>
+    <string name="block">Block</string>
+    <string name="start_game">Start Game</string>
+    <string name="TouchTheBlockName">Touch The Block</string>
+    <string name="touchtheblockhoosecolor">Touch The Block Choose Color</string>
 </resources>

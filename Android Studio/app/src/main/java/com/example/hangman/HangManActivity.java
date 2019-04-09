@@ -20,6 +20,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
     private Button startButton;
     private Button checkButton;
     private Button retryButton;
+    private Button tipButton;
     private ImageView ropeImage;
     private ImageView headImage;
     private ImageView faceImage;
@@ -43,6 +44,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         startButton = findViewById(R.id.btn_start);
         checkButton = findViewById(R.id.btn_check);
         retryButton = findViewById(R.id.btn_retry);
+        tipButton = findViewById(R.id.btn_tip);
         input = (EditText) findViewById(R.id.txtInput);
         output = (TextView) findViewById(R.id.lblOutput);
 
@@ -61,6 +63,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         startButton.setOnClickListener(this);
         checkButton.setOnClickListener(this);
         retryButton.setOnClickListener(this);
+        tipButton.setOnClickListener(this);
 
         ropeImage.setVisibility(View.INVISIBLE);
         headImage.setVisibility(View.INVISIBLE);
@@ -73,6 +76,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
 
         checkButton.setVisibility(View.INVISIBLE);
         retryButton.setVisibility(View.INVISIBLE);
+        tipButton.setVisibility(View.INVISIBLE);
 
         score.setVisibility(View.INVISIBLE);
         guesses.setVisibility(View.INVISIBLE);
@@ -139,6 +143,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                     refreshScreen();
                     checkButton.setVisibility(View.VISIBLE);
                     retryButton.setVisibility(View.VISIBLE);
+                    tipButton.setVisibility(View.VISIBLE);
                     startButton.setVisibility(View.INVISIBLE);
                     break;
                 }
@@ -146,6 +151,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 startButton.setVisibility(View.INVISIBLE);
                 checkButton.setVisibility(View.VISIBLE);
                 retryButton.setVisibility(View.VISIBLE);
+                tipButton.setVisibility(View.VISIBLE);
                 score.setVisibility(View.VISIBLE);
                 guesses.setVisibility(View.VISIBLE);
                 input.setVisibility(View.VISIBLE);
@@ -174,6 +180,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                             startButton.setText("Next Word");
                             checkButton.setVisibility(View.INVISIBLE);
                             retryButton.setVisibility(View.INVISIBLE);
+                            tipButton.setVisibility(View.INVISIBLE);
                             startButton.setVisibility(View.VISIBLE);
                             hangman.wordGuessed();
                             refreshScreen();
@@ -192,6 +199,12 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 {
                     Toast.makeText(this,"Not Correct Input!",Toast.LENGTH_SHORT).show();
                 }
+                break;
+
+            case R.id.btn_tip:
+                hangman.showrandomLetter();
+                hangman.wordGuessed();
+                refreshScreen();
                 break;
 
             case R.id.btn_retry: // get a new word

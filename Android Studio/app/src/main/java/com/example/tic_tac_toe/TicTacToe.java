@@ -2,9 +2,13 @@ package com.example.tic_tac_toe;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
@@ -24,7 +28,7 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tictactoe);
+        setContentView(R.layout.activity_tictactoe);
 
         button[0][0] = (Button) findViewById(R.id.button_1);
         button[0][1] = (Button) findViewById(R.id.button_2);
@@ -219,4 +223,53 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.tictactoe_menu, menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.two_player:
+                openTicTacToeTwoPlayer();
+                return true;
+
+            case R.id.auto_player:
+                openTicTacToeAutoPlayer();
+                return true;
+
+
+            default: return super.onOptionsItemSelected(item);
+        }
+
+
+
+    }
+    /* prepare Settings later in another Feature// public void openTicTacToeSettings()
+    {
+        Intent intent = new Intent(this, TicTacToeSettings.class);
+        startActivity(intent);
+    }*/
+
+
+    public void openTicTacToeTwoPlayer()
+    {
+        Intent intent = new Intent(this, TicTacToe.class);
+        startActivity(intent);
+        click = 0;
+    }
+
+    public void openTicTacToeAutoPlayer()
+    {
+        Intent intent = new Intent(this, TicTacToeAutoPlayer.class);
+        startActivity(intent);
+        click = 0;
+    }
 }

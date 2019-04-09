@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TicTacToe">
+    tools:context=".tic_tac_toe.TicTacToeAutoPlayer">
 
 
     <LinearLayout
@@ -14,21 +14,21 @@
         android:layout_weight="1"
         >
 
-            <Button
-                android:id="@+id/button_1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="45sp" />
+        <Button
+            android:id="@+id/button_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="45sp" />
 
-            <Button
+        <Button
             android:id="@+id/button_2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="45sp" />
 
-             <Button
+        <Button
             android:id="@+id/button_3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -63,7 +63,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="45sp" />
-</LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

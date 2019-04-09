@@ -18,6 +18,4 @@ public class TouchTheBlockUnitTest {
     public void testInitialState() {
         assertNotNull(touchtheblock);
     }
-
-
 }

@@ -1,14 +1,24 @@
 package com.example.myapplication;
+
 import static android.support.test.espresso.action.ViewActions.click;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
+
+
+import android.support.test.espresso.matcher.ViewMatchers;
+import android.support.test.rule.ActivityTestRule;
+import android.util.Log;
+
 import com.example.R;
 import com.example.touchtheblock.TouchTheBlock;
 import org.junit.Rule;
 import org.junit.Test;
 import static android.support.test.espresso.Espresso.onView;
 
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+
 import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
@@ -19,7 +29,6 @@ public class MainActivityTouchTheBlockTest {
     @Test
     public void testButtonsVisible()
     {
-
         onView(withId(R.id.btnPlayBox)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
         onView(withId(R.id.btnEndGame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
         onView(withId(R.id.btn_startgame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
@@ -125,6 +134,7 @@ public class MainActivityTouchTheBlockTest {
 
 
     @Test
+
     public void testColorBtn20() throws InterruptedException
     {
         onView(withId(R.id.btnBackCol)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
@@ -200,5 +210,54 @@ public class MainActivityTouchTheBlockTest {
 
 
 
+
+
+    @Test
+    public void testLabelsVisible()
+    {
+        
+        onView(withId(R.id.tv_gamelost)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        
+    }
+
+    @Test
+    public void testStartButtonClick()
+    {
+        
+        onView(withId(R.id.btn_startgame)).perform(click());
+        onView(withId(R.id.btnPlayBox)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btnEndGame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btn_startgame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.tv_gamelost)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        
+    }
+
+    @Test
+    public void testPlayButtonClick()
+    {
+        
+        onView(withId(R.id.btn_startgame)).perform(click());
+        onView(withId(R.id.btnPlayBox)).perform(click());
+        onView(withId(R.id.btnPlayBox)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btnEndGame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btn_startgame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.tv_gamelost)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        
+    }
+
+
+
+    @Test
+    public void testEndButtonClick()
+    {
+        
+        onView(withId(R.id.btn_startgame)).perform(click());
+        onView(withId(R.id.btnEndGame)).perform(click());
+        onView(withId(R.id.btnPlayBox)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btnEndGame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btn_startgame)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.tv_gamelost)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        
+    }
 
 }

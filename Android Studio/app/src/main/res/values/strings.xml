@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">My Application</string>
     <string name="btn00">btn00</string>
     <string name="btn01">btn01</string>
@@ -26,6 +27,4 @@
     <string name="start_game">Start Game</string>
     <string name="TouchTheBlockName">Touch The Block</string>
     <string name="touchtheblockhoosecolor">Touch The Block Choose Color</string>
-
-
 </resources>

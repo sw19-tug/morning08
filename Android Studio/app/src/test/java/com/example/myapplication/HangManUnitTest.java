@@ -70,4 +70,106 @@ public class HangManUnitTest {
 
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void testSubtractLive()
+    {
+        String word = "apple";
+        String input = "x";
+
+        hangman.initialize();
+
+        int expected = hangman.getGuessesLeft();
+
+        char[] testOutputarray = new char[word.length()];
+        for(int i = 0; i < testOutputarray.length; i++)
+            testOutputarray[i] = '_';
+        hangman.setOutputarray(testOutputarray);
+        hangman.setSearchedword(word);
+        hangman.checkLetter(input);
+
+        int actual = hangman.getGuessesLeft();
+
+        Assert.assertEquals(expected, actual+1);
+    }
+
+    @Test
+    public void testDoNotSubtractLive()
+    {
+        String word = "apple";
+        String input = "p";
+
+        hangman.initialize();
+
+        int expected = hangman.getGuessesLeft();
+
+        char[] testOutputarray = new char[word.length()];
+        for(int i = 0; i < testOutputarray.length; i++)
+            testOutputarray[i] = '_';
+        hangman.setOutputarray(testOutputarray);
+        hangman.setSearchedword(word);
+        hangman.checkLetter(input);
+
+
+        int actual = hangman.getGuessesLeft();
+
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testDoesNotGuessTheWord()
+    {
+        String word = "apple";
+        String input = "x";
+
+        hangman.initialize();
+
+        int expected = hangman.getScore();
+
+        char[] testOutputarray = new char[word.length()];
+        for(int i = 0; i < testOutputarray.length; i++)
+            testOutputarray[i] = '_';
+        hangman.setOutputarray(testOutputarray);
+        hangman.setSearchedword(word);
+        for(int i = 9; i > 0; i--) {
+            hangman.checkLetter(input);
+            hangman.wordGuessed();
+        }
+
+
+        int actual = hangman.getScore();
+
+
+        Assert.assertEquals(expected, actual+2);
+    }
+    @Test
+    public void testTip()
+    {
+        hangman.initialize();
+
+        int initoutputcounter = 0;
+        int initialscore = hangman.getScore();
+        String initialoutput = hangman.getOutput();
+
+        hangman.showrandomLetter();
+
+        int finaloutputcounter = 0;
+        String finaloutput = hangman.getOutput();
+
+        for(int i = 0; i< initialoutput.length(); i++){
+            if(initialoutput.charAt(i) == '_')
+                initoutputcounter++;
+        }
+        for(int i = 0; i< finaloutput.length(); i++){
+            if(finaloutput.charAt(i) == '_')
+                finaloutputcounter++;
+        }
+
+        int actual = hangman.getScore();
+
+        Assert.assertEquals(initoutputcounter, finaloutputcounter+1);
+        Assert.assertEquals(initialscore, actual+3);
+    }
+
 }

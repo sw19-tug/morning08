@@ -1,5 +1,6 @@
 package com.example.touchtheblock;
 
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -15,10 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.example.R;
-
 import java.util.Random;
 
 
@@ -45,7 +43,6 @@ public class TouchTheBlock extends AppCompatActivity {
 
 
 
-
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +53,10 @@ public class TouchTheBlock extends AppCompatActivity {
         btnPlay = findViewById(R.id.btnPlayBox);
         btnEnd = findViewById(R.id.btnEndGame);
         btnStart = findViewById(R.id.btn_startgame);
+
         btnChooseBlock = findViewById(R.id.btnBlockCol);
         btnChooseBack = findViewById(R.id.btnBackCol);
+
         tvgamelost = (TextView) findViewById(R.id.tv_gamelost);
 
         btnPlay.setVisibility(View.INVISIBLE);
@@ -73,14 +72,12 @@ public class TouchTheBlock extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 btnPlay.setVisibility(View.VISIBLE);
                 btnEnd.setVisibility(View.VISIBLE);
                 btnStart.setVisibility(View.INVISIBLE);
                 tvgamelost.setVisibility(View.INVISIBLE);
                 btnChooseBlock.setVisibility(View.INVISIBLE);
                 btnChooseBack.setVisibility(View.INVISIBLE);
-
                 game(pixHeight, pixWidth); //setting size of PlayBox
 
 
@@ -100,8 +97,6 @@ public class TouchTheBlock extends AppCompatActivity {
         btnEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 btnPlay.setVisibility(View.INVISIBLE);
                 btnEnd.setVisibility(View.INVISIBLE);
                 btnStart.setVisibility(View.VISIBLE);
@@ -130,12 +125,10 @@ public class TouchTheBlock extends AppCompatActivity {
                         com.example.touchtheblock.TouchTheBlockChooseColor.class);
 
                 startActivityForResult(intent, CHOOSE_BACK_COLOR);
+
             }
         });
     }
-
-
-
 
 
     private void random_() {
@@ -172,7 +165,6 @@ public class TouchTheBlock extends AppCompatActivity {
 
 
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -220,6 +212,4 @@ public class TouchTheBlock extends AppCompatActivity {
             }
         }
     }
-
-
 }

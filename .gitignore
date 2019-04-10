@@ -1,6 +1,9 @@
 # Built application files
-*.apk
+*Android Studio/*.apk
 *.ap_
+
+# Ignore Apple files
+*DS_Store
 
 # Files for the ART/Dalvik VM
 *.dex

@@ -20,6 +20,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 
 import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 
 public class MainActivityTouchTheBlockTest {
@@ -29,9 +30,14 @@ public class MainActivityTouchTheBlockTest {
         public ActivityTestRule<TouchTheBlock> mainActivityTestRule = new ActivityTestRule<>(TouchTheBlock.class);
 
         @Test
-        public void testButtonsVisible()
+        public void testTimeVisible()
         {
             onView(withId(R.id.btnTime)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
         }
 
+        @Test
+        public void testTimeSetVisible() {
+                onView(withId(R.id.btnTime)).check(matches(isDisplayed()));
+                onView(withId(R.id.btnTime)).check(matches(withText("2")));
+        }
 }

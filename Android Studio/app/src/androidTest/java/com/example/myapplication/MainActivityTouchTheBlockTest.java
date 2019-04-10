@@ -23,23 +23,7 @@ public class MainActivityTouchTheBlockTest {
     public ActivityTestRule<TouchTheBlock> mainActivityTestRule = new ActivityTestRule<>(TouchTheBlock.class);
 
     @Test
-    public void testPlayButtonVisible()
-    {
-        onView(withId(R.id.btnPlayBox)).check(matches(isDisplayed()));
+    public void testClockButtonVisible() {
+        onView(withId(R.id.tv_time)).check(matches(isDisplayed()));
     }
-
-    @Test
-    public void testEndButtonVisible()
-    {
-        onView(withId(R.id.btnEndGame)).check(matches(isDisplayed()));
-    }
-
-    /*@Test
-    public void testStartButtonClick()
-    {
-        onView(withId(R.id.btn_start)).perform(click());
-        onView(withId(R.id.btn_check)).check(matches(isDisplayed()));
-        onView(withId(R.id.btn_retry)).check(matches(isDisplayed()));
-        onView(withId(R.id.btn_start)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
-    }*/
 }

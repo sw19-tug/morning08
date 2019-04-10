@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/WellcomeText"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@android:color/holo_blue_light"
+    tools:context="com.example.hangman.HangManActivity">
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="161dp"
+        android:layout_marginBottom="15dp"
+        android:tag="btnGo"
+        android:text="Start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="161dp"
+        android:layout_marginBottom="15dp"
+        android:tag="btnGo"
+        android:text="Tip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="15dp"
+        android:tag="btnGo"
+        android:text="Check"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="15dp"
+        android:tag="btnGo"
+        android:text="Retry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewGallow"
+        android:layout_width="wrap_content"
+        android:layout_height="556dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gallow" />
+
+    <ImageView
+        android:id="@+id/imageViewRope"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginEnd="192dp"
+        android:layout_marginRight="192dp"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewFace"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewGallow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/rope" />
+
+    <ImageView
+        android:id="@+id/imageViewHead"
+        android:layout_width="82dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginRight="110dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/kreis" />
+
+    <ImageView
+        android:id="@+id/imageViewFace"
+        android:layout_width="82dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginRight="110dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/face" />
+
+    <ImageView
+        android:id="@+id/imageViewBody"
+        android:layout_width="119dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginEnd="200dp"
+        android:rotation="90"
+        android:src="@drawable/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewHead" />
+
+    <ImageView
+        android:id="@+id/imageViewLeftHand"
+        android:layout_width="89dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginRight="68dp"
+        android:src="@drawable/line_left"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewRightHand"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewHead" />
+
+    <ImageView
+        android:id="@+id/imageViewLeftLeg"
+        android:layout_width="89dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginRight="68dp"
+        android:src="@drawable/line_left"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewRightLeg"
+        app:layout_constraintTop_toTopOf="@+id/imageViewLeftHand" />
+
+    <ImageView
+        android:id="@+id/imageViewRightHand"
+        android:layout_width="89dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/line_right"
+        app:layout_constraintStart_toStartOf="@+id/imageViewHead"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewHead" />
+
+    <ImageView
+        android:id="@+id/imageViewRightLeg"
+        android:layout_width="89dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="85dp"
+        android:src="@drawable/line_right"
+        app:layout_constraintStart_toStartOf="@+id/imageViewHead"
+        app:layout_constraintTop_toTopOf="@+id/imageViewRightHand" />
+
+    <EditText
+        android:id="@+id/txtInput"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="499dp"
+        android:layout_marginBottom="187dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Character"
+        android:inputType="textPersonName"
+        android:maxLength="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblOutput"
+        android:layout_width="332dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblGuesses" />
+
+    <TextView
+        android:id="@+id/lblScore"
+        android:layout_width="160dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblGuesses"
+        android:layout_width="160dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

@@ -8,21 +8,23 @@ public class HangMan {
     private char[] outputarray;
     private int score;
     private int letterguessed;
+    private int guessesleft;
 
     public HangMan(){
         score =0;
         letterguessed = 0;
     }
 
+    // initialize a new searchedword for hangman
     public void initialize() {
 
-        //ToDo Logic
         System.out.println("Hangman.initialize()!");
 
         Random random = new Random();
         String[] words = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
         int randomnumber = random.nextInt(words.length);
         searchedword = words[randomnumber];
+        guessesleft = 8;
 
         System.out.println("Searchedword: " + searchedword);
 
@@ -32,10 +34,9 @@ public class HangMan {
 
         letterguessed = 0;
 
-
     }
 
-
+    // checks if the input is part of the searched word
     public boolean checkLetter(String input) {
 
         char [] letter = input.toCharArray();
@@ -44,14 +45,12 @@ public class HangMan {
 
         for(int i = 0; i<searchedword.length(); i++)
         {
-            //TODO logic
             if(letter[0] == searchedwordarray[i]) {
                 if(letter[0] == outputarray[i])
                     break;
 
                 for (int j = 0; j < searchedword.length();j++){
-                    if(j == i)
-                    {
+                    if(j == i) {
                         outputarray[j] = letter[0];
                         letterguessed++;
                     }
@@ -62,18 +61,19 @@ public class HangMan {
 
                 letterfound = true;
             }
-
         }
 
-        if(letterfound){
-            System.out.println("outputarray: " + outputarray);
+        if(letterfound)
             return true;
-        }
-        else
+
+        else {
+            guessesleft--;
             return false;
+        }
 
     }
 
+    // check if the input given by the user is valid
     public boolean checkInput(String input) {
 
         System.out.println("Hangman.checkletter()!: " + input + " Length: " + input.length());
@@ -85,6 +85,33 @@ public class HangMan {
 
     }
 
+    // verify if the word is completly guessed & manage the score
+    public boolean wordGuessed() {
+        if(letterguessed == searchedword.length()){
+            score++;
+            return true;
+        }
+        else if(guessesleft == 0) {
+            score = score - 2;     //deduct two points if not guessed word
+            return false;
+        }
+        return false;
+    }
+
+    public void showrandomLetter() {
+
+        Random random = new Random();
+        int randomletter = random.nextInt(searchedword.length());
+
+        while(outputarray[randomletter] != '_')     //get next index if letter there
+            randomletter = random.nextInt(searchedword.length());
+
+        outputarray[randomletter] = searchedword.charAt(randomletter);
+
+        letterguessed++;
+        score = score - 3;
+    }
+
     public String getOutput() {
         return new String(outputarray);
     }
@@ -93,14 +120,10 @@ public class HangMan {
         return score;
     }
 
-    public boolean wordGuessed() {
-        if(letterguessed == searchedword.length()){
-            score++;
-            return true;
-        }
-        else
-            return false;
+    public int getGuessesLeft() {
+        return guessesleft;
     }
+
     public void setSearchedword(String searchedword) {
         this.searchedword = searchedword;
     }
@@ -112,4 +135,8 @@ public class HangMan {
     public void setLetterguessed(int letterguessed) {
         this.letterguessed = letterguessed;
     }
+    public void setScore(int score) {
+        this.score = score;
+    }
+
 }

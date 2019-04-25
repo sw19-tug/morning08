@@ -1,8 +1,6 @@
 package com.example.tic_tac_toe;
 
 
-import android.os.Handler;
-import android.os.Looper;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -23,10 +21,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.not;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -38,7 +39,7 @@ public class TicTacToeUnitTest {
     @Test
     public void checkTttButtonTest() {
         ViewInteraction button = onView(
-                allOf(withId(R.id.button_1),
+                allOf(withId(R.id.button_0_0),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
@@ -48,7 +49,7 @@ public class TicTacToeUnitTest {
         button.check(matches(isDisplayed()));
 
         ViewInteraction button2 = onView(
-                allOf(withId(R.id.button_2),
+                allOf(withId(R.id.button_0_1),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
@@ -58,7 +59,7 @@ public class TicTacToeUnitTest {
         button2.check(matches(isDisplayed()));
 
         ViewInteraction button3 = onView(
-                allOf(withId(R.id.button_3),
+                allOf(withId(R.id.button_0_2),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
@@ -68,7 +69,7 @@ public class TicTacToeUnitTest {
         button3.check(matches(isDisplayed()));
 
         ViewInteraction button4 = onView(
-                allOf(withId(R.id.button_4),
+                allOf(withId(R.id.button_1_0),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
@@ -78,7 +79,7 @@ public class TicTacToeUnitTest {
         button4.check(matches(isDisplayed()));
 
         ViewInteraction button5 = onView(
-                allOf(withId(R.id.button_5),
+                allOf(withId(R.id.button_1_1),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
@@ -88,7 +89,7 @@ public class TicTacToeUnitTest {
         button5.check(matches(isDisplayed()));
 
         ViewInteraction button6 = onView(
-                allOf(withId(R.id.button_6),
+                allOf(withId(R.id.button_1_2),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
@@ -98,7 +99,7 @@ public class TicTacToeUnitTest {
         button6.check(matches(isDisplayed()));
 
         ViewInteraction button7 = onView(
-                allOf(withId(R.id.button_7),
+                allOf(withId(R.id.button_2_0),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
@@ -108,7 +109,7 @@ public class TicTacToeUnitTest {
         button7.check(matches(isDisplayed()));
 
         ViewInteraction button8 = onView(
-                allOf(withId(R.id.button_8),
+                allOf(withId(R.id.button_2_1),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
@@ -118,7 +119,7 @@ public class TicTacToeUnitTest {
         button8.check(matches(isDisplayed()));
 
         ViewInteraction button9 = onView(
-                allOf(withId(R.id.button_9),
+                allOf(withId(R.id.button_2_2),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
@@ -128,7 +129,7 @@ public class TicTacToeUnitTest {
         button9.check(matches(isDisplayed()));
 
         ViewInteraction button10 = onView(
-                allOf(withId(R.id.button_9),
+                allOf(withId(R.id.button_2_2),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
@@ -155,6 +156,157 @@ public class TicTacToeUnitTest {
                         && view.equals(((ViewGroup) parent).getChildAt(position));
             }
         };
+    }
+
+    //Test for two Player Mode
+
+    @Test
+    public void Winning(){
+        int expected = TicTacToe.getScore() + 1;
+
+        onView(withId(R.id.button_0_0)).perform(click());
+        onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_0_1)).perform(click());
+        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_1)).perform(click());
+        onView(withId(R.id.button_1_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_0_1)).perform(click());
+        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_2)).perform(click());
+
+        int actual = TicTacToe.getScore();
+
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void Losing(){
+        int expected = TicTacToe.getScore();
+
+        onView(withId(R.id.button_0_0)).perform(click());
+        onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_0_1)).perform(click());
+        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_0_2)).perform(click());
+        onView(withId(R.id.button_0_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_0)).perform(click());
+        onView(withId(R.id.button_1_0)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_1)).perform(click());
+        onView(withId(R.id.button_1_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_2)).perform(click());
+        onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_0)).perform(click());
+        onView(withId(R.id.button_2_0)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_1)).perform(click());
+        onView(withId(R.id.button_2_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_2)).perform(click());
+
+
+        int actual = TicTacToe.getScore();
+
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void Draw() {
+        int expected = TicTacToe.getScore() ;
+        TicTacToe.click = 9;
+
+        onView(withId(R.id.button_0_0)).perform(click());
+        onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_0_1)).perform(click());
+        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_0_2)).perform(click());
+        onView(withId(R.id.button_0_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_0)).perform(click());
+        onView(withId(R.id.button_1_0)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_1)).perform(click());
+        onView(withId(R.id.button_1_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_2)).perform(click());
+        onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_1)).perform(click());
+        onView(withId(R.id.button_2_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_2)).perform(click());
+        onView(withId(R.id.button_2_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_0)).perform(click());
+
+        int actual = TicTacToe.getScore();
+
+        Assert.assertEquals(expected, actual);
+    }
+    //Tests for Autoplayer Mode
+
+    @Test
+    public void WinningAutoplayer(){
+        int expected = TicTacToe.getScore() + 1;
+        TicTacToe.Autoplayer = true;
+
+        TicTacToe.click = 9;
+        onView(withId(R.id.button_0_0)).perform(click());
+        onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
+        TicTacToe.click = 9;
+        onView(withId(R.id.button_0_1)).perform(click());
+        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
+        TicTacToe.click = 9;
+        onView(withId(R.id.button_1_2)).perform(click());
+        onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
+
+        int actual = TicTacToe.getScore();
+
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void LosingAutoplayer(){
+        int expected = TicTacToe.getScore() - 2;
+        TicTacToe.Autoplayer = true;
+
+        TicTacToe.click = 10;
+        onView(withId(R.id.button_0_0)).perform(click());
+        onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
+        TicTacToe.click = 10;
+        onView(withId(R.id.button_0_1)).perform(click());
+        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
+        TicTacToe.click = 10;
+        onView(withId(R.id.button_1_2)).perform(click());
+        onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
+        int actual = TicTacToe.getScore();
+
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void DrawAutoplayer() {
+        int expected = TicTacToe.getScore() ;
+        TicTacToe.Autoplayer = true;
+
+        TicTacToe.click = 9;
+
+        onView(withId(R.id.button_0_0)).perform(click());
+        onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_0_1)).perform(click());
+        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_0_2)).perform(click());
+        onView(withId(R.id.button_0_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_0)).perform(click());
+        onView(withId(R.id.button_1_0)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_1)).perform(click());
+        onView(withId(R.id.button_1_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_2)).perform(click());
+        onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_1)).perform(click());
+        onView(withId(R.id.button_2_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_2)).perform(click());
+        onView(withId(R.id.button_2_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_0)).perform(click());
+
+        int actual = TicTacToe.getScore();
+
+        Assert.assertEquals(expected, actual);
     }
 
 }

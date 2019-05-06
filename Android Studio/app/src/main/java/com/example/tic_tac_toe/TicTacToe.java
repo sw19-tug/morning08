@@ -24,6 +24,7 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
 
    private Button[][] button = new Button[3][3];
    static int click = 0;
+   private int  score = 0;
    //Variable end is to stop Autoplayer after the last possible step (which will always be done by Player 1) -> Avoiding an endless loop
    boolean end = false;
    static boolean Autoplayer;
@@ -240,14 +241,18 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
     private String getMessage (int winner){
         if (winner == 1){
             if(Autoplayer){
+                score = score - 2;
                 return "Computer won!";
             } else {
+                score = score - 2;
                 return "Player 2 won! :)";
             }
         } else if (winner == 2){
             if(Autoplayer){
+                score++;
                 return "You won! :)";
             } else {
+                score++;
                 return "Player 1 won! :)";
             }
         } else if (winner == 0){
@@ -329,5 +334,10 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
         Intent intent = new Intent(this, TicTacToe.class);
         startActivity(intent);
 
+    }
+
+    public int getScore()
+    {
+        return score;
     }
 }

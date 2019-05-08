@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 import com.example.R;
 import com.example.myapplication.MainActivity;
@@ -28,6 +29,7 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
    //Variable end is to stop Autoplayer after the last possible step (which will always be done by Player 1) -> Avoiding an endless loop
    boolean end = false;
    static boolean Autoplayer;
+   private TextView score_label;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,6 +46,8 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
         button[2][0] = (Button) findViewById(R.id.button_2_0);
         button[2][1] = (Button) findViewById(R.id.button_2_1);
         button[2][2] = (Button) findViewById(R.id.button_2_2);
+        score_label = (TextView) findViewById(R.id.label_sc);
+        score_label.setText("Score: ");
 
         for (int i = 0; i < 3; i++)
         {
@@ -59,6 +63,8 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
     public void onClick(View v)
     {
         click++;
+        score_label.setText("Score: "+getScore());
+
         switch (v.getId())
         {
             case R.id.button_0_0:
@@ -242,17 +248,21 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
         if (winner == 1){
             if(Autoplayer){
                 score = score - 2;
+                score_label.setText("Score: "+getScore());
                 return "Computer won!";
             } else {
                 score = score - 2;
+                score_label.setText("Score: "+getScore());
                 return "Player 2 won! :)";
             }
         } else if (winner == 2){
             if(Autoplayer){
                 score++;
+                score_label.setText("Score: "+getScore());
                 return "You won! :)";
             } else {
                 score++;
+                score_label.setText("Score: "+getScore());
                 return "Player 1 won! :)";
             }
         } else if (winner == 0){

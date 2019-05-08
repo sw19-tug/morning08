@@ -162,7 +162,8 @@ public class TicTacToeUnitTest {
 
     @Test
     public void Winning(){
-        int expected = TicTacToe.getScore() + 1;
+        TicTacToe tic = new TicTacToe();
+        int expected = tic.getScore() + 1;
 
         onView(withId(R.id.button_0_0)).perform(click());
         onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
@@ -174,7 +175,7 @@ public class TicTacToeUnitTest {
         onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_2_2)).perform(click());
 
-        int actual = TicTacToe.getScore();
+        int actual = tic.getScore();
 
         Assert.assertEquals(expected, actual);
 
@@ -182,7 +183,8 @@ public class TicTacToeUnitTest {
 
     @Test
     public void Losing(){
-        int expected = TicTacToe.getScore();
+        TicTacToe tic = new TicTacToe();
+        int expected = tic.getScore();
 
         onView(withId(R.id.button_0_0)).perform(click());
         onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
@@ -203,7 +205,7 @@ public class TicTacToeUnitTest {
         onView(withId(R.id.button_2_2)).perform(click());
 
 
-        int actual = TicTacToe.getScore();
+        int actual = tic.getScore();
 
         Assert.assertEquals(expected, actual);
 
@@ -211,7 +213,8 @@ public class TicTacToeUnitTest {
 
     @Test
     public void Draw() {
-        int expected = TicTacToe.getScore() ;
+        TicTacToe tic = new TicTacToe();
+        int expected = tic.getScore() ;
         TicTacToe.click = 9;
 
         onView(withId(R.id.button_0_0)).perform(click());
@@ -232,7 +235,7 @@ public class TicTacToeUnitTest {
         onView(withId(R.id.button_2_2)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_2_0)).perform(click());
 
-        int actual = TicTacToe.getScore();
+        int actual = tic.getScore();
 
         Assert.assertEquals(expected, actual);
     }
@@ -240,7 +243,8 @@ public class TicTacToeUnitTest {
 
     @Test
     public void WinningAutoplayer(){
-        int expected = TicTacToe.getScore() + 1;
+        TicTacToe tic = new TicTacToe();
+        int expected = tic.getScore() + 1;
         TicTacToe.Autoplayer = true;
 
         TicTacToe.click = 9;
@@ -253,7 +257,7 @@ public class TicTacToeUnitTest {
         onView(withId(R.id.button_1_2)).perform(click());
         onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
 
-        int actual = TicTacToe.getScore();
+        int actual = tic.getScore();
 
         Assert.assertEquals(expected, actual);
 
@@ -261,7 +265,8 @@ public class TicTacToeUnitTest {
 
     @Test
     public void LosingAutoplayer(){
-        int expected = TicTacToe.getScore() - 2;
+        TicTacToe tictac = new TicTacToe();
+        int expected = tictac.getScore() - 2;
         TicTacToe.Autoplayer = true;
 
         TicTacToe.click = 10;
@@ -273,7 +278,7 @@ public class TicTacToeUnitTest {
         TicTacToe.click = 10;
         onView(withId(R.id.button_1_2)).perform(click());
         onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
-        int actual = TicTacToe.getScore();
+        int actual = tictac.getScore();
 
         Assert.assertEquals(expected, actual);
 
@@ -281,7 +286,8 @@ public class TicTacToeUnitTest {
 
     @Test
     public void DrawAutoplayer() {
-        int expected = TicTacToe.getScore() ;
+        TicTacToe tic = new TicTacToe();
+        int expected = tic.getScore() ;
         TicTacToe.Autoplayer = true;
 
         TicTacToe.click = 9;
@@ -304,7 +310,7 @@ public class TicTacToeUnitTest {
         onView(withId(R.id.button_2_2)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_2_0)).perform(click());
 
-        int actual = TicTacToe.getScore();
+        int actual = tic.getScore();
 
         Assert.assertEquals(expected, actual);
     }

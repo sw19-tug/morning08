@@ -63,7 +63,7 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
     public void onClick(View v)
     {
         click++;
-        score_label.setText("Score: "+getScore());
+        score_label.setText("Score: " + getScore());
 
         switch (v.getId())
         {
@@ -130,6 +130,7 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
     }
 
     public void startAutoplayer(){
+
         if (click < 9 && !end){
             click++;
             autoplayerclick();
@@ -307,11 +308,13 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
         switch (item.getItemId())
         {
             case R.id.auto_player:
-                openTicTacToeAutoPlayer();
+                Autoplayer = true;
+                resetGame();
                 return true;
 
             case R.id.two_player:
-                openTicTacToeTwoPlayer();
+                Autoplayer = false;
+                resetGame();
                 return true;
 
             default: return super.onOptionsItemSelected(item);
@@ -328,23 +331,21 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
         startActivity(intent);
     }*/
 
-
-    public void openTicTacToeTwoPlayer()
+    public void resetGame()
     {
-        Autoplayer = false;
         click = 0;
-        Intent intent = new Intent(this, TicTacToe.class);
-        startActivity(intent);
+        end = false;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                button[i][y].setEnabled(true);
+                button[i][y].setText("");
+            }
+        }
+
     }
 
-    public void openTicTacToeAutoPlayer()
-    {
-        Autoplayer = true;
-        click = 0;
-        Intent intent = new Intent(this, TicTacToe.class);
-        startActivity(intent);
-
-    }
 
     public int getScore()
     {

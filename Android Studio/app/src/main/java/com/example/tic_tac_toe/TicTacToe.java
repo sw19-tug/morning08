@@ -1,6 +1,5 @@
 package com.example.tic_tac_toe;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,14 +7,12 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
-import com.example.tic_tac_toe.TicTacToeSettings;
 
 import com.example.R;
 
@@ -55,7 +52,8 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
     }
 
     TicTacToeSettings callColor = new TicTacToeSettings();
-    String hex_color = String.format("#%06X", (0xFFFFFF & callColor.getColor()));
+    String hex_color_sign_1 = String.format("#%06X", (0xFFFFFF & callColor.getColor()));
+    String hex_color_sign_2 = String.format("#%06X", (0xFFFFFF & callColor.getColor() - 20000));
 
     public void onClick(View v)
     {
@@ -64,55 +62,73 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
         {
             case R.id.button_1:
 
-                button[0][0].setTextColor(Color.parseColor(hex_color));
+                button[0][0].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[0][0].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[0][0].setText(getRightValue());
                 button[0][0].setEnabled(false);
                 break;
 
             case R.id.button_2:
-                button[0][1].setTextColor(Color.parseColor(hex_color));
+                button[0][1].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[0][1].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[0][1].setText(getRightValue());
                 button[0][1].setEnabled(false);
                 break;
 
             case R.id.button_3:
-                button[0][2].setTextColor(Color.parseColor(hex_color));
+                button[0][2].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[0][2].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[0][2].setText(getRightValue());
                 button[0][2].setEnabled(false);
                 break;
 
             case R.id.button_4:
-                button[1][0].setTextColor(Color.parseColor(hex_color));
+                button[1][0].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[1][0].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[1][0].setText(getRightValue());
                 button[1][0].setEnabled(false);
                 break;
 
             case R.id.button_5:
-                button[1][1].setTextColor(Color.parseColor(hex_color));
+                button[1][1].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[1][1].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[1][1].setText(getRightValue());
                 button[1][1].setEnabled(false);
                 break;
 
             case R.id.button_6:
-                button[1][2].setTextColor(Color.parseColor(hex_color));
+                button[1][2].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[1][2].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[1][2].setText(getRightValue());
                 button[1][2].setEnabled(false);
                 break;
 
             case R.id.button_7:
-                button[2][0].setTextColor(Color.parseColor(hex_color));
+                button[2][0].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[2][0].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[2][0].setText(getRightValue());
                 button[2][0].setEnabled(false);
                 break;
 
             case R.id.button_8:
-                button[2][1].setTextColor(Color.parseColor(hex_color));
+                button[2][1].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[2][1].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[2][1].setText(getRightValue());
                 button[2][1].setEnabled(false);
                 break;
 
             case R.id.button_9:
-                button[2][2].setTextColor(Color.parseColor(hex_color));
+                button[2][2].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[2][2].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[2][2].setText(getRightValue());
                 button[2][2].setEnabled(false);
                 break;

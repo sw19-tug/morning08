@@ -233,32 +233,40 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
       return false;
     }
 
+    public void openTicTacToe()
+    {
+        Intent intent = new Intent(this, TicTacToe.class);
+        startActivity(intent);
+        finish();
+    }
+
     private boolean gameIsOver()
     {
        if(winningPosition())
        {
-           //in case something like new Game should be a feature
            new AlertDialog.Builder(this).setTitle("You won! :)").
-                   setMessage("").setPositiveButton(""
-                   , new DialogInterface.OnClickListener() {
+                   setMessage("").setPositiveButton("new Game"
+                   , new DialogInterface.OnClickListener()
+                   {
                @Override
                public void onClick(DialogInterface dialog, int which)
                {
-
+                   click = 0;
+                   openTicTacToe();
                }
            }).show();
        }
 
        if(drawingPosition())
        {
-           //in case something like new Game should be a feature
            new AlertDialog.Builder(this).setTitle("It's a Draw! :)").
-                   setMessage("").setPositiveButton(""
+                   setMessage("").setPositiveButton("new Game"
                    , new DialogInterface.OnClickListener() {
                @Override
                public void onClick(DialogInterface dialog, int which)    
                {
-
+                   click = 0;
+                   openTicTacToe();
                }
            }).show();
        }

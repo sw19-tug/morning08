@@ -36,7 +36,7 @@ public class TicTacToeEspressoTest
     @Test
     public void testButtonsVisible()
     {
-        onView(withId(R.id.lblScore)).check(matches(isDisplayed()));
+        onView(withId(R.id.label_sc)).check(matches(isDisplayed()));
         onView(withId(R.id.button_0_0)).check(matches(isDisplayed()));
         onView(withId(R.id.button_0_1)).check(matches(isDisplayed()));
         onView(withId(R.id.button_0_2)).check(matches(isDisplayed()));
@@ -71,47 +71,5 @@ public class TicTacToeEspressoTest
         onView(withId(R.id.button_2_0)).perform(click());
     }
 
-    //Tests for Autoplayer Mode
-
-    @Test
-    public void testButtonsVisibleAutoplayer()
-    {
-        TicTacToe.Autoplayer = true;
-        onView(withId(R.id.lblScore)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_0_0)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_0_1)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_0_2)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_1_0)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_1_1)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_1_2)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_2_0)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_2_1)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_2_2)).check(matches(isDisplayed()));
-
-    }
-
-    @Test
-    public void testButtonFunctionAutoplayer()
-    {
-        TicTacToe.Autoplayer = true;
-        TicTacToe.click = 9;
-        onView(withId(R.id.button_0_0)).perform(click());
-        onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_0_1)).perform(click());
-        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_0_2)).perform(click());
-        onView(withId(R.id.button_0_2)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_1_0)).perform(click());
-        onView(withId(R.id.button_1_0)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_1_1)).perform(click());
-        onView(withId(R.id.button_1_1)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_1_2)).perform(click());
-        onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_2_1)).perform(click());
-        onView(withId(R.id.button_2_1)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_2_2)).perform(click());
-        onView(withId(R.id.button_2_2)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_2_0)).perform(click());
-    }
 }
 

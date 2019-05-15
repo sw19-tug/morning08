@@ -1,6 +1,7 @@
 package com.example.tic_tac_toe;
 
 
+import android.app.AlertDialog;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -8,6 +9,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.TextView;
 
 import com.example.R;
 
@@ -26,6 +28,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.not;
 
@@ -46,7 +49,6 @@ public class TicTacToeUnitTest {
                                         0),
                                 0),
                         isDisplayed()));
-        button.check(matches(isDisplayed()));
 
         ViewInteraction button2 = onView(
                 allOf(withId(R.id.button_0_1),
@@ -56,7 +58,6 @@ public class TicTacToeUnitTest {
                                         0),
                                 1),
                         isDisplayed()));
-        button2.check(matches(isDisplayed()));
 
         ViewInteraction button3 = onView(
                 allOf(withId(R.id.button_0_2),
@@ -66,7 +67,6 @@ public class TicTacToeUnitTest {
                                         0),
                                 2),
                         isDisplayed()));
-        button3.check(matches(isDisplayed()));
 
         ViewInteraction button4 = onView(
                 allOf(withId(R.id.button_1_0),
@@ -76,7 +76,6 @@ public class TicTacToeUnitTest {
                                         1),
                                 0),
                         isDisplayed()));
-        button4.check(matches(isDisplayed()));
 
         ViewInteraction button5 = onView(
                 allOf(withId(R.id.button_1_1),
@@ -86,7 +85,6 @@ public class TicTacToeUnitTest {
                                         1),
                                 1),
                         isDisplayed()));
-        button5.check(matches(isDisplayed()));
 
         ViewInteraction button6 = onView(
                 allOf(withId(R.id.button_1_2),
@@ -96,7 +94,6 @@ public class TicTacToeUnitTest {
                                         1),
                                 2),
                         isDisplayed()));
-        button6.check(matches(isDisplayed()));
 
         ViewInteraction button7 = onView(
                 allOf(withId(R.id.button_2_0),
@@ -106,7 +103,6 @@ public class TicTacToeUnitTest {
                                         2),
                                 0),
                         isDisplayed()));
-        button7.check(matches(isDisplayed()));
 
         ViewInteraction button8 = onView(
                 allOf(withId(R.id.button_2_1),
@@ -116,7 +112,6 @@ public class TicTacToeUnitTest {
                                         2),
                                 1),
                         isDisplayed()));
-        button8.check(matches(isDisplayed()));
 
         ViewInteraction button9 = onView(
                 allOf(withId(R.id.button_2_2),
@@ -126,7 +121,6 @@ public class TicTacToeUnitTest {
                                         2),
                                 2),
                         isDisplayed()));
-        button9.check(matches(isDisplayed()));
 
         ViewInteraction button10 = onView(
                 allOf(withId(R.id.button_2_2),
@@ -136,7 +130,6 @@ public class TicTacToeUnitTest {
                                         2),
                                 2),
                         isDisplayed()));
-        button10.check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(
@@ -161,9 +154,9 @@ public class TicTacToeUnitTest {
     //Test for two Player Mode
 
     @Test
-    public void Winning(){
-        TicTacToe tic = new TicTacToe();
-        int expected = tic.getScore() + 1;
+    public void Winning() {
+
+        onView(withId(R.id.label_sc)).check(matches(withText("Score: ")));
 
         onView(withId(R.id.button_0_0)).perform(click());
         onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
@@ -171,20 +164,17 @@ public class TicTacToeUnitTest {
         onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_1_1)).perform(click());
         onView(withId(R.id.button_1_1)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_0_1)).perform(click());
+        onView(withId(R.id.button_0_2)).perform(click());
         onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_2_2)).perform(click());
+        onView(withId(android.R.id.button1)).perform(click());
 
-        int actual = tic.getScore();
-
-        Assert.assertEquals(expected, actual);
-
+        onView(withId(R.id.label_sc)).check(matches(withText("Score: 1")));
     }
 
     @Test
-    public void Losing(){
-        TicTacToe tic = new TicTacToe();
-        int expected = tic.getScore();
+    public void Losing() {
+        onView(withId(R.id.label_sc)).check(matches(withText("Score: ")));
 
         onView(withId(R.id.button_0_0)).perform(click());
         onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
@@ -192,127 +182,42 @@ public class TicTacToeUnitTest {
         onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_0_2)).perform(click());
         onView(withId(R.id.button_0_2)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_1_0)).perform(click());
-        onView(withId(R.id.button_1_0)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_1_1)).perform(click());
         onView(withId(R.id.button_1_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_1_2)).perform(click());
         onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_2_0)).perform(click());
-        onView(withId(R.id.button_2_0)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_2_1)).perform(click());
-        onView(withId(R.id.button_2_1)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_2_2)).perform(click());
 
+        onView(withId(android.R.id.button1)).perform(click());
 
-        int actual = tic.getScore();
-
-        Assert.assertEquals(expected, actual);
+        onView(withId(R.id.label_sc)).check(matches(withText("Score: -2")));
 
     }
 
     @Test
     public void Draw() {
-        TicTacToe tic = new TicTacToe();
-        int expected = tic.getScore() ;
-        TicTacToe.click = 9;
-
+        onView(withId(R.id.label_sc)).check(matches(withText("Score: ")));
         onView(withId(R.id.button_0_0)).perform(click());
         onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_0_1)).perform(click());
-        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_0_2)).perform(click());
         onView(withId(R.id.button_0_2)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_1_0)).perform(click());
-        onView(withId(R.id.button_1_0)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_0_1)).perform(click());
+        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_1_1)).perform(click());
         onView(withId(R.id.button_1_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_1_2)).perform(click());
         onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_2_1)).perform(click());
-        onView(withId(R.id.button_2_1)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_2_2)).perform(click());
-        onView(withId(R.id.button_2_2)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_2_0)).perform(click());
-
-        int actual = tic.getScore();
-
-        Assert.assertEquals(expected, actual);
-    }
-    //Tests for Autoplayer Mode
-
-    @Test
-    public void WinningAutoplayer(){
-        TicTacToe tic = new TicTacToe();
-        int expected = tic.getScore() + 1;
-        TicTacToe.Autoplayer = true;
-
-        TicTacToe.click = 9;
-        onView(withId(R.id.button_0_0)).perform(click());
-        onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
-        TicTacToe.click = 9;
-        onView(withId(R.id.button_0_1)).perform(click());
-        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
-        TicTacToe.click = 9;
-        onView(withId(R.id.button_1_2)).perform(click());
-        onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
-
-        int actual = tic.getScore();
-
-        Assert.assertEquals(expected, actual);
-
-    }
-
-    @Test
-    public void LosingAutoplayer(){
-        TicTacToe tictac = new TicTacToe();
-        int expected = tictac.getScore() - 2;
-        TicTacToe.Autoplayer = true;
-
-        TicTacToe.click = 10;
-        onView(withId(R.id.button_0_0)).perform(click());
-        onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
-        TicTacToe.click = 10;
-        onView(withId(R.id.button_0_1)).perform(click());
-        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
-        TicTacToe.click = 10;
-        onView(withId(R.id.button_1_2)).perform(click());
-        onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
-        int actual = tictac.getScore();
-
-        Assert.assertEquals(expected, actual);
-
-    }
-
-    @Test
-    public void DrawAutoplayer() {
-        TicTacToe tic = new TicTacToe();
-        int expected = tic.getScore() ;
-        TicTacToe.Autoplayer = true;
-
-        TicTacToe.click = 9;
-
-        onView(withId(R.id.button_0_0)).perform(click());
-        onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_0_1)).perform(click());
-        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_0_2)).perform(click());
-        onView(withId(R.id.button_0_2)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_1_0)).perform(click());
         onView(withId(R.id.button_1_0)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_1_1)).perform(click());
-        onView(withId(R.id.button_1_1)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_1_2)).perform(click());
-        onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_2_1)).perform(click());
-        onView(withId(R.id.button_2_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_2_2)).perform(click());
         onView(withId(R.id.button_2_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_1)).perform(click());
+        onView(withId(R.id.button_2_1)).check(matches(not(isEnabled())));
         onView(withId(R.id.button_2_0)).perform(click());
 
-        int actual = tic.getScore();
+        onView(withId(android.R.id.button1)).perform(click());
 
-        Assert.assertEquals(expected, actual);
+        onView(withId(R.id.label_sc)).check(matches(withText("Score: 0")));
     }
 
 }

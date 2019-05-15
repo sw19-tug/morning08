@@ -23,10 +23,13 @@ import java.util.Random;
 public class TicTacToe extends AppCompatActivity implements OnClickListener
 {
 
+    public TicTacToe(){
+
+    }
+
    private Button[][] button = new Button[3][3];
    static int click = 0;
    private int  score = 0;
-   //Variable end is to stop Autoplayer after the last possible step (which will always be done by Player 1) -> Avoiding an endless loop
    boolean end = false;
    static boolean Autoplayer;
    private TextView score_label;
@@ -279,7 +282,7 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
         if (message != "ERROR") {
 
             new AlertDialog.Builder(this).setTitle(message).
-                    setMessage("").setPositiveButton(""
+                    setMessage("").setPositiveButton("BACK"
                     , new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

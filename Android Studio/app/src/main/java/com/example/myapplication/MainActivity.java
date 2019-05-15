@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     public void openTicTac() {
         Intent intent = new Intent(this, TicTacToe.class);
         startActivity(intent);

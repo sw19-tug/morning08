@@ -28,7 +28,7 @@ public class TouchTheBlockUnitTest {
         assertNull(touchtheblock.getTvTimeText());
         touchtheblock.getTimer().start();
         touchtheblock.getTimer().onFinish();
-        assertNotNull(touchtheblock.tvTimeText);
+        assertNotNull(touchtheblock.getTvTimeText());
         assertNotNull(touchtheblock.getTimer());
     }
 

@@ -31,6 +31,10 @@ public class TouchTheBlock extends AppCompatActivity {
     private Button btnChooseBack;
     private TextView tvgamelost;
     private TextView tvTime;
+
+
+
+    private String tvTimeText;
     private float yPixPos = 0;
     private float xPixPos = 0;
     private float pixHeight;
@@ -44,6 +48,7 @@ public class TouchTheBlock extends AppCompatActivity {
     final int CHOOSE_BACK_COLOR = 2;
     private  String blockColor = "a";
     private String backColor = "b";
+    private boolean t = false;
 
 
 
@@ -58,7 +63,7 @@ public class TouchTheBlock extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touchtheblock);
-
+        t = true;
 
         btnPlay = findViewById(R.id.btnPlayBox);
         btnEnd = findViewById(R.id.btnEndGame);
@@ -71,8 +76,6 @@ public class TouchTheBlock extends AppCompatActivity {
 
         tvTime = findViewById(R.id.tv_time);
         tvTime.setVisibility(View.VISIBLE);
-
-        tvTime.setText("2");
 
 
 
@@ -147,13 +150,19 @@ public class TouchTheBlock extends AppCompatActivity {
         CountDownTimer timer_ = new CountDownTimer(startTime, 100) {
 
             public void onTick(long millisUntilFinished) {
-                tvTime.setText(String.format("%.2f", (float) (millisUntilFinished) / 1000));
+                tvTimeText = String.format("%.2f", (float) (millisUntilFinished) / 1000);
+                tvTime.setText(tvTimeText);
 
             }
 
             public void onFinish() {
-                tvTime.setText("");
-                endGame();
+                tvTimeText = "";
+                if (t)
+                {
+                    tvTime.setText(tvTimeText);
+                    endGame();
+                }
+
             }
 
 
@@ -259,5 +268,9 @@ public class TouchTheBlock extends AppCompatActivity {
     }
     public CountDownTimer getTimer() {
         return timer;
+    }
+
+    public String getTvTimeText() {
+        return tvTimeText;
     }
 }

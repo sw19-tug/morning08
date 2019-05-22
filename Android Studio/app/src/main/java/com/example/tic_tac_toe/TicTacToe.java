@@ -51,12 +51,13 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
 
     }
 
-    TicTacToeSettings callColor = new TicTacToeSettings();
-    String hex_color_sign_1 = String.format("#%06X", (0xFFFFFF & callColor.getColor()));
-    String hex_color_sign_2 = String.format("#%06X", (0xFFFFFF & callColor.getColor() - 20000));
 
     public void onClick(View v)
     {
+        TicTacToeSettings callColor = new TicTacToeSettings();
+        String hex_color_sign_1 = String.format("#%06X", (0xFFFFFF & callColor.getColor()));
+        String hex_color_sign_2 = String.format("#%06X", (0xFFFFFF & callColor.getColor() - 20000));
+
         click++;
         switch (v.getId())
         {

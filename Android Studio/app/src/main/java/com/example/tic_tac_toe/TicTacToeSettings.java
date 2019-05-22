@@ -18,6 +18,9 @@ import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class TicTacToeSettings extends AppCompatActivity
 {
+    private static int signColor_;
+    private static boolean check_x_or_y_ = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -34,12 +37,12 @@ public class TicTacToeSettings extends AppCompatActivity
                 if(buttonChooseSign.getText() == "X")
                 {
                     buttonChooseSign.setText("O");
-                    check_x_or_y = false;
+                    check_x_or_y_ = false;
                 }
                 else
                 {
                     buttonChooseSign.setText("X");
-                    check_x_or_y = true;
+                    check_x_or_y_ = true;
                 }
             }
         });
@@ -64,7 +67,7 @@ public class TicTacToeSettings extends AppCompatActivity
         });
     }
 
-    private static int signColor;
+
 
     public void openChooseColor()
     {
@@ -81,7 +84,7 @@ public class TicTacToeSettings extends AppCompatActivity
             @Override
             public void onOk(AmbilWarnaDialog dialog, int color)
             {
-                signColor = color;
+                signColor_ = color;
 
             }
         });
@@ -100,14 +103,14 @@ public class TicTacToeSettings extends AppCompatActivity
 
     public static Integer getColor()
     {
-        return signColor;
+        return signColor_;
     }
 
-    private static boolean check_x_or_y = true;
+
 
     public static boolean getSign()
     {
-        if(check_x_or_y)
+        if(check_x_or_y_)
         {
             return true;
         }

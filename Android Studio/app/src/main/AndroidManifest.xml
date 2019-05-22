@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".tic_tac_toe.TicTacToeSettings" />
         <activity android:name=".myapplication.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,14 +17,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:label="@string/app_name" android:name=".hangman.HangManActivity"/>
-        <activity android:label="@string/app_name" android:name=".tic_tac_toe.TicTacToe"/>
-        <activity android:label="@string/app_name" android:name=".tic_tac_toe.TicTacToeAutoPlayer"/>
-        <activity android:label="@string/TouchTheBlockName" android:name=".touchtheblock.TouchTheBlock"/>
-        <activity android:label="@string/touchtheblockhoosecolor" android:name=".touchtheblock.TouchTheBlockChooseColor"/>
-
+        <activity
+            android:name=".hangman.HangManActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".tic_tac_toe.TicTacToe"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".tic_tac_toe.TicTacToeAutoPlayer"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".touchtheblock.TouchTheBlock"
+            android:label="@string/TouchTheBlockName" />
+        <activity
+            android:name=".touchtheblock.TouchTheBlockChooseColor"
+            android:label="@string/touchtheblockhoosecolor" />
     </application>
 
 </manifest>

@@ -27,4 +27,10 @@
     <string name="start_game">Start Game</string>
     <string name="TouchTheBlockName">Touch The Block</string>
     <string name="touchtheblockhoosecolor">Touch The Block Choose Color</string>
+    <string name="choose_a_color">Choose a Color</string>
+    <string name="start">Start</string>
+    <string name="color_selection">Color Selection</string>
+    <string name="button">Button</string>
+    <string name="sign_selection">Sign Selection</string>
+    <string name="o">O</string>
 </resources>

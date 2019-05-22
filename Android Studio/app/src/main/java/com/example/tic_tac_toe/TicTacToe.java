@@ -3,6 +3,7 @@ package com.example.tic_tac_toe;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -50,6 +51,9 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
 
     }
 
+    TicTacToeSettings callColor = new TicTacToeSettings();
+    String hex_color_sign_1 = String.format("#%06X", (0xFFFFFF & callColor.getColor()));
+    String hex_color_sign_2 = String.format("#%06X", (0xFFFFFF & callColor.getColor() - 20000));
 
     public void onClick(View v)
     {
@@ -57,45 +61,74 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
         switch (v.getId())
         {
             case R.id.button_1:
+
+                button[0][0].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[0][0].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[0][0].setText(getRightValue());
                 button[0][0].setEnabled(false);
                 break;
+
             case R.id.button_2:
+                button[0][1].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[0][1].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[0][1].setText(getRightValue());
                 button[0][1].setEnabled(false);
                 break;
 
             case R.id.button_3:
+                button[0][2].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[0][2].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[0][2].setText(getRightValue());
                 button[0][2].setEnabled(false);
                 break;
 
             case R.id.button_4:
+                button[1][0].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[1][0].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[1][0].setText(getRightValue());
                 button[1][0].setEnabled(false);
                 break;
 
             case R.id.button_5:
+                button[1][1].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[1][1].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[1][1].setText(getRightValue());
                 button[1][1].setEnabled(false);
                 break;
 
             case R.id.button_6:
+                button[1][2].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[1][2].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[1][2].setText(getRightValue());
                 button[1][2].setEnabled(false);
                 break;
 
             case R.id.button_7:
+                button[2][0].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[2][0].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[2][0].setText(getRightValue());
                 button[2][0].setEnabled(false);
                 break;
 
             case R.id.button_8:
+                button[2][1].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[2][1].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[2][1].setText(getRightValue());
                 button[2][1].setEnabled(false);
                 break;
 
             case R.id.button_9:
+                button[2][2].setTextColor(Color.parseColor(hex_color_sign_1));
+                if(click % 2 == 0)
+                    button[2][2].setTextColor(Color.parseColor(hex_color_sign_2));
                 button[2][2].setText(getRightValue());
                 button[2][2].setEnabled(false);
                 break;
@@ -111,25 +144,36 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
                 }
             }
         }
-
-
-
-
         gameIsOver();
 
     }
 
     public String getRightValue ()
     {
+        TicTacToeSettings callSign = new TicTacToeSettings();
+        boolean x_or_y = callSign.getSign();
        if (click % 2 == 0)
        {
-           return "O";
+           if (x_or_y)
+           {
+               return "O";
+           }
+           else
+           {
+               return "X";
+           }
        }
        else
        {
-           return "X";
+           if(x_or_y)
+           {
+             return "X";
+           }
+           else
+           {
+             return "O";
+           }
        }
-
     }
 
 
@@ -189,32 +233,40 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
       return false;
     }
 
+    public void openTicTacToe()
+    {
+        Intent intent = new Intent(this, TicTacToe.class);
+        startActivity(intent);
+        finish();
+    }
+
     private boolean gameIsOver()
     {
        if(winningPosition())
        {
-           //in case something like new Game should be a feature
            new AlertDialog.Builder(this).setTitle("You won! :)").
-                   setMessage("").setPositiveButton(""
-                   , new DialogInterface.OnClickListener() {
+                   setMessage("").setPositiveButton("new Game"
+                   , new DialogInterface.OnClickListener()
+                   {
                @Override
                public void onClick(DialogInterface dialog, int which)
                {
-
+                   click = 0;
+                   openTicTacToe();
                }
            }).show();
        }
 
        if(drawingPosition())
        {
-           //in case something like new Game should be a feature
            new AlertDialog.Builder(this).setTitle("It's a Draw! :)").
-                   setMessage("").setPositiveButton(""
+                   setMessage("").setPositiveButton("new Game"
                    , new DialogInterface.OnClickListener() {
                @Override
                public void onClick(DialogInterface dialog, int which)    
                {
-
+                   click = 0;
+                   openTicTacToe();
                }
            }).show();
        }
@@ -237,6 +289,10 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
     {
         switch (item.getItemId())
         {
+            case R.id.settings:
+                openTicTacToeSettings();
+                return true;
+
             case R.id.two_player:
                 openTicTacToeTwoPlayer();
                 return true;
@@ -252,11 +308,13 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
 
 
     }
-    /* prepare Settings later in another Feature// public void openTicTacToeSettings()
+    public void openTicTacToeSettings()
     {
         Intent intent = new Intent(this, TicTacToeSettings.class);
         startActivity(intent);
-    }*/
+        click = 0;
+        finish();
+    }
 
 
     public void openTicTacToeTwoPlayer()
@@ -264,6 +322,7 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
         Intent intent = new Intent(this, TicTacToe.class);
         startActivity(intent);
         click = 0;
+        finish();
     }
 
     public void openTicTacToeAutoPlayer()
@@ -271,5 +330,6 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener
         Intent intent = new Intent(this, TicTacToeAutoPlayer.class);
         startActivity(intent);
         click = 0;
+        finish();
     }
 }

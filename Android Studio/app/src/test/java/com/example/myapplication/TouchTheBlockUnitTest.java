@@ -15,7 +15,8 @@ public class TouchTheBlockUnitTest {
 
 
     @Test
-    public void testInitialState() {
+    public void testInitialStateTimer() {
         assertNotNull(touchtheblock);
+        assertNotNull(touchtheblock.getTimer());
     }
 }

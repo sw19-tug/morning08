@@ -3,20 +3,19 @@ package com.example.touchtheblock;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.R;
 
 import java.time.Clock;
@@ -37,7 +36,7 @@ public class TouchTheBlock extends AppCompatActivity {
     private float pixHeight;
     private float pixWidth;
     private float btnPlaysize;
-    private float startTime;
+    private final int startTime = 2000;
     private DisplayMetrics dm = new DisplayMetrics();
     private ViewGroup.LayoutParams params;
     private Random r = new Random();
@@ -45,6 +44,10 @@ public class TouchTheBlock extends AppCompatActivity {
     final int CHOOSE_BACK_COLOR = 2;
     private  String blockColor = "a";
     private String backColor = "b";
+
+
+
+    private final CountDownTimer timer = createTimer();
 
     private Clock clock;
 
@@ -111,12 +114,7 @@ public class TouchTheBlock extends AppCompatActivity {
         btnEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnPlay.setVisibility(View.INVISIBLE);
-                btnEnd.setVisibility(View.INVISIBLE);
-                btnStart.setVisibility(View.VISIBLE);
-                tvgamelost.setVisibility(View.VISIBLE);
-                btnChooseBlock.setVisibility(View.VISIBLE);
-                btnChooseBack.setVisibility(View.VISIBLE);
+                onBtnEnd();
 
             }
         });
@@ -144,14 +142,40 @@ public class TouchTheBlock extends AppCompatActivity {
         });
 
     }
-/*
-    private void timer(float startTime) {
 
-        clock = new Clock(systemTimeProvider);
-        tvTime.setText(2);
+    private CountDownTimer createTimer(){
+        CountDownTimer timer_ = new CountDownTimer(startTime, 100) {
 
+            public void onTick(long millisUntilFinished) {
+                tvTime.setText(String.format("%.2f", (float) (millisUntilFinished) / 1000));
+
+            }
+
+            public void onFinish() {
+                tvTime.setText("");
+                endGame();
+            }
+
+
+        };
+
+        return timer_;
     }
-*/
+
+    public void endGame(){
+        btnPlay.setVisibility(View.INVISIBLE);
+        btnEnd.setVisibility(View.INVISIBLE);
+        btnStart.setVisibility(View.VISIBLE);
+        tvgamelost.setVisibility(View.VISIBLE);
+        btnChooseBlock.setVisibility(View.VISIBLE);
+        btnChooseBack.setVisibility(View.VISIBLE);
+    }
+
+    public void onBtnEnd(){
+        timer.cancel();
+        timer.onFinish();
+    }
+
     private void random_() {
         this.yPixPos = (float) this.r.nextInt((int) (pixHeight - btnPlaysize - 210) + 1);
         this.xPixPos = (float) this.r.nextInt((int) (pixWidth - btnPlaysize) + 1);
@@ -232,5 +256,8 @@ public class TouchTheBlock extends AppCompatActivity {
 
             }
         }
+    }
+    public CountDownTimer getTimer() {
+        return timer;
     }
 }

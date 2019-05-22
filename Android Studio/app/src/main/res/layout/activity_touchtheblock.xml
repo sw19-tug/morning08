@@ -89,10 +89,10 @@
                 android:layout_gravity="center_horizontal|top"
                 android:layout_marginTop="1dp"
                 android:gravity="center_horizontal|top"
-                android:text="Games    \n    Library"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="@android:color/holo_orange_dark"
+
                 android:textStyle="bold|italic"
                 app:fontFamily="serif"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -102,9 +102,10 @@
             <Button
                 android:id="@+id/btnEndGame"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="528dp"
+                android:layout_gravity="bottom"
                 android:layout_margin="0dp"
-                android:background="#ffffff"
+                android:background="#654321"
                 android:padding="0dp" />
 
 

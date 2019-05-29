@@ -1,11 +1,8 @@
 package com.example.hangman;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -13,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Chronometer;
 
 import com.example.R;
 
@@ -52,7 +48,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         tipButton = findViewById(R.id.btn_tip);
         input = (EditText) findViewById(R.id.txtInput);
         output = (TextView) findViewById(R.id.lblOutput);
-        chronometer = (Chronometer) findViewById(R.id.stopWatch);
+        chronometer = (Chronometer) findViewById(R.id.stop_Watch);
 
         ropeImage = (ImageView) findViewById(R.id.imageViewRope);
         faceImage = (ImageView) findViewById(R.id.imageViewFace);

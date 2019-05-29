@@ -8,19 +8,15 @@
     tools:background="@android:color/holo_blue_light"
     tools:context="com.example.hangman.HangManActivity">
 
-    <TextView
-        android:id="@+id/lblTime"
+    <Chronometer
+        android:id="@+id/stopWatch"
         android:layout_width="wrap_content"
-        android:layout_height="37dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:text="Time"
-        android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/lblOutput"
-        app:layout_constraintEnd_toStartOf="@+id/lblGuesses"
+        app:layout_constraintEnd_toStartOf="@+id/lblOutput"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lblScore"
+        app:layout_constraintStart_toEndOf="@+id/lblOutput"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -212,22 +208,21 @@
 
     <TextView
         android:id="@+id/lblScore"
-        android:layout_width="160dp"
-        android:layout_height="37dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/lblTime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lblGuesses"
-        android:layout_width="160dp"
-        android:layout_height="37dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
@@ -235,7 +230,6 @@
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lblTime"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

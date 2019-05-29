@@ -89,6 +89,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         input.setVisibility(View.INVISIBLE);
         output.setVisibility(View.INVISIBLE);
 
+
         hangman = new HangMan();
 
     }
@@ -177,6 +178,9 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                         Toast.makeText(this,"This letter is a part of the searched word!",Toast.LENGTH_SHORT).show();
                         if(hangman.wordGuessed()){
                             Toast.makeText(this,"Word Guessed!",Toast.LENGTH_SHORT).show();
+                            int elapsedTime = (int) (SystemClock.elapsedRealtime() - chronometer.getBase());
+
+                            Toast.makeText(this, "You needed " + Integer.toString(elapsedTime/1000) + " seconds ! :)",Toast.LENGTH_SHORT).show();
                             hangman.initialize();
 
                         }
@@ -220,6 +224,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 hangman.setScore(hangman.getScore()-2);
                 hangman.initialize();
                 refreshScreen();
+
                 break;
 
         }

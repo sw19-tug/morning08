@@ -8,6 +8,7 @@ import android.widget.Button;
 
 
 import com.example.R;
+import com.example.fourinarow.FourInARow;
 import com.example.hangman.HangMan;
 import com.example.hangman.HangManActivity;
 
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         Button tictac = (Button) findViewById(R.id.bt_tictac);
         Button hangman = (Button) findViewById(R.id.bt_hangman);
         Button touchbox = (Button) findViewById(R.id.bt_touchbox);
+        Button fourinarow = (Button) findViewById(R.id.bt_fourinarow);
+
 
         tictac.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        fourinarow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFourinarow();
+            }
+        });
+
     }
 
 
@@ -65,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openTouchbox() {
         Intent intent = new Intent(this, TouchTheBlock.class);
+        startActivity(intent);
+    }
+
+    public void openFourinarow() {
+        Intent intent = new Intent(this, FourInARow.class);
         startActivity(intent);
     }
 

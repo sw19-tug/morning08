@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".tic_tac_toe.TicTacToe">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal">
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="459dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/button_0_0"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_0_1"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_0_2"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_0_3"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_0_4"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_0_5"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_0_6"
+            android:shape="oval"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="459dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/button_1_0"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_1_1"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_1_2"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_1_3"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_1_4"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_1_5"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_1_6"
+            android:shape="oval"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="459dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/button_2_0"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_2_1"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_2_2"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_2_3"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_2_4"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_2_5"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_2_6"
+            android:shape="oval"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="459dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/button_3_0"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_3_1"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_3_2"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_3_3"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_3_4"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_3_5"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_3_6"
+            android:shape="oval"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="459dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/button_4_0"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_4_1"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_4_2"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_4_3"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_4_4"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_4_5"
+            android:shape="oval"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_4_6"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="459dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/button_5_0"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_5_1"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_5_2"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_5_3"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_5_4"
+            android:layout_width="0dp"
+            android:layout_height="147dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_5_5"
+            android:shape="oval"
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/button_5_6"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_weight="1"
+            android:textSize="45sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="459dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/lblScore"
+            android:layout_width="160dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/lbrScore"
+            android:layout_width="160dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -9,19 +9,19 @@
     tools:context="com.example.myapplication.MainActivity">
 
     <TextView
-    android:id="@+id/textView2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="150dp"
-    android:text="Games    \n    Library"
-    android:textAllCaps="false"
-    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-    android:textColor="@android:color/holo_orange_dark"
-    android:textStyle="bold|italic"
-    app:fontFamily="serif"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="Games    \n    Library"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textStyle="bold|italic"
+        app:fontFamily="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bt_tictac"
@@ -29,14 +29,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
         android:layout_marginLeft="110dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="110dp"
         android:layout_marginRight="110dp"
         android:background="@android:color/holo_orange_light"
         android:text="Tic Tac Toe"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -46,14 +46,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
         android:layout_marginLeft="110dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="110dp"
         android:layout_marginRight="110dp"
         android:background="@android:color/holo_purple"
         android:text="Hangman"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_tictac" />
 
@@ -72,8 +72,28 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_hangman"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/bt_fourinarow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginRight="110dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="Four in a Row"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_touchbox"
         app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

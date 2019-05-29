@@ -50,12 +50,13 @@ public class MainActivityFourInARowTest {
 
         // row selection
         onView(withId(R.id.label_score)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.button_row_1)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.button_row_2)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.button_row_3)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.button_row_4)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.button_row_5)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.button_row_6)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.bt_column_1)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.bt_column_2)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.bt_column_3)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.bt_column_4)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.bt_column_5)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.bt_column_6)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.bt_column_7)).check(matches(not(isDisplayed())));
 
 
     }

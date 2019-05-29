@@ -57,6 +57,15 @@ public class MainActivity extends AppCompatActivity {
         Button tictac = (Button) findViewById(R.id.bt_tictac);
         Button hangman = (Button) findViewById(R.id.bt_hangman);
         Button touchbox = (Button) findViewById(R.id.bt_touchbox);
+        Button manuals = (Button) findViewById(R.id.bt_instructions);
+
+
+        manuals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openManuals();
+            }
+        });
 
         tictac.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +90,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    public void openManuals() {
+        Intent intent = new Intent(this, Instructions.class);
+        startActivity(intent);
+    }
 
     public void openTicTac() {
         Intent intent = new Intent(this, TicTacToe.class);

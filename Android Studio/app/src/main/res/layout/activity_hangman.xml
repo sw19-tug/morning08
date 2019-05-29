@@ -8,6 +8,17 @@
     tools:background="@android:color/holo_blue_light"
     tools:context="com.example.hangman.HangManActivity">
 
+    <Chronometer
+        android:id="@+id/stop_Watch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/lblOutput"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/lblOutput"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"
@@ -59,7 +70,7 @@
     <ImageView
         android:id="@+id/imageViewGallow"
         android:layout_width="wrap_content"
-        android:layout_height="556dp"
+        android:layout_height="558dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="13dp"
         android:layout_marginRight="13dp"
@@ -197,8 +208,8 @@
 
     <TextView
         android:id="@+id/lblScore"
-        android:layout_width="160dp"
-        android:layout_height="37dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
@@ -210,8 +221,8 @@
 
     <TextView
         android:id="@+id/lblGuesses"
-        android:layout_width="160dp"
-        android:layout_height="37dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"

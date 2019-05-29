@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 
-import android.renderscript.ScriptGroup;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -10,9 +9,6 @@ import android.widget.TextView;
 import com.example.R;
 import com.example.hangman.HangMan;
 import com.example.hangman.HangManActivity;
-import com.example.hangman.HangManActivity;
-
-import com.example.R;
 
 import static org.junit.Assert.assertEquals;
 
@@ -171,5 +167,11 @@ public class MainActivityHangManTest
         onView(withId(R.id.lblOutput)).check(matches(not(withText(initialoutput))));
         onView(withId(R.id.lblScore)).check(matches(not(withText(initialscore))));
 
+    }
+    @Test
+    public void testTimerExists()
+    {
+        onView(withId(R.id.btn_start)).perform(click());
+        onView(withId(R.id.stop_Watch)).check(matches(isDisplayed()));
     }
 }

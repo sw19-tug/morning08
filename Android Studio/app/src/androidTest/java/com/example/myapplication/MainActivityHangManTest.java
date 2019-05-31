@@ -1,32 +1,20 @@
 package com.example.myapplication;
 
 
-import android.support.test.espresso.matcher.ViewMatchers;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.widget.TextView;
 
-import com.example.R;
-import com.example.hangman.HangMan;
 import com.example.hangman.HangManActivity;
-
-import static org.junit.Assert.assertEquals;
-
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.pressBack;
+import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.not;
 
 
 /**
@@ -40,7 +28,7 @@ public class MainActivityHangManTest
 {
     @Rule
     public ActivityTestRule<HangManActivity> mainActivityTestRule = new ActivityTestRule<>(HangManActivity.class);
-
+/*
     @Test
     public void testButtonsVisible()
     {
@@ -173,5 +161,11 @@ public class MainActivityHangManTest
     {
         onView(withId(R.id.btn_start)).perform(click());
         onView(withId(R.id.stop_Watch)).check(matches(isDisplayed()));
+    }
+*/
+    @Test
+    public void testMenubManageWordsIcon(){
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
+        onView(withText("Manage Words")).perform(click());
     }
 }

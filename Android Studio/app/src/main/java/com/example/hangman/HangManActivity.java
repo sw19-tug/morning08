@@ -99,14 +99,27 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         Context context = this;
 
 
+        try {
+            create_files();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        for (int i = 0; i < words.length; i++) {
+            words_to_file(words[i]);
+        }
+
+
+
         hangman = new HangMan();
 
     }
 
     // load the score, output & guesses
     private void refreshScreen() {
-        score.setText("Score: " + hangman.getScore());
-        guesses.setText("Guesses: " + hangman.getGuessesLeft());
+        score.setText("Score: "+hangman.getScore());
+        guesses.setText("Guesses: "+hangman.getGuessesLeft());
         output.setText(hangman.getOutput());
         input.setText("");
 
@@ -152,9 +165,9 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        switch (v.getId()){
             case R.id.btn_start:
-                if (startButton.getText() == "Next Word") {
+                if(startButton.getText() == "Next Word"){
                     hangman.initialize();
                     refreshScreen();
                     checkButton.setVisibility(View.VISIBLE);
@@ -163,7 +176,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                     startButton.setVisibility(View.INVISIBLE);
                     break;
                 }
-                Toast.makeText(this, "Start!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Start!", Toast.LENGTH_SHORT).show();
                 startButton.setVisibility(View.INVISIBLE);
                 checkButton.setVisibility(View.VISIBLE);
                 retryButton.setVisibility(View.VISIBLE);
@@ -182,20 +195,23 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.btn_check: // check the given input
-                if (hangman.checkInput(input.getText().toString())) {
-                    if (hangman.checkLetter(input.getText().toString())) {
-                        Toast.makeText(this, "This letter is a part of the searched word!", Toast.LENGTH_SHORT).show();
-                        if (hangman.wordGuessed()) {
-                            Toast.makeText(this, "Word Guessed!", Toast.LENGTH_SHORT).show();
+                if(hangman.checkInput(input.getText().toString())) {
+                    if(hangman.checkLetter(input.getText().toString())){
+                        Toast.makeText(this,"This letter is a part of the searched word!",Toast.LENGTH_SHORT).show();
+                        if(hangman.wordGuessed()){
+                            Toast.makeText(this,"Word Guessed!",Toast.LENGTH_SHORT).show();
                             int elapsedTime = (int) (SystemClock.elapsedRealtime() - chronometer.getBase());
 
-                            Toast.makeText(this, "You needed " + Integer.toString(elapsedTime / 1000) + " seconds ! :)", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "You needed " + Integer.toString(elapsedTime/1000) + " seconds ! :)",Toast.LENGTH_SHORT).show();
                             hangman.initialize();
 
                         }
-                    } else {
-                        if (hangman.getGuessesLeft() == 0) {
-                            Toast.makeText(this, "No more guesses left!", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        if(hangman.getGuessesLeft() == 0)
+                        {
+                            Toast.makeText(this,"No more guesses left!",Toast.LENGTH_SHORT).show();
                             startButton.setText("Next Word");
                             checkButton.setVisibility(View.INVISIBLE);
                             retryButton.setVisibility(View.INVISIBLE);
@@ -205,16 +221,18 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                             refreshScreen();
                             break;
 
-                        } else
-                            Toast.makeText(this, "This letter is not a part of the searched word!", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                            Toast.makeText(this,"This letter is not a part of the searched word!",Toast.LENGTH_SHORT).show();
 
                     }
                     refreshScreen();
 
                 }
                 // invalid input
-                else {
-                    Toast.makeText(this, "Not Correct Input!", Toast.LENGTH_SHORT).show();
+                else
+                {
+                    Toast.makeText(this,"Not Correct Input!",Toast.LENGTH_SHORT).show();
                 }
                 break;
 
@@ -225,7 +243,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.btn_retry: // get a new word
-                hangman.setScore(hangman.getScore() - 2);
+                hangman.setScore(hangman.getScore()-2);
                 hangman.initialize();
                 refreshScreen();
 
@@ -235,25 +253,70 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.hangman_menu, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case R.id.settings:
                 openHangmanSettings();
 
-            default:
-                return super.onOptionsItemSelected(item);
+            default: return super.onOptionsItemSelected(item);
         }
     }
 
-    public void openHangmanSettings() {
+    public void openHangmanSettings()
+    {
         Intent intent = new Intent(this, HangmanSettings.class);
         startActivity(intent);
     }
+
+
+
+    public boolean words_to_file(String word){
+        System.out.println(words);
+        Context context = this;
+        try {
+            File path = context.getFilesDir();
+            File file = new File(path, "Fixed_words.txt");
+            FileWriter writer = new FileWriter(file, true);
+
+            word += " ";
+
+            writer.write(word);
+            writer.close();
+            return true;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return false;
+        }
+
+
+    }
+
+
+    public boolean create_files() throws IOException {
+        Context context = this;
+        File path = context.getFilesDir();
+        File file1 = new File(path, "Added_words.txt");
+        File file2 = new File(path, "Fixed_words.txt");
+        if (!file1.exists())
+        {
+            file1.createNewFile();
+        }
+        if(!file2.exists()){
+            file2.createNewFile();
+        }
+
+        return true;
+
+    }
+
 }

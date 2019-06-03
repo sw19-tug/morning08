@@ -15,6 +15,7 @@ public class HangMan {
         letterguessed = 0;
     }
 
+
     // initialize a new searchedword for hangman
     public void initialize() {
 

@@ -112,7 +112,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
-        hangman = new HangMan();
+        hangman = new HangMan(words, context);
 
     }
 

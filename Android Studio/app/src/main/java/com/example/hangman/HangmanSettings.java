@@ -35,7 +35,11 @@ public class HangmanSettings extends AppCompatActivity {
         button_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddText();
+                try {
+                    AddText();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -121,15 +125,108 @@ public class HangmanSettings extends AppCompatActivity {
     }
 
     //Add Text
+    public void AddText() throws IOException {
+        String input_txt = ((EditText) findViewById(R.id.txtInput)).getText().toString();
+        if(input_txt.isEmpty()){
+            String message = "Nothing Added";
+            getMessage(message);
+            return;
+        }
 
-    public void AddText(){
-        //TODO - Add
+
+        TextView varying_words = findViewById(R.id.lbl_varying_words);
+        Context context = this;
+        File path = context.getFilesDir();
+        File file = new File(path, "Added_words.txt");
+        FileOutputStream stream = new FileOutputStream(file);
+        try {
+
+            if(checkwords_for_adding(input_txt)) { //writing is possible
+                stream.write(input_txt.getBytes());
+                varying_words.append(input_txt + ", ");
+                String message = "Successfully Added";
+                getMessage(message);
+
+            } else {
+                String message = "word allready exists!";
+                getMessage(message);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            stream.close();
+        }
+
+    }
+
+    public boolean checkwords_for_adding(String input) throws IOException {
+
+        Context context = this;
+        File path = context.getFilesDir();
+        File file1 = new File(path, "Added_words.txt");
+        File file2 = new File(path, "Fixed_words.txt");
+        if (search_word(file1, input)){
+            return false;       //word found - writing not possible
+        }
+        if (search_word(file2, input)){
+            return false;       //word found - writing not possible
+        }
+        return true;        //word not found - writing possible
+    }
+
+    public boolean search_word(File current_file, String input) throws IOException {
+        FileReader reader = new FileReader(current_file);
+        BufferedReader breader = new BufferedReader(reader);
+
+        String line = breader.readLine();
+
+        if(line != null) {
+            do {
+                String[] words = splitline(line);
+                if (compare_words(words, input)) {
+                    breader.close();
+                    return true;
+                }
+                line = breader.readLine();
+
+            } while (line != null);
+        }
+        reader.close();
+        breader.close();
+        return false;
+    }
+
+    public boolean compare_words(String [] words, String input){
+        for (int i = 0; i < words.length; i++){
+            if (words[i].equals(input)){
+                return true;    //word found   - deleting possible
+            }
+        }
+        return false;         //word not found - writing possible
     }
 
     //Delet Text
 
     public void DeleteText(){
         //TODO - Delete
+    }
+
+
+    //just a TextAlert
+    public void getMessage(String message){
+        new AlertDialog.Builder(this).setTitle(message).
+                setMessage("").setPositiveButton("OK"
+                , new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .show();
     }
 
 }

@@ -43,7 +43,10 @@ public class HangMan {
         this.words = words;
     }
 
-
+    public HangMan(){
+        score =0;
+        letterguessed = 0;
+    }
 
     // initialize a new searchedword for hangman
     public void initialize() {

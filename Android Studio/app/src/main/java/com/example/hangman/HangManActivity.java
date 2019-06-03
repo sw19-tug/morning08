@@ -287,10 +287,10 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
             File path = context.getFilesDir();
             File file = new File(path, "Fixed_words.txt");
             FileWriter writer = new FileWriter(file, true);
-
-            word += " ";
-
-            writer.write(word);
+            if(check_file(word, file)) {
+                word += " ";
+                writer.write(word);
+            }
             writer.close();
             return true;
         } catch (Exception ex) {
@@ -299,6 +299,33 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         }
 
 
+    }
+
+    public boolean check_file(String input, File file) throws IOException {
+
+        FileReader reader = new FileReader(file);
+        BufferedReader breader = new BufferedReader(reader);
+        String line = breader.readLine();
+
+        do{
+            if(line != null){
+                String[] seperated_words = line.split(" ");
+                for (int i = 0; i < seperated_words.length; i++) {
+                    if (seperated_words[i].equals(input)) {
+                        reader.close();
+                        breader.close();
+                        return false;
+                    }
+
+                }
+                line = breader.readLine();
+            }
+
+        }while (line != null);
+
+        reader.close();
+        breader.close();
+        return true;
     }
 
 
@@ -318,5 +345,6 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         return true;
 
     }
+
 
 }

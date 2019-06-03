@@ -92,6 +92,7 @@ public class MainActivityHangManTest
         onView(withId(R.id.btn_check)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_retry)).check(matches(isDisplayed()));
     }
+
     @Test
     public void testWholeWordWithGraphic()
     {

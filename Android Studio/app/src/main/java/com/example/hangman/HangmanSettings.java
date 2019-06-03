@@ -210,11 +210,74 @@ public class HangmanSettings extends AppCompatActivity {
     }
 
     //Delet Text
-
     public void DeleteText(){
-        //TODO - Delete
+        String input_txt = ((EditText) findViewById(R.id.txtInput)).getText().toString();
+        if(input_txt.isEmpty()){
+            String message = "Nothing Deleted";
+            getMessage(message);
+            return;
+        }
+
+
+        Context context = this;
+        File path = context.getFilesDir();
+        File file = new File(path, "Added_words.txt");
+
+        try {
+            if(checkwords_for_deleting(input_txt)) { //writing is possible
+                String message = "word does not exists or deleting is not possible!";
+                getMessage(message);
+            } else {
+                find_word_to_delete(input_txt, file);
+                import_all_words();
+                String message = "Successfully Deleted";
+                getMessage(message);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
+    public boolean checkwords_for_deleting(String input) throws IOException {
+
+        Context context = this;
+        File path = context.getFilesDir();
+        File file1 = new File(path, "Added_words.txt");
+        File file2 = new File(path, "Fixed_words.txt");
+        if (search_word(file1, input)){
+            return false;       //word found - deleting  possible
+        }
+        if (search_word(file2, input)){
+            return true;       //word found - deleting not possible
+        }
+        return true;        //word not found - deleting not  possible
+    }
+
+    public void find_word_to_delete(String input, File file) throws IOException {
+
+        FileReader reader = new FileReader(file);
+        BufferedReader breader = new BufferedReader(reader);
+
+        String line = breader.readLine();
+
+        if(line != null) {
+            do {
+                String[] words = splitline(line);
+                for (int i = 0; i < words.length; i++) {
+                    if (words[i].equals(input)) {
+                        words[i] = "";
+                    }
+
+                }
+                line = breader.readLine();
+            } while (line != null);
+        }
+        reader.close();
+        breader.close();
+    }
 
     //just a TextAlert
     public void getMessage(String message){

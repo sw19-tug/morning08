@@ -16,7 +16,7 @@ public class HangmanSettingsUnitTest {
     @Test
     public void processwords() {
         String[] words = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
-        String expected = " apple, banana, cherry, fig, lemon, mango, orange, pear,";
+        String expected = " apple, banana, cherry, fig, lemon, mango, orange, pear, ";
         assertEquals(expected, hangman.processwords(words));
     }
 

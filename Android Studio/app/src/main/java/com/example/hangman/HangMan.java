@@ -90,7 +90,7 @@ public class HangMan {
 
             if(line != null) {
                 do {
-                    String [] new_words = splitline(line);
+                    String [] new_words = splitline(line, " ");
 
                     for(int i=0; i<new_words.length;i++){
                         connected_words.add(new_words[i]);
@@ -109,9 +109,9 @@ public class HangMan {
 
     }
 
-    public String [] splitline(String line){
+    public String [] splitline(String line, String seperator){
 
-        String[] seperated_words = line.split(" ");
+        String[] seperated_words = line.split(seperator);
         return seperated_words;
 
     }

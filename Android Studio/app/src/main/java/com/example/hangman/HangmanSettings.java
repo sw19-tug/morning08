@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -94,7 +95,7 @@ public class HangmanSettings extends AppCompatActivity {
 
         if(line != null) {
             do {
-                fixed_text.append(processwords(splitline(line)));
+                fixed_text.append(processwords(splitline(line, " ")));
 
                 line = breader.readLine();
             }
@@ -117,9 +118,9 @@ public class HangmanSettings extends AppCompatActivity {
         return adding_words.toString();
     }
 
-    public String [] splitline(String line){
+    public String [] splitline(String line, String seperator){
 
-        String[] seperated_words = line.split(" ");
+        String[] seperated_words = line.split(seperator);
         return seperated_words;
 
     }
@@ -138,11 +139,11 @@ public class HangmanSettings extends AppCompatActivity {
         Context context = this;
         File path = context.getFilesDir();
         File file = new File(path, "Added_words.txt");
-        FileOutputStream stream = new FileOutputStream(file);
+        FileWriter writer = new FileWriter(file, true);
         try {
 
             if(checkwords_for_adding(input_txt)) { //writing is possible
-                stream.write(input_txt.getBytes());
+                writer.write(input_txt + " ");
                 varying_words.append(input_txt + ", ");
                 String message = "Successfully Added";
                 getMessage(message);
@@ -158,7 +159,7 @@ public class HangmanSettings extends AppCompatActivity {
             e.printStackTrace();
         }
         finally {
-            stream.close();
+            writer.close();
         }
 
     }
@@ -186,7 +187,7 @@ public class HangmanSettings extends AppCompatActivity {
 
         if(line != null) {
             do {
-                String[] words = splitline(line);
+                String[] words = splitline(line, " ");
                 if (compare_words(words, input)) {
                     breader.close();
                     return true;
@@ -265,7 +266,7 @@ public class HangmanSettings extends AppCompatActivity {
 
         if(line != null) {
             do {
-                String[] words = splitline(line);
+                String[] words = splitline(line, " ");
                 for (int i = 0; i < words.length; i++) {
                     if (words[i].equals(input)) {
                         words[i] = "";

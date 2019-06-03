@@ -99,20 +99,9 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         Context context = this;
 
 
-        try {
-            create_files();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 
-        for (int i = 0; i < words.length; i++) {
-           words_to_file(words[i]);
-        }
-
-
-
-        hangman = new HangMan(words, context);
+        hangman = new HangMan();
 
     }
 
@@ -278,45 +267,5 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         startActivity(intent);
     }
 
-
-
-    public boolean words_to_file(String word){
-        System.out.println(words);
-        Context context = this;
-        try {
-            File path = context.getFilesDir();
-            File file = new File(path, "Fixed_words.txt");
-            FileWriter writer = new FileWriter(file, true);
-
-            word += " ";
-
-            writer.write(word);
-            writer.close();
-            return true;
-        } catch (Exception ex) {
-            System.out.println(ex);
-            return false;
-        }
-
-
-    }
-
-
-    public boolean create_files() throws IOException {
-        Context context = this;
-        File path = context.getFilesDir();
-        File file1 = new File(path, "Added_words.txt");
-        File file2 = new File(path, "Fixed_words.txt");
-        if (!file1.exists())
-        {
-            file1.createNewFile();
-        }
-        if(!file2.exists()){
-            file2.createNewFile();
-        }
-
-        return true;
-
-    }
 
 }

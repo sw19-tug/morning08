@@ -8,6 +8,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.widget.TextView;
 
 import com.example.R;
+import com.example.hangman.HangMan;
 import com.example.hangman.HangManActivity;
 
 import org.junit.Rule;
@@ -118,7 +119,37 @@ public class MainActivityHangManTest
         onView(withId(R.id.btn_retry)).check(matches(not(isDisplayed())));
 
     }
+    @Test
+    public void testEveryGraphic()
+    {
+        String[] words = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
+        HangMan hangman = new HangMan(words);
+        String word = "apple";
+        String input = "x";
 
+        hangman.initialize();
+
+        char[] testOutputarray = new char[word.length()];
+        for(int i = 0; i < testOutputarray.length; i++) {
+            testOutputarray[i] = '_';
+        }
+        hangman.setOutputarray(testOutputarray);
+        hangman.setSearchedword(word);
+
+        for(int i = 9; i > 0; i--) {
+            hangman.checkLetter(input);
+
+        }
+
+        onView(withId(R.id.imageViewRope)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.imageViewHead)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.imageViewBody)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.imageViewLeftHand)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.imageViewLeftLeg)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.imageViewRightHand)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.imageViewRightLeg)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        onView(withId(R.id.imageViewFace)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+    }
     @Test
     public void testTip()
     {

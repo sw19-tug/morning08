@@ -31,9 +31,11 @@ public class TouchTheBlock extends AppCompatActivity {
     private Button btnChooseBack;
     private TextView tvgamelost;
     private TextView tvTime;
+    private TextView tvScore;
 
 
-    private int scorenum;
+    private int scorenum = 0;
+    private String scorestr = "Score: ";
 
 
 
@@ -82,6 +84,8 @@ public class TouchTheBlock extends AppCompatActivity {
         btnChooseBack = findViewById(R.id.btnBackCol);
         tvgamelost = (TextView) findViewById(R.id.tv_gamelost);
         tvTime = (TextView) findViewById(R.id.tv_time);
+        tvScore =  (TextView) findViewById(R.id.tv_score);
+        tvScore.setText(scorestr);
         tvTime.setVisibility(View.INVISIBLE);
 
         btnPlay.setVisibility(View.INVISIBLE);
@@ -188,6 +192,8 @@ public class TouchTheBlock extends AppCompatActivity {
         btnChooseBack.setVisibility(View.INVISIBLE);
         timer.cancel();
         game(btnPlaysize, btnPlaysize);
+        increaseScore();
+        tvScore.setText(scorestr);
     }
 
     public void endGame(){
@@ -314,7 +320,9 @@ public class TouchTheBlock extends AppCompatActivity {
     public void increaseScore()
     {
         scorenum += 1;
+        scorestr = "Score: " + scorenum;
     }
+
 
     public TextView getTvTime() {
         return tvTime;
@@ -355,5 +363,10 @@ public class TouchTheBlock extends AppCompatActivity {
     public int getScoreNum() {
         return scorenum;
     }
+
+    public String getScorestr() {
+        return scorestr;
+    }
+
 
 }

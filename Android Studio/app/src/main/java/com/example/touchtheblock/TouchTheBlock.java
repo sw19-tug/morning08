@@ -35,7 +35,7 @@ public class TouchTheBlock extends AppCompatActivity {
 
 
     private int scorenum = 0;
-    private String scorestr = "Score: ";
+    private String scorestr = "Score: 0";
 
 
 
@@ -54,6 +54,7 @@ public class TouchTheBlock extends AppCompatActivity {
     private ViewGroup.LayoutParams btnPlayParams;
     private ViewGroup.LayoutParams btnEndParams;
     private ViewGroup.LayoutParams tvTimerParams;
+    private ViewGroup.LayoutParams tvScoreParams;
     private Random r = new Random();
     final int CHOOSE_BLOCK_COLOR = 1;
     final int CHOOSE_BACK_COLOR = 2;
@@ -97,6 +98,8 @@ public class TouchTheBlock extends AppCompatActivity {
         btnPlayParams = btnPlay.getLayoutParams();
         btnEndParams = btnEnd.getLayoutParams();
         tvTimerParams = tvTime.getLayoutParams();
+        tvScoreParams = tvScore.getLayoutParams();
+        tvScore.setTextSize(TypedValue.COMPLEX_UNIT_PX,(pixHeight)* tvTimeScale);
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,6 +188,8 @@ public class TouchTheBlock extends AppCompatActivity {
         btnEndParams.height = (int) (pixHeight*btnEndtvTimeScale);
         tvTime.setTextSize(TypedValue.COMPLEX_UNIT_PX,(pixHeight)* tvTimeScale);
         game(pixHeight, pixWidth); //setting size of PlayBox
+        resetScore();
+        tvScore.setText(scorestr);
     }
 
     public void onBtnPlay(){
@@ -320,6 +325,10 @@ public class TouchTheBlock extends AppCompatActivity {
     public void increaseScore()
     {
         scorenum += 1;
+        scorestr = "Score: " + scorenum;
+    }
+    public void resetScore(){
+        scorenum = 0;
         scorestr = "Score: " + scorenum;
     }
 

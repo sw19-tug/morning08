@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 
-import com.example.R;
 import com.example.touchtheblock.TouchTheBlock;
 
 import org.junit.Assert;
@@ -9,7 +8,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 
 public class TouchTheBlockUnitTest {
@@ -64,7 +62,7 @@ public class TouchTheBlockUnitTest {
     }
 
     @Test
-    public void testScoreatWinning()  {
+    public void testResetScoreInt()  {
         int expectedscore = 0;
 
         touchtheblock.resetScore();
@@ -76,7 +74,7 @@ public class TouchTheBlockUnitTest {
     }
 
     @Test
-    public void testResetScore(){
+    public void testResetScoreStr(){
         String expectedScore = "Score: 0" ;
 
         touchtheblock.resetScore();

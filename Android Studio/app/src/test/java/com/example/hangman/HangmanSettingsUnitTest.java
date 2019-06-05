@@ -24,7 +24,7 @@ public class HangmanSettingsUnitTest {
     public void splitline() {
         String words = "apple banana cherry fig lemon mango orange pear";
         String[] expected = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
-        assertEquals(expected, hangman.splitline(words));
+        assertEquals(expected, hangman.splitline(words," "));
     }
 
 

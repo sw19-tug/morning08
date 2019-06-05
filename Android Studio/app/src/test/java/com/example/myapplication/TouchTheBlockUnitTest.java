@@ -3,6 +3,7 @@ package com.example.myapplication;
 
 import com.example.touchtheblock.TouchTheBlock;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
@@ -32,4 +33,54 @@ public class TouchTheBlockUnitTest {
         assertNotNull(touchtheblock.getTimer());
     }
 
+
+    @Test
+    public void testScoreatWinning()  {
+        int expectedscore = touchtheblock.getScoreNum() + 3;
+
+        touchtheblock.increaseScore();
+        touchtheblock.increaseScore();
+        touchtheblock.increaseScore();
+
+        int actualscore = touchtheblock.getScoreNum();
+
+        Assert.assertEquals(expectedscore,actualscore);
+
+    }
+
+    @Test
+    public void testtvScore(){
+        String expectedScore = "Score: 3" ;
+
+        touchtheblock.increaseScore();
+        touchtheblock.increaseScore();
+        touchtheblock.increaseScore();
+
+        String actualScore = touchtheblock.getScorestr();
+
+        Assert.assertEquals(expectedScore, actualScore);
+    }
+
+    @Test
+    public void testResetScoreInt()  {
+        int expectedscore = 0;
+
+        touchtheblock.resetScore();
+
+        int actualscore = touchtheblock.getScoreNum();
+
+        Assert.assertEquals(expectedscore,actualscore);
+
+    }
+
+    @Test
+    public void testResetScoreStr(){
+        String expectedScore = "Score: 0" ;
+
+        touchtheblock.resetScore();
+
+        String actualScore = touchtheblock.getScorestr();
+
+        Assert.assertEquals(expectedScore, actualScore);
+    }
 }

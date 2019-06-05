@@ -31,6 +31,11 @@ public class TouchTheBlock extends AppCompatActivity {
     private Button btnChooseBack;
     private TextView tvgamelost;
     private TextView tvTime;
+    private TextView tvScore;
+
+
+    private int scorenum = 0;
+    private String scorestr = "Score: 0";
 
 
 
@@ -49,6 +54,7 @@ public class TouchTheBlock extends AppCompatActivity {
     private ViewGroup.LayoutParams btnPlayParams;
     private ViewGroup.LayoutParams btnEndParams;
     private ViewGroup.LayoutParams tvTimerParams;
+    private ViewGroup.LayoutParams tvScoreParams;
     private Random r = new Random();
     final int CHOOSE_BLOCK_COLOR = 1;
     final int CHOOSE_BACK_COLOR = 2;
@@ -79,6 +85,8 @@ public class TouchTheBlock extends AppCompatActivity {
         btnChooseBack = findViewById(R.id.btnBackCol);
         tvgamelost = (TextView) findViewById(R.id.tv_gamelost);
         tvTime = (TextView) findViewById(R.id.tv_time);
+        tvScore =  (TextView) findViewById(R.id.tv_score);
+        tvScore.setText(scorestr);
         tvTime.setVisibility(View.INVISIBLE);
 
         btnPlay.setVisibility(View.INVISIBLE);
@@ -90,6 +98,8 @@ public class TouchTheBlock extends AppCompatActivity {
         btnPlayParams = btnPlay.getLayoutParams();
         btnEndParams = btnEnd.getLayoutParams();
         tvTimerParams = tvTime.getLayoutParams();
+        tvScoreParams = tvScore.getLayoutParams();
+        tvScore.setTextSize(TypedValue.COMPLEX_UNIT_PX,(pixHeight)* tvTimeScale);
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,6 +188,8 @@ public class TouchTheBlock extends AppCompatActivity {
         btnEndParams.height = (int) (pixHeight*btnEndtvTimeScale);
         tvTime.setTextSize(TypedValue.COMPLEX_UNIT_PX,(pixHeight)* tvTimeScale);
         game(pixHeight, pixWidth); //setting size of PlayBox
+        resetScore();
+        tvScore.setText(scorestr);
     }
 
     public void onBtnPlay(){
@@ -185,6 +197,8 @@ public class TouchTheBlock extends AppCompatActivity {
         btnChooseBack.setVisibility(View.INVISIBLE);
         timer.cancel();
         game(btnPlaysize, btnPlaysize);
+        increaseScore();
+        tvScore.setText(scorestr);
     }
 
     public void endGame(){
@@ -308,6 +322,17 @@ public class TouchTheBlock extends AppCompatActivity {
         }
     }
 
+    public void increaseScore()
+    {
+        scorenum += 1;
+        scorestr = "Score: " + scorenum;
+    }
+    public void resetScore(){
+        scorenum = 0;
+        scorestr = "Score: " + scorenum;
+    }
+
+
     public TextView getTvTime() {
         return tvTime;
     }
@@ -343,4 +368,14 @@ public class TouchTheBlock extends AppCompatActivity {
     public void printTvText(){
         Log.d("kalapacs :  ",tvTimeText);
     }
+
+    public int getScoreNum() {
+        return scorenum;
+    }
+
+    public String getScorestr() {
+        return scorestr;
+    }
+
+
 }

@@ -83,16 +83,35 @@
             tools:layout_editor_absoluteY="8dp">
 
             <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|top"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_horizontal|top"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+
+                android:textColor="@android:color/holo_orange_dark"
+                android:textStyle="bold|italic"
+                app:fontFamily="serif"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|top"
+                android:layout_gravity="top|left"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="1dp"
                 android:gravity="center_horizontal|top"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                android:textColor="@android:color/holo_orange_dark"
 
+                android:textColor="@android:color/holo_orange_dark"
                 android:textStyle="bold|italic"
                 app:fontFamily="serif"
                 app:layout_constraintEnd_toEndOf="parent"

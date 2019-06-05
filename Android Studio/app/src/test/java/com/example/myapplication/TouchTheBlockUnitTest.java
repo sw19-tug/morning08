@@ -37,18 +37,29 @@ public class TouchTheBlockUnitTest {
 
 
     @Test
-    public void testScoreatWinning() throws InterruptedException {
-        int expectedscore = TouchTheBlock.getScoreNum() + 3;
+    public void testScoreatWinning()  {
+        int expectedscore = touchtheblock.getScoreNum() + 3;
 
-        increaseScore();
-        increaseScore();
-        increaseScore();
+        touchtheblock.increaseScore();
+        touchtheblock.increaseScore();
+        touchtheblock.increaseScore();
 
-        int actualscore = TouchTheBlock.getScoreNum();
+        int actualscore = touchtheblock.getScoreNum();
 
         Assert.assertEquals(expectedscore,actualscore);
 
-
     }
 
+    @Test
+    public void testtvScore(){
+        String expectedScore = "Score: 3" ;
+
+        touchtheblock.increaseScore();
+        touchtheblock.increaseScore();
+        touchtheblock.increaseScore();
+
+        String actualScore = touchtheblock.getScorestr();
+
+        Assert.assertEquals(expectedScore, actualScore);
+    }
 }

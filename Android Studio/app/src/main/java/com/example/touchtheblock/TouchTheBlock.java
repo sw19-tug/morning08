@@ -33,6 +33,9 @@ public class TouchTheBlock extends AppCompatActivity {
     private TextView tvTime;
 
 
+    private int scorenum;
+
+
 
     private String tvTimeText;
     private float yPixPos;
@@ -308,6 +311,11 @@ public class TouchTheBlock extends AppCompatActivity {
         }
     }
 
+    public void increaseScore()
+    {
+        scorenum += 1;
+    }
+
     public TextView getTvTime() {
         return tvTime;
     }
@@ -343,4 +351,9 @@ public class TouchTheBlock extends AppCompatActivity {
     public void printTvText(){
         Log.d("kalapacs :  ",tvTimeText);
     }
+
+    public int getScoreNum() {
+        return scorenum;
+    }
+
 }

@@ -5,7 +5,6 @@ import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,7 +32,6 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
     private TextView output;
     private TextView score;
     private TextView guesses;
-    private Chronometer chronometer;
 
 
     @Override
@@ -48,7 +46,6 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         tipButton = findViewById(R.id.btn_tip);
         input = (EditText) findViewById(R.id.txtInput);
         output = (TextView) findViewById(R.id.lblOutput);
-        chronometer = (Chronometer) findViewById(R.id.stop_Watch);
 
         ropeImage = (ImageView) findViewById(R.id.imageViewRope);
         faceImage = (ImageView) findViewById(R.id.imageViewFace);
@@ -162,9 +159,6 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 hangman.initialize();
 
                 refreshScreen();
-                long systemCurrTime = SystemClock.elapsedRealtime();
-                chronometer.setBase(systemCurrTime);
-                chronometer.start();
 
                 break;
 
@@ -174,9 +168,9 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                         Toast.makeText(this,"This letter is a part of the searched word!",Toast.LENGTH_SHORT).show();
                         if(hangman.wordGuessed()){
                             Toast.makeText(this,"Word Guessed!",Toast.LENGTH_SHORT).show();
-                            int elapsedTime = (int) (SystemClock.elapsedRealtime() - chronometer.getBase());
+                            //int elapsedTime = (int) (SystemClock.elapsedRealtime() - chronometer.getBase());
 
-                            Toast.makeText(this, "You needed " + Integer.toString(elapsedTime/1000) + " seconds ! :)",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(this, "You needed " + Integer.toString(elapsedTime/1000) + " seconds ! :)",Toast.LENGTH_SHORT).show();
                             hangman.initialize();
 
                         }

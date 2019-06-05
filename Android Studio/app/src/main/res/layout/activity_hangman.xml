@@ -8,11 +8,13 @@
     tools:background="@android:color/holo_blue_light"
     tools:context="com.example.hangman.HangManActivity">
 
-    <Chronometer
-        android:id="@+id/stop_Watch"
+    <TextView
+        android:id="@+id/lblTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:text="1:00"
+        android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/lblOutput"
         app:layout_constraintHorizontal_bias="0.5"

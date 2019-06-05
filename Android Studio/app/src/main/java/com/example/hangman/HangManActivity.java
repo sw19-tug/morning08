@@ -1,6 +1,7 @@
 package com.example.hangman;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,7 +33,8 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
     private TextView output;
     private TextView score;
     private TextView guesses;
-
+    private TextView timer;
+    private long timeLeft = 60000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         rightLegImage = (ImageView) findViewById(R.id.imageViewRightLeg);
         score = (TextView) findViewById(R.id.lblScore);
         guesses = (TextView) findViewById(R.id.lblGuesses);
-
+        timer = (TextView) findViewById(R.id.lblTimer);
 
         startButton.setOnClickListener(this);
         checkButton.setOnClickListener(this);
@@ -159,6 +161,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 hangman.initialize();
 
                 refreshScreen();
+                startTimer();
 
                 break;
 
@@ -218,6 +221,40 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
         }
+    }
+
+
+    void startTimer() {
+        CountDownTimer cdTimer;
+
+        cdTimer = new CountDownTimer(timeLeft, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeft = millisUntilFinished;
+                updateTimer();
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+    }
+
+
+    void updateTimer() {
+        int min = (int) timeLeft / 600000;
+        int sec = (int) timeLeft % 600000 / 1000;
+
+        String outputTime;
+
+        outputTime = "" + min + ":";
+        if (sec < 10)
+            outputTime += "0";
+
+        outputTime += sec;
+
+        timer.setText(outputTime);
     }
 
 }

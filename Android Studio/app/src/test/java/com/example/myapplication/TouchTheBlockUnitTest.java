@@ -62,4 +62,27 @@ public class TouchTheBlockUnitTest {
 
         Assert.assertEquals(expectedScore, actualScore);
     }
+
+    @Test
+    public void testScoreatWinning()  {
+        int expectedscore = 0;
+
+        touchtheblock.resetScore();
+
+        int actualscore = touchtheblock.getScoreNum();
+
+        Assert.assertEquals(expectedscore,actualscore);
+
+    }
+
+    @Test
+    public void testResetScore(){
+        String expectedScore = "Score: 0" ;
+
+        touchtheblock.resetScore();
+
+        String actualScore = touchtheblock.getScorestr();
+
+        Assert.assertEquals(expectedScore, actualScore);
+    }
 }

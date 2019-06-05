@@ -1,14 +1,16 @@
-package com.example.hangman;
+package com.example.myapplication;
+
+import com.example.hangman.HangMan;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 
 public class HangManUnitTest {
 
-    private HangMan hangman = new HangMan();
+    private String[] words = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
+
+    private HangMan hangman = new HangMan(words);
 
     @Test
     public void testCheckLetter()

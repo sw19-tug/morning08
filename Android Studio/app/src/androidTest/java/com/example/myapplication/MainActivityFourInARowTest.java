@@ -6,6 +6,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.R;
+import com.example.fourinarow.FourInARowActivity;
 import com.example.tic_tac_toe.TicTacToe;
 
 import org.junit.Rule;
@@ -36,7 +37,7 @@ import static org.hamcrest.Matchers.not;
 public class MainActivityFourInARowTest {
 
     @Rule
-    public ActivityTestRule<FourInARow> mainActivityTestRule = new ActivityTestRule<>(FourInaRow.class);
+    public ActivityTestRule<FourInARowActivity> mainActivityTestRule = new ActivityTestRule<>(FourInARowActivity.class);
 
 
     @Test
@@ -49,14 +50,8 @@ public class MainActivityFourInARowTest {
         onView(withId(R.id.btn_start)).check(matches(isDisplayed()));
 
         // row selection
-        onView(withId(R.id.label_score)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.bt_column_1)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.bt_column_2)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.bt_column_3)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.bt_column_4)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.bt_column_5)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.bt_column_6)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.bt_column_7)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.Grid)).check(matches(not(isDisplayed())));
+
 
 
     }

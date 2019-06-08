@@ -2,118 +2,65 @@ package com.example.fourinarow;
 
 
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.R;
-import com.example.myapplication.MainActivity;
 
-import java.util.Random;
+public class FourInARow {
 
+    private int score_player1;
+    private int score_player2;
+    private int[][] grid;
 
-public class FourInARow extends AppCompatActivity implements View.OnClickListener
-{
+    private final static int NOT_VALID =-1;
+    private final static int GRID_WIDTH = 7;
+    private final static int GRID_HEIGHT = 6;
 
-    public FourInARow(){
-
+    // Constructor
+    public FourInARow() {
+        score_player1 = 0;
+        score_player2 = 0;
+        grid =  new int[GRID_HEIGHT][GRID_WIDTH];
+        System.out.println("New Game initialized!");
     }
 
-    private Button[][] button = new Button[1][7];
-    static int click = 0;
-    private int  score = 0;
-    boolean end = false;
-    static boolean Autoplayer;
-    private TextView score_label;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
+    // Set Token in given column
+    public int setToken(int column)
     {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fourinarow);
+        System.out.println("Check if token is set valid!"+column);
+        int temp = 0;
 
-        button[0][0] = (Button) findViewById(R.id.button_0_0);
-        button[0][1] = (Button) findViewById(R.id.button_0_1);
-        button[0][2] = (Button) findViewById(R.id.button_0_2);
-        button[0][3] = (Button) findViewById(R.id.button_0_3);
-        button[0][4] = (Button) findViewById(R.id.button_0_4);
-        button[0][5] = (Button) findViewById(R.id.button_0_5);
-        button[0][6] = (Button) findViewById(R.id.button_0_6);
-
-        /*button[1][0] = (Button) findViewById(R.id.button_1_0);
-        button[1][1] = (Button) findViewById(R.id.button_1_1);
-        button[1][2] = (Button) findViewById(R.id.button_1_2);
-        button[1][3] = (Button) findViewById(R.id.button_1_3);
-        button[1][4] = (Button) findViewById(R.id.button_1_4);
-        button[1][5] = (Button) findViewById(R.id.button_1_5);
-        button[1][6] = (Button) findViewById(R.id.button_1_6);
-
-        button[2][0] = (Button) findViewById(R.id.button_2_0);
-        button[2][1] = (Button) findViewById(R.id.button_2_1);
-        button[2][2] = (Button) findViewById(R.id.button_2_2);
-        button[2][3] = (Button) findViewById(R.id.button_2_3);
-        button[2][4] = (Button) findViewById(R.id.button_2_4);
-        button[2][5] = (Button) findViewById(R.id.button_2_5);
-        button[2][6] = (Button) findViewById(R.id.button_2_6);
-
-        button[3][0] = (Button) findViewById(R.id.button_3_0);
-        button[3][1] = (Button) findViewById(R.id.button_3_1);
-        button[3][2] = (Button) findViewById(R.id.button_3_2);
-        button[3][3] = (Button) findViewById(R.id.button_3_3);
-        button[3][4] = (Button) findViewById(R.id.button_3_4);
-        button[3][5] = (Button) findViewById(R.id.button_3_5);
-        button[3][6] = (Button) findViewById(R.id.button_3_6);
-
-        button[4][0] = (Button) findViewById(R.id.button_4_0);
-        button[4][1] = (Button) findViewById(R.id.button_4_1);
-        button[4][2] = (Button) findViewById(R.id.button_4_2);
-        button[4][3] = (Button) findViewById(R.id.button_4_3);
-        button[4][4] = (Button) findViewById(R.id.button_4_4);
-        button[4][5] = (Button) findViewById(R.id.button_4_5);
-        button[4][6] = (Button) findViewById(R.id.button_4_6);
-
-        button[5][0] = (Button) findViewById(R.id.button_5_0);
-        button[5][1] = (Button) findViewById(R.id.button_5_1);
-        button[5][2] = (Button) findViewById(R.id.button_5_2);
-        button[5][3] = (Button) findViewById(R.id.button_5_3);
-        button[5][4] = (Button) findViewById(R.id.button_5_4);
-        button[5][5] = (Button) findViewById(R.id.button_5_5);
-        button[5][6] = (Button) findViewById(R.id.button_5_6);*/
-
-        score_label = (TextView) findViewById(R.id.lblScore);
-        score_label.setText("Score: ");
-
-        for (int i = 0; i < 4; i++)
-        {
-            for (int y = 0; y < 4; y++)
+        for(int i = 0; i<GRID_HEIGHT;i++)
+            if(grid[i][column] == 0)
             {
-                button[i][y].setOnClickListener(this);
+                grid[i][column] = 1;
+                return i;
             }
-        }
 
+
+        System.out.println("GRID_HEIGHT: "+temp);
+
+        return NOT_VALID;
     }
 
 
+
+}
+        /*
+        GradientDrawable backgroundGradient = (GradientDrawable)imgview.getBackground();
+        backgroundGradient.setColor(getResources().getColor(R.color.colorLime));
+        */
+
+    /*
     public void onClick(View v)
     {
         click++;
         score_label.setText("Score: " + getScore());
 
+        /*
         switch (v.getId())
-        {
             case R.id.button_0_0:
-                button[0][0].setText(getRightValue());
-                button[0][0].setEnabled(false);
                 break;
             case R.id.button_0_1:
                 button[0][1].setText(getRightValue());
@@ -144,7 +91,7 @@ public class FourInARow extends AppCompatActivity implements View.OnClickListene
                 button[0][3].setText(getRightValue());
                 button[0][3].setEnabled(false);
                 break;
-/*
+
             case R.id.button_1_0:
                 button[1][0].setText(getRightValue());
                 button[1][0].setEnabled(false);
@@ -203,9 +150,10 @@ public class FourInARow extends AppCompatActivity implements View.OnClickListene
             case R.id.button_3_3:
                 button[3][3].setText(getRightValue());
                 button[3][3].setEnabled(false);
-                break;*/
-        }
+                break;
+        }*/
 
+    /*
         if (winningPosition())
         {
             for (int row = 0; row < 4; row++)
@@ -423,7 +371,7 @@ public class FourInARow extends AppCompatActivity implements View.OnClickListene
     {
         Intent intent = new Intent(this, TicTacToeSettings.class);
         startActivity(intent);
-    }*/
+    }
 
     public void resetGame()
     {
@@ -444,5 +392,4 @@ public class FourInARow extends AppCompatActivity implements View.OnClickListene
     public int getScore()
     {
         return score;
-    }
-}
+    }*/

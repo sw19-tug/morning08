@@ -8,10 +8,8 @@ import android.widget.Button;
 
 
 import com.example.R;
-import com.example.fourinarow.FourInARow;
-import com.example.hangman.HangMan;
+import com.example.fourinarow.FourInARowActivity;
 import com.example.hangman.HangManActivity;
-
 import com.example.touchtheblock.TouchTheBlock;
 import com.example.tic_tac_toe.TicTacToe;
 
@@ -79,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openFourinarow() {
-        Intent intent = new Intent(this, FourInARow.class);
+        Intent intent = new Intent(this, FourInARowActivity.class);
         startActivity(intent);
     }
 

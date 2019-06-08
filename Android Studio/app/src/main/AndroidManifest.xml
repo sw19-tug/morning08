@@ -22,7 +22,7 @@
         <activity android:label="@string/app_name" android:name=".tic_tac_toe.TicTacToe"/>
         <activity android:label="@string/TouchTheBlockName" android:name=".touchtheblock.TouchTheBlock"/>
         <activity android:label="@string/touchtheblockhoosecolor" android:name=".touchtheblock.TouchTheBlockChooseColor"/>
-        <activity android:label="FourInARow" android:name=".fourinarow.FourInARow"/>
+        <activity android:label="FourInARow" android:name=".fourinarow.FourInARowActivity"/>
 
 
     </application>

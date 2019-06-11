@@ -34,6 +34,7 @@ public class ExampleInstrumentedTest {
         onView(withId(R.id.bt_tictac)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_hangman)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_touchbox)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_fourinarow)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -42,6 +43,7 @@ public class ExampleInstrumentedTest {
         onView(withId(R.id.bt_tictac)).perform(click());
         onView(withId(R.id.bt_hangman)).perform(click());
         onView(withId(R.id.bt_touchbox)).perform(click());
+        onView(withId(R.id.bt_fourinarow)).perform(click());
     }
 
     @Test

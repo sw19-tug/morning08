@@ -25,6 +25,8 @@
         <activity android:label="@string/TouchTheBlockName" android:name=".touchtheblock.TouchTheBlock"/>
         <activity android:label="@string/touchtheblockhoosecolor" android:name=".touchtheblock.TouchTheBlockChooseColor"/>
         <activity android:label="@string/app_name" android:name=".tic_tac_toe.TicTacToeSettings"/>
+        <activity android:label="FourInARow" android:name=".fourinarow.FourInARowActivity"/>
+
 
     </application>
 

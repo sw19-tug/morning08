@@ -23,7 +23,7 @@
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
 
     </LinearLayout>
@@ -32,7 +32,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        >
+        app:layout_constraintTop_toTopOf="parent"
+
+    >
 
             <Button
                 android:id="@+id/button_0_0"

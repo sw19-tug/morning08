@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 
 public class TouchTheBlockUnitTest {
@@ -16,6 +17,64 @@ public class TouchTheBlockUnitTest {
 
     TouchTheBlock touchtheblock = new TouchTheBlock();
 
+    @Test
+    public void testRandom_() {
+        float from;
+        float to;
+        float randnum;
+        boolean under;
+        boolean over;
+        boolean between;
+
+        from = (float) 1.0;
+        to = (float) 5.0;
+
+        randnum = touchtheblock.random_(from, to);
+        under = (randnum<to);
+        over = (randnum > from);
+        between = (under && over);
+
+        assertTrue(between);
+
+
+        from = (float) 0.99;
+        to = (float) 5.0;
+        randnum = touchtheblock.random_(to);
+        under = (randnum<to);
+        over = (randnum > from);
+        between = (under && over);
+        assertTrue(between);
+    }
+
+
+
+    @Test
+    public void testSetScreenSize() {
+
+        float heigth = (float) 350.0;
+        float width = (float) 200.0;
+        float pixHeight;
+        float pixWidth;
+
+        touchtheblock.setScreenSize(heigth, width);
+
+        pixHeight = touchtheblock.getPixHeight();
+        pixWidth = touchtheblock.getPixWidth();
+        Assert.assertEquals(heigth,pixHeight,1e-8);
+        Assert.assertEquals(width,pixWidth, 1e-8);
+    }
+
+    @Test
+    public void testSetBtnPlaySize() {
+        float btnHeight = (float) 50.0;
+        float btnWidth = (float) 50.0;
+        float btnPlaySize;
+        touchtheblock.setBtnPlaySize(btnHeight,btnWidth);
+
+        float expected = (float) 35.35533905932738;
+        float actual = touchtheblock.getBtnPlaysize();
+        Assert.assertEquals(expected,actual, 1e-8);
+    }
 
     @Test
     public void testInitialStateTimer() {
@@ -45,7 +104,6 @@ public class TouchTheBlockUnitTest {
         int actualscore = touchtheblock.getScoreNum();
 
         Assert.assertEquals(expectedscore,actualscore);
-
     }
 
     @Test
@@ -81,6 +139,19 @@ public class TouchTheBlockUnitTest {
 
         String actualScore = touchtheblock.getScorestr();
 
+        Assert.assertEquals(expectedScore, actualScore);
+    }
+
+    @Test
+    public void testRScoreContinue(){
+        String expectedScore = "Score: 1" ;
+
+        for (int round = 0; round < 11; round++){
+            touchtheblock.increaseScore();
+        }
+
+        touchtheblock.decreaseScoreContiune();
+        String actualScore = touchtheblock.getScorestr();
         Assert.assertEquals(expectedScore, actualScore);
     }
 }

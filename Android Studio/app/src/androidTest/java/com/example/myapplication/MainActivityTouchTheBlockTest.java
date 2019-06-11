@@ -61,4 +61,22 @@ public class MainActivityTouchTheBlockTest {
                 onView(withId(R.id.Button_Continue)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
         }
 
+        @Test
+        public void testContinueButtonDisplayedAfterGame(){
+                onView(withId(R.id.btn_startgame)).perform(click());
+                onView(withId(R.id.btnPlayBox)).perform(click());
+                onView(withId(R.id.btnPlayBox)).perform(click());
+                onView(withId(R.id.btnPlayBox)).perform(click());
+                onView(withId(R.id.btnPlayBox)).perform(click());
+                onView(withId(R.id.btnPlayBox)).perform(click());
+                onView(withId(R.id.btnPlayBox)).perform(click());
+                onView(withId(R.id.btnPlayBox)).perform(click());
+                onView(withId(R.id.btnPlayBox)).perform(click());
+                onView(withId(R.id.btnPlayBox)).perform(click());
+                onView(withId(R.id.btnPlayBox)).perform(click());
+                onView(withId(R.id.btnPlayBox)).perform(click());
+                onView(withId(R.id.btnEndGame)).perform(click());
+                onView(withId(R.id.Button_Continue)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        }
+
 }

@@ -27,6 +27,7 @@ public class TouchTheBlock extends AppCompatActivity {
     private Button btnPlay;
     private Button btnEnd;
     private Button btnStart;
+    private Button btn_continue;
     private Button btnChooseBlock;
     private Button btnChooseBack;
     private TextView tvgamelost;
@@ -81,6 +82,7 @@ public class TouchTheBlock extends AppCompatActivity {
         btnPlay = findViewById(R.id.btnPlayBox);
         btnEnd = findViewById(R.id.btnEndGame);
         btnStart = findViewById(R.id.btn_startgame);
+        btn_continue = findViewById(R.id.Button_Continue);
         btnChooseBlock = findViewById(R.id.btnBlockCol);
         btnChooseBack = findViewById(R.id.btnBackCol);
         tvgamelost = (TextView) findViewById(R.id.tv_gamelost);
@@ -92,6 +94,7 @@ public class TouchTheBlock extends AppCompatActivity {
         btnPlay.setVisibility(View.INVISIBLE);
         btnEnd.setVisibility(View.INVISIBLE);
         tvgamelost.setVisibility(View.INVISIBLE);
+        btn_continue.setVisibility(View.INVISIBLE);
 
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         setScreenSize(dm.heightPixels, dm.widthPixels);

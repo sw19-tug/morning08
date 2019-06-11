@@ -30,6 +30,14 @@
             android:text="@string/start_game"
             android:translationY="30dp" />
 
+        <Button
+            android:id="@+id/Button_Continue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/continue_game"
+            android:translationY="80dp" />
+
         <TextView
             android:id="@+id/tv_gamelost"
             android:layout_width="wrap_content"

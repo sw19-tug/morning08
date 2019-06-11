@@ -3,7 +3,6 @@ import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 
 import com.example.R;
-import com.example.hangman.HangManActivity;
 import com.example.touchtheblock.TouchTheBlock;
 
 import org.junit.Rule;
@@ -25,35 +24,35 @@ public class MainActivityTouchTheBlockTest {
         @Test
         public void testTimeVisible()
         {
-                onView(withId(R.id.tv_time)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+                onView(withId(R.id.TextView_Time)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
 
         }
 
         @Test
         public void testTimeVisibleAfterBtnEnd() throws InterruptedException {
-                onView(withId(R.id.btn_startgame)).perform(click());
+                onView(withId(R.id.Button_StartGame)).perform(click());
 
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.tv_time)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-                onView(withId(R.id.btnEndGame)).perform(click());
-                onView(withId(R.id.tv_time)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.TextView_Time)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+                onView(withId(R.id.Button_EndGame)).perform(click());
+                onView(withId(R.id.TextView_Time)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
 
         }
 
         @Test
         public void testTimeVisibleAfterTimeout() throws InterruptedException {
-                onView(withId(R.id.btn_startgame)).perform(click());
+                onView(withId(R.id.Button_StartGame)).perform(click());
 
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.tv_time)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.TextView_Time)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
                 Thread.sleep(2500);
-                onView(withId(R.id.tv_time)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+                onView(withId(R.id.TextView_Time)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
 
         }
 
         @Test
         public void testScoreButtonisDisplayed(){
-                onView(withId(R.id.tv_score)).check(matches(isDisplayed()));
+                onView(withId(R.id.TextView_Score)).check(matches(isDisplayed()));
         }
 
         @Test
@@ -63,19 +62,19 @@ public class MainActivityTouchTheBlockTest {
 
         @Test
         public void testContinueButtonDisplayedAfterGame(){
-                onView(withId(R.id.btn_startgame)).perform(click());
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.btnPlayBox)).perform(click());
-                onView(withId(R.id.btnEndGame)).perform(click());
+                onView(withId(R.id.Button_StartGame)).perform(click());
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.Button_PlayBox)).perform(click());
+                onView(withId(R.id.Button_EndGame)).perform(click());
                 onView(withId(R.id.Button_Continue)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
         }
 

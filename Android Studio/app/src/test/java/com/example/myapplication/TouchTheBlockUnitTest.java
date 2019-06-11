@@ -58,8 +58,8 @@ public class TouchTheBlockUnitTest {
 
         touchtheblock.setScreenSize(heigth, width);
 
-        pixHeight = touchtheblock.getPixHeight();
-        pixWidth = touchtheblock.getPixWidth();
+        pixHeight = touchtheblock.getPix_height();
+        pixWidth = touchtheblock.getPix_width();
         Assert.assertEquals(heigth,pixHeight,1e-8);
         Assert.assertEquals(width,pixWidth, 1e-8);
     }
@@ -72,24 +72,24 @@ public class TouchTheBlockUnitTest {
         touchtheblock.setBtnPlaySize(btnHeight,btnWidth);
 
         float expected = (float) 35.35533905932738;
-        float actual = touchtheblock.getBtnPlaysize();
+        float actual = touchtheblock.getSize_button_play();
         Assert.assertEquals(expected,actual, 1e-8);
     }
 
     @Test
     public void testInitialStateTimer() {
         assertNotNull(touchtheblock);
-        assertNotNull(touchtheblock.getTimer());
+        assertNotNull(touchtheblock.getCountdowntimer_timer());
     }
 
     @Test
     public void testFunktionalityTimer() {
 
-        assertNull(touchtheblock.getTvTimeText());
-        touchtheblock.getTimer().start();
-        touchtheblock.getTimer().onFinish();
-        assertNotNull(touchtheblock.getTvTimeText());
-        assertNotNull(touchtheblock.getTimer());
+        assertNull(touchtheblock.getTime_text_());
+        touchtheblock.getCountdowntimer_timer().start();
+        touchtheblock.getCountdowntimer_timer().onFinish();
+        assertNotNull(touchtheblock.getTime_text_());
+        assertNotNull(touchtheblock.getCountdowntimer_timer());
     }
 
 
@@ -114,7 +114,7 @@ public class TouchTheBlockUnitTest {
         touchtheblock.increaseScore();
         touchtheblock.increaseScore();
 
-        String actualScore = touchtheblock.getScorestr();
+        String actualScore = touchtheblock.getScore_str_();
 
         Assert.assertEquals(expectedScore, actualScore);
     }
@@ -137,7 +137,7 @@ public class TouchTheBlockUnitTest {
 
         touchtheblock.resetScore();
 
-        String actualScore = touchtheblock.getScorestr();
+        String actualScore = touchtheblock.getScore_str_();
 
         Assert.assertEquals(expectedScore, actualScore);
     }
@@ -151,7 +151,7 @@ public class TouchTheBlockUnitTest {
         }
 
         touchtheblock.decreaseScoreContiune();
-        String actualScore = touchtheblock.getScorestr();
+        String actualScore = touchtheblock.getScore_str_();
         Assert.assertEquals(expectedScore, actualScore);
     }
 }

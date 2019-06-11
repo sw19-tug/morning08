@@ -14,7 +14,7 @@
 
 
         <Button
-            android:id="@+id/btnPlayBox"
+            android:id="@+id/Button_PlayBox"
             android:layout_width="1dp"
             android:layout_height="1dp"
             android:layout_margin="0dp"
@@ -23,7 +23,7 @@
             android:translationX="20dp" />
 
         <Button
-            android:id="@+id/btn_startgame"
+            android:id="@+id/Button_StartGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -39,7 +39,7 @@
             android:translationY="80dp" />
 
         <TextView
-            android:id="@+id/tv_gamelost"
+            android:id="@+id/TextView_GameLost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="clip_horizontal|center"
@@ -56,7 +56,7 @@
             app:fontFamily="sans-serif-medium" />
 
         <Button
-            android:id="@+id/btnBlockCol"
+            android:id="@+id/Button_ChoosePlayBoxColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
@@ -66,7 +66,7 @@
             android:translationY="-60dp" />
 
         <Button
-            android:id="@+id/btnBackCol"
+            android:id="@+id/Button_ChooseBackgroundColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
@@ -91,7 +91,7 @@
             tools:layout_editor_absoluteY="8dp">
 
             <TextView
-                android:id="@+id/tv_score"
+                android:id="@+id/TextView_Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|top"
@@ -109,7 +109,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_time"
+                android:id="@+id/TextView_Time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|left"
@@ -127,7 +127,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btnEndGame"
+                android:id="@+id/Button_EndGame"
                 android:layout_width="match_parent"
                 android:layout_height="528dp"
                 android:layout_gravity="bottom"

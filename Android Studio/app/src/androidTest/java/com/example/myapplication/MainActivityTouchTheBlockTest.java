@@ -56,4 +56,9 @@ public class MainActivityTouchTheBlockTest {
                 onView(withId(R.id.tv_score)).check(matches(isDisplayed()));
         }
 
+        @Test
+        public void testContinueButtonNotDisplayed(){
+                onView(withId(R.id.Button_Continue)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+        }
+
 }

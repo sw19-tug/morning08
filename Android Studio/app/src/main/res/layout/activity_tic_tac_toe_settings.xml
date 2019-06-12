@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/chooseColorButton"
+        android:id="@+id/button_Choose_Color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/startGameButton"
+        android:id="@+id/button_Start_Game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonChooseSign"
+        android:id="@+id/button_Choose_Sign"
         android:layout_width="99dp"
         android:layout_height="54dp"
         android:layout_marginTop="147dp"

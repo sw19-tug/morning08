@@ -49,9 +49,9 @@ public class TicTacToeColorPickerTest
             e.printStackTrace();
         }
 
-        onView(withId(R.id.chooseColorButton)).check(matches(isDisplayed()));
-        onView(withId(R.id.startGameButton)).check(matches(isDisplayed()));
-        onView(withId(R.id.buttonChooseSign)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_Choose_Color)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_Start_Game)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_Choose_Sign)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -60,8 +60,8 @@ public class TicTacToeColorPickerTest
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
         onView(withText("Settings")).perform(click());
 
-        onView(withId(R.id.buttonChooseSign)).perform(click());
-        onView(withId(R.id.buttonChooseSign)).check(matches(withText("X")));
+        onView(withId(R.id.button_Choose_Sign)).perform(click());
+        onView(withId(R.id.button_Choose_Sign)).check(matches(withText("X")));
 
         try
         {
@@ -72,7 +72,7 @@ public class TicTacToeColorPickerTest
             e.printStackTrace();
         }
 
-        onView(withId(R.id.buttonChooseSign)).perform(click());
-        onView(withId(R.id.buttonChooseSign)).check(matches(withText("O")));
+        onView(withId(R.id.button_Choose_Sign)).perform(click());
+        onView(withId(R.id.button_Choose_Sign)).check(matches(withText("O")));
     }
 }

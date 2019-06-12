@@ -28,123 +28,123 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener {
 
     }
 
-    private Button[][] button = new Button[3][3];
-    static int click = 0;
-    private int score = 0;
-    boolean end = false;
-    static boolean Autoplayer;
-    private TextView score_label;
+    private Button[][] button_ = new Button[3][3];
+    static int click_ = 0;
+    private int score_ = 0;
+    boolean end_ = false;
+    static boolean autoplayer_;
+    private TextView score_label_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tictactoe);
 
-        button[0][0] = (Button) findViewById(R.id.button_0_0);
-        button[0][1] = (Button) findViewById(R.id.button_0_1);
-        button[0][2] = (Button) findViewById(R.id.button_0_2);
-        button[1][0] = (Button) findViewById(R.id.button_1_0);
-        button[1][1] = (Button) findViewById(R.id.button_1_1);
-        button[1][2] = (Button) findViewById(R.id.button_1_2);
-        button[2][0] = (Button) findViewById(R.id.button_2_0);
-        button[2][1] = (Button) findViewById(R.id.button_2_1);
-        button[2][2] = (Button) findViewById(R.id.button_2_2);
-        score_label = (TextView) findViewById(R.id.label_sc);
-        score_label.setText("Score: ");
+        button_[0][0] = (Button) findViewById(R.id.button_0_0);
+        button_[0][1] = (Button) findViewById(R.id.button_0_1);
+        button_[0][2] = (Button) findViewById(R.id.button_0_2);
+        button_[1][0] = (Button) findViewById(R.id.button_1_0);
+        button_[1][1] = (Button) findViewById(R.id.button_1_1);
+        button_[1][2] = (Button) findViewById(R.id.button_1_2);
+        button_[2][0] = (Button) findViewById(R.id.button_2_0);
+        button_[2][1] = (Button) findViewById(R.id.button_2_1);
+        button_[2][2] = (Button) findViewById(R.id.button_2_2);
+        score_label_ = (TextView) findViewById(R.id.label_sc);
+        score_label_.setText("Score: ");
 
         for (int i = 0; i < 3; i++) {
             for (int y = 0; y < 3; y++) {
-                button[i][y].setOnClickListener(this);
+                button_[i][y].setOnClickListener(this);
             }
         }
 
     }
 
-    TicTacToeSettings callColor = new TicTacToeSettings();
-    String hex_color_sign_1 = String.format("#%06X", (0xFFFFFF & callColor.getColor()));
-    String hex_color_sign_2 = String.format("#%06X", (0xFFFFFF & callColor.getColor() - 20000));
+    TicTacToeSettings call_color = new TicTacToeSettings();
+    String hex_color_sign_1 = String.format("#%06X", (0xFFFFFF & call_color.getColor()));
+    String hex_color_sign_2 = String.format("#%06X", (0xFFFFFF & call_color.getColor() - 20000));
 
     public void onClick(View v) {
 
 
-        click++;
-        score_label.setText("Score: " + getScore());
+        click_++;
+        score_label_.setText("Score: " + getScore());
 
         switch (v.getId()) {
 
             case R.id.button_0_0:
-                button[0][0].setTextColor(Color.parseColor(hex_color_sign_1));
-                if (click % 2 == 0)
-                    button[0][0].setTextColor(Color.parseColor(hex_color_sign_2));
-                button[0][0].setText(getRightValue());
-                button[0][0].setEnabled(false);
+                button_[0][0].setTextColor(Color.parseColor(hex_color_sign_1));
+                if (click_ % 2 == 0)
+                    button_[0][0].setTextColor(Color.parseColor(hex_color_sign_2));
+                button_[0][0].setText(getRightValue());
+                button_[0][0].setEnabled(false);
                 break;
             case R.id.button_0_1:
-                button[0][1].setTextColor(Color.parseColor(hex_color_sign_1));
-                if (click % 2 == 0)
-                    button[0][1].setTextColor(Color.parseColor(hex_color_sign_2));
-                button[0][1].setText(getRightValue());
-                button[0][1].setEnabled(false);
+                button_[0][1].setTextColor(Color.parseColor(hex_color_sign_1));
+                if (click_ % 2 == 0)
+                    button_[0][1].setTextColor(Color.parseColor(hex_color_sign_2));
+                button_[0][1].setText(getRightValue());
+                button_[0][1].setEnabled(false);
                 break;
             case R.id.button_0_2:
-                button[0][2].setTextColor(Color.parseColor(hex_color_sign_1));
-                if (click % 2 == 0)
-                    button[0][2].setTextColor(Color.parseColor(hex_color_sign_2));
-                button[0][2].setText(getRightValue());
-                button[0][2].setEnabled(false);
+                button_[0][2].setTextColor(Color.parseColor(hex_color_sign_1));
+                if (click_ % 2 == 0)
+                    button_[0][2].setTextColor(Color.parseColor(hex_color_sign_2));
+                button_[0][2].setText(getRightValue());
+                button_[0][2].setEnabled(false);
                 break;
             case R.id.button_1_0:
-                button[1][0].setTextColor(Color.parseColor(hex_color_sign_1));
-                if (click % 2 == 0)
-                    button[1][0].setTextColor(Color.parseColor(hex_color_sign_2));
-                button[1][0].setText(getRightValue());
-                button[1][0].setEnabled(false);
+                button_[1][0].setTextColor(Color.parseColor(hex_color_sign_1));
+                if (click_ % 2 == 0)
+                    button_[1][0].setTextColor(Color.parseColor(hex_color_sign_2));
+                button_[1][0].setText(getRightValue());
+                button_[1][0].setEnabled(false);
                 break;
             case R.id.button_1_1:
-                button[1][1].setTextColor(Color.parseColor(hex_color_sign_1));
-                if (click % 2 == 0)
-                    button[1][1].setTextColor(Color.parseColor(hex_color_sign_2));
-                button[1][1].setText(getRightValue());
-                button[1][1].setEnabled(false);
+                button_[1][1].setTextColor(Color.parseColor(hex_color_sign_1));
+                if (click_ % 2 == 0)
+                    button_[1][1].setTextColor(Color.parseColor(hex_color_sign_2));
+                button_[1][1].setText(getRightValue());
+                button_[1][1].setEnabled(false);
                 break;
             case R.id.button_1_2:
-                button[1][2].setTextColor(Color.parseColor(hex_color_sign_1));
-                if (click % 2 == 0)
-                    button[1][2].setTextColor(Color.parseColor(hex_color_sign_2));
-                button[1][2].setText(getRightValue());
-                button[1][2].setEnabled(false);
+                button_[1][2].setTextColor(Color.parseColor(hex_color_sign_1));
+                if (click_ % 2 == 0)
+                    button_[1][2].setTextColor(Color.parseColor(hex_color_sign_2));
+                button_[1][2].setText(getRightValue());
+                button_[1][2].setEnabled(false);
                 break;
             case R.id.button_2_0:
-                button[2][0].setTextColor(Color.parseColor(hex_color_sign_1));
-                if (click % 2 == 0)
-                    button[2][0].setTextColor(Color.parseColor(hex_color_sign_2));
-                button[2][0].setText(getRightValue());
-                button[2][0].setEnabled(false);
+                button_[2][0].setTextColor(Color.parseColor(hex_color_sign_1));
+                if (click_ % 2 == 0)
+                    button_[2][0].setTextColor(Color.parseColor(hex_color_sign_2));
+                button_[2][0].setText(getRightValue());
+                button_[2][0].setEnabled(false);
                 break;
             case R.id.button_2_1:
-                button[2][1].setTextColor(Color.parseColor(hex_color_sign_1));
-                if (click % 2 == 0)
-                    button[2][1].setTextColor(Color.parseColor(hex_color_sign_2));
-                button[2][1].setText(getRightValue());
-                button[2][1].setEnabled(false);
+                button_[2][1].setTextColor(Color.parseColor(hex_color_sign_1));
+                if (click_ % 2 == 0)
+                    button_[2][1].setTextColor(Color.parseColor(hex_color_sign_2));
+                button_[2][1].setText(getRightValue());
+                button_[2][1].setEnabled(false);
                 break;
             case R.id.button_2_2:
-                button[2][2].setTextColor(Color.parseColor(hex_color_sign_1));
-                if (click % 2 == 0)
-                    button[2][2].setTextColor(Color.parseColor(hex_color_sign_2));
-                button[2][2].setText(getRightValue());
-                button[2][2].setEnabled(false);
+                button_[2][2].setTextColor(Color.parseColor(hex_color_sign_1));
+                if (click_ % 2 == 0)
+                    button_[2][2].setTextColor(Color.parseColor(hex_color_sign_2));
+                button_[2][2].setText(getRightValue());
+                button_[2][2].setEnabled(false);
                 break;
         }
 
         if (winningPosition()) {
             for (int row = 0; row < 3; row++) {
                 for (int col = 0; col < 3; col++) {
-                    button[row][col].setEnabled(false);
+                    button_[row][col].setEnabled(false);
                 }
             }
         }
-        if (Autoplayer) {
+        if (autoplayer_) {
             startAutoplayer();
         }
 
@@ -152,14 +152,14 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener {
 
     public void startAutoplayer() {
 
-        if (click < 9 && !end) {
-            click++;
-            autoplayerclick();
+        if (click_ < 9 && !end_) {
+            click_++;
+            autoplayerClick();
 
             if (winningPosition()) {
                 for (int row = 0; row < 3; row++) {
                     for (int col = 0; col < 3; col++) {
-                        button[row][col].setEnabled(false);
+                        button_[row][col].setEnabled(false);
                     }
                 }
 
@@ -173,24 +173,24 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener {
         return number;
     }
 
-    public void autoplayerclick() {
+    public void autoplayerClick() {
         int x = Generator();
         int y = Generator();
-        while (!button[x][y].isEnabled()) {
+        while (!button_[x][y].isEnabled()) {
             x = Generator();
             y = Generator();
         }
-        button[x][y].setTextColor(Color.parseColor(hex_color_sign_2));
-        if (click % 2 == 0)
-            button[0][0].setTextColor(Color.parseColor(hex_color_sign_1));
-        button[x][y].setText(getRightValue());
-        button[x][y].setEnabled(false);
+        button_[x][y].setTextColor(Color.parseColor(hex_color_sign_2));
+        if (click_ % 2 == 0)
+            button_[0][0].setTextColor(Color.parseColor(hex_color_sign_1));
+        button_[x][y].setText(getRightValue());
+        button_[x][y].setEnabled(false);
     }
 
     public String getRightValue() {
-        TicTacToeSettings callSign = new TicTacToeSettings();
-        boolean x_or_y = callSign.getSign();
-        if (click % 2 == 0) {
+        TicTacToeSettings call_sign = new TicTacToeSettings();
+        boolean x_or_y = call_sign.getSign();
+        if (click_ % 2 == 0) {
             if (x_or_y) {
                 return "O";
             } else {
@@ -206,36 +206,36 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener {
     }
 
     public boolean winningPosition() {
-        String[][] Board = new String[3][3];
+        String[][] board = new String[3][3];
 
         int row;
         int col;
         for (row = 0; row < 3; row++) {
             for (col = 0; col < 3; col++) {
-                Board[row][col] = button[row][col].getText().toString();
+                board[row][col] = button_[row][col].getText().toString();
             }
         }
 
         for (row = 0; row < 3; row++) {
-            if (Board[row][0].equals(Board[row][1]) && Board[row][0].equals(Board[row][2])
-                    && !Board[row][0].equals("")) {
+            if (board[row][0].equals(board[row][1]) && board[row][0].equals(board[row][2])
+                    && !board[row][0].equals("")) {
                 return getWinner();
             }
         }
         for (col = 0; col < 3; col++) {
-            if (Board[0][col].equals(Board[1][col]) && Board[0][col].equals(Board[2][col])
-                    && !Board[0][col].equals("")) {
+            if (board[0][col].equals(board[1][col]) && board[0][col].equals(board[2][col])
+                    && !board[0][col].equals("")) {
                 return getWinner();
             }
         }
 
-        if (Board[0][0].equals(Board[1][1]) && Board[0][0].equals(Board[2][2])
-                && !Board[0][0].equals("")) {
+        if (board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2])
+                && !board[0][0].equals("")) {
             return getWinner();
         }
 
-        if (Board[0][2].equals(Board[1][1]) && Board[0][2].equals(Board[2][0])
-                && !Board[0][2].equals("")) {
+        if (board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][0])
+                && !board[0][2].equals("")) {
             return getWinner();
         }
 
@@ -246,7 +246,7 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener {
     private boolean getWinner() {
 
 
-        if (click % 2 == 0) {
+        if (click_ % 2 == 0) {
             return gameIsOver(1);
         } else {
             return gameIsOver(2);
@@ -255,7 +255,7 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener {
     }
 
     private boolean drawingPosition() {
-        if (click == 9) {
+        if (click_ == 9) {
             gameIsOver(0);
         }
         return false;
@@ -264,7 +264,7 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener {
 
 
     private boolean gameIsOver(int winner) {
-        end = true;
+        end_ = true;
         String message = getMessage(winner);
 
         if (message != "ERROR") {
@@ -286,23 +286,23 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener {
 
     private String getMessage (int winner){
         if (winner == 1){
-            if(Autoplayer){
-                score = score - 2;
-                score_label.setText("Score: "+getScore());
+            if(autoplayer_){
+                score_ = score_ - 2;
+                score_label_.setText("Score: "+getScore());
                 return "Computer won!";
             } else {
-                score = score - 2;
-                score_label.setText("Score: "+getScore());
+                score_ = score_ - 2;
+                score_label_.setText("Score: "+getScore());
                 return "Player 2 won! :)";
             }
         } else if (winner == 2){
-            if(Autoplayer){
-                score++;
-                score_label.setText("Score: "+getScore());
+            if(autoplayer_){
+                score_++;
+                score_label_.setText("Score: "+getScore());
                 return "You won! :)";
             } else {
-                score++;
-                score_label.setText("Score: "+getScore());
+                score_++;
+                score_label_.setText("Score: "+getScore());
                 return "Player 1 won! :)";
             }
         } else if (winner == 0){
@@ -328,12 +328,12 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener {
         {
 
             case R.id.auto_player:
-                Autoplayer = true;
+                autoplayer_ = true;
                 resetGame();
                 return true;
 
             case R.id.two_player:
-                Autoplayer = false;
+                autoplayer_ = false;
                 resetGame();
                 return true;
 
@@ -351,20 +351,20 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener {
     {
         Intent intent = new Intent(this, TicTacToeSettings.class);
         startActivity(intent);
-        click = 0;
+        click_ = 0;
         finish();
     }
 
     public void resetGame()
     {
-        click = 0;
-        end = false;
+        click_ = 0;
+        end_ = false;
         for (int i = 0; i < 3; i++)
         {
             for (int y = 0; y < 3; y++)
             {
-                button[i][y].setEnabled(true);
-                button[i][y].setText("");
+                button_[i][y].setEnabled(true);
+                button_[i][y].setText("");
             }
         }
     }
@@ -372,6 +372,6 @@ public class TicTacToe extends AppCompatActivity implements OnClickListener {
 
     public int getScore()
     {
-        return score;
+        return score_;
     }
 }

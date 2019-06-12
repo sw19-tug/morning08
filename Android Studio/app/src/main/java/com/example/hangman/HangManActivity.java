@@ -36,8 +36,8 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
     private TextView score;
     private TextView guesses;
     private TextView timer;
-    private long timeLeft = 600000;
-    private long timeToGuess = 600000;
+    private long timeLeft = 60000;
+    private long timeToGuess = 60000;
     private CountDownTimer cdTimer;
 
     @Override
@@ -222,6 +222,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 hangman.initialize();
                 refreshScreen();
                 timeLeft = timeToGuess;
+                endTimer();
                 startTimer();
 
                 break;
@@ -273,6 +274,11 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         outputTime += sec;
 
         timer.setText(outputTime);
+    }
+
+    void endTimer() {
+        cdTimer.cancel();
+        cdTimer = null;
     }
 
 }

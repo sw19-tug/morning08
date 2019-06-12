@@ -39,14 +39,14 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
     private ImageView iv_left_leg;
     private ImageView iv_right_leg;
     private EditText input;
-    private TextView output;
-    private TextView score;
-    private TextView guesses;
-    private String[] st_words = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
+    private TextView tv_output;
+    private TextView tv_score;
+    private TextView tv_guesses;
+    private String[] words_ = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
 
     private TextView tv_timer;
-    private long time_left = 60000;
-    private long time_to_guess = 60000;
+    private long time_left_ = 60000;
+    private long time_to_guess_ = 60000;
     private CountDownTimer cdt_timer;
 
 
@@ -61,7 +61,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         btn_retry = findViewById(R.id.btn_retry);
         btn_tip = findViewById(R.id.btn_tip);
         input = (EditText) findViewById(R.id.txtInput);
-        output = (TextView) findViewById(R.id.lblOutput);
+        tv_output = (TextView) findViewById(R.id.lblOutput);
 
         iv_rope = (ImageView) findViewById(R.id.imageViewRope);
         iv_face = (ImageView) findViewById(R.id.imageViewFace);
@@ -71,8 +71,8 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         iv_left_leg = (ImageView) findViewById(R.id.imageViewLeftLeg);
         iv_right_hand = (ImageView) findViewById(R.id.imageViewRightHand);
         iv_right_leg = (ImageView) findViewById(R.id.imageViewRightLeg);
-        score = (TextView) findViewById(R.id.lblScore);
-        guesses = (TextView) findViewById(R.id.lblGuesses);
+        tv_score = (TextView) findViewById(R.id.lblScore);
+        tv_guesses = (TextView) findViewById(R.id.lblGuesses);
         tv_timer = (TextView) findViewById(R.id.lblTimer);
 
         btn_start.setOnClickListener(this);
@@ -93,10 +93,10 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         btn_retry.setVisibility(View.INVISIBLE);
         btn_tip.setVisibility(View.INVISIBLE);
 
-        score.setVisibility(View.INVISIBLE);
-        guesses.setVisibility(View.INVISIBLE);
+        tv_score.setVisibility(View.INVISIBLE);
+        tv_guesses.setVisibility(View.INVISIBLE);
         input.setVisibility(View.INVISIBLE);
-        output.setVisibility(View.INVISIBLE);
+        tv_output.setVisibility(View.INVISIBLE);
         Context context = this;
 
 
@@ -107,21 +107,21 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         }
 
 
-        for (int i = 0; i < st_words.length; i++) {
-            words_to_file(st_words[i]);
+        for (int i = 0; i < words_.length; i++) {
+            words_to_file(words_[i]);
         }
 
 
 
-        hangman = new HangMan(st_words, context);
+        hangman = new HangMan(words_, context);
 
     }
 
     // load the score, output & guesses
     private void refreshScreen() {
-        score.setText("Score: " + hangman.getScore());
-        guesses.setText("Guesses: " + hangman.getGuessesLeft());
-        output.setText(hangman.getOutput());
+        tv_score.setText("Score: " + hangman.getScore());
+        tv_guesses.setText("Guesses: " + hangman.getGuessesLeft());
+        tv_output.setText(hangman.getOutput());
         input.setText("");
 
         switch (hangman.getGuessesLeft()) {
@@ -183,10 +183,10 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 btn_check.setVisibility(View.VISIBLE);
                 btn_retry.setVisibility(View.VISIBLE);
                 btn_tip.setVisibility(View.VISIBLE);
-                score.setVisibility(View.VISIBLE);
-                guesses.setVisibility(View.VISIBLE);
+                tv_score.setVisibility(View.VISIBLE);
+                tv_guesses.setVisibility(View.VISIBLE);
                 input.setVisibility(View.VISIBLE);
-                output.setVisibility(View.VISIBLE);
+                tv_output.setVisibility(View.VISIBLE);
                 hangman.initialize();
 
                 refreshScreen();
@@ -245,7 +245,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 hangman.setScore(hangman.getScore()-2);
                 hangman.initialize();
                 refreshScreen();
-                time_left = time_to_guess;
+                time_left_ = time_to_guess_;
                 endTimer();
                 startTimer();
 
@@ -283,7 +283,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
 
 
     public boolean words_to_file(String word){
-        System.out.println(st_words);
+        System.out.println(words_);
         Context context = this;
         try {
             File path = context.getFilesDir();
@@ -352,11 +352,11 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
     void startTimer() {
 
 
-        cdt_timer = new CountDownTimer(time_left, 1000) {
+        cdt_timer = new CountDownTimer(time_left_, 1000) {
             @Override
             public void onTick(long millisUntilFinished)
             {
-                time_left = millisUntilFinished;
+                time_left_ = millisUntilFinished;
                 updateTimer();
 
             }
@@ -372,7 +372,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 btn_start.setVisibility(View.VISIBLE);
                 hangman.wordGuessed();
                 hangman.setScore(hangman.getScore()-2);
-                time_left = time_to_guess;
+                time_left_ = time_to_guess_;
                 refreshScreen();
             }
         }.start();
@@ -380,8 +380,8 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
 
 
     void updateTimer() {
-        int min = (int) time_left / 600000;
-        int sec = (int) time_left % 600000 / 1000;
+        int min = (int) time_left_ / 600000;
+        int sec = (int) time_left_ % 600000 / 1000;
 
         String outputTime;
 

@@ -134,8 +134,8 @@ public class MainActivityHangManTest
         for(int i = 0; i < testOutputarray.length; i++) {
             testOutputarray[i] = '_';
         }
-        hangman.setOutputarray(testOutputarray);
-        hangman.setSearchedword(word);
+        hangman.setOutputArray(testOutputarray);
+        hangman.setSearchedWord(word);
 
         for(int i = 9; i > 0; i--) {
             hangman.checkLetter(input);

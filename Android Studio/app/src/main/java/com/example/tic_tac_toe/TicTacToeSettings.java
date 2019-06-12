@@ -24,27 +24,27 @@ public class TicTacToeSettings extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tic_tac_toe_settings);
 
-        Button chooseColor = findViewById(R.id.chooseColorButton);
-        final Button buttonChooseSign = findViewById(R.id.buttonChooseSign);
-        buttonChooseSign.setOnClickListener(new View.OnClickListener()
+        Button choose_color = findViewById(R.id.button_Choose_Color);
+        final Button button_choose_sign = findViewById(R.id.button_Choose_Sign);
+        button_choose_sign.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                if(buttonChooseSign.getText() == "X")
+                if(button_choose_sign.getText() == "X")
                 {
-                    buttonChooseSign.setText("O");
+                    button_choose_sign.setText("O");
                     check_x_or_y = false;
                 }
                 else
                 {
-                    buttonChooseSign.setText("X");
+                    button_choose_sign.setText("X");
                     check_x_or_y = true;
                 }
             }
         });
 
-        chooseColor.setOnClickListener(new View.OnClickListener()
+        choose_color.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -53,8 +53,8 @@ public class TicTacToeSettings extends AppCompatActivity
             }
         });
 
-        Button startGame = findViewById(R.id.startGameButton);
-        startGame.setOnClickListener(new View.OnClickListener()
+        Button start_game = findViewById(R.id.button_Start_Game);
+        start_game.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -64,12 +64,12 @@ public class TicTacToeSettings extends AppCompatActivity
         });
     }
 
-    private static int signColor;
+    private static int sign_color_;
 
     public void openChooseColor()
     {
-        int defaultColor = ContextCompat.getColor(TicTacToeSettings.this, R.color.colorPrimary);
-        AmbilWarnaDialog ChooseColor = new AmbilWarnaDialog(this, defaultColor, new AmbilWarnaDialog.OnAmbilWarnaListener()
+        int default_color = ContextCompat.getColor(TicTacToeSettings.this, R.color.colorPrimary);
+        AmbilWarnaDialog ChooseColor = new AmbilWarnaDialog(this, default_color, new AmbilWarnaDialog.OnAmbilWarnaListener()
         {
 
             @Override
@@ -81,7 +81,7 @@ public class TicTacToeSettings extends AppCompatActivity
             @Override
             public void onOk(AmbilWarnaDialog dialog, int color)
             {
-                signColor = color;
+                sign_color_ = color;
 
             }
         });
@@ -100,7 +100,7 @@ public class TicTacToeSettings extends AppCompatActivity
 
     public static Integer getColor()
     {
-        return signColor;
+        return sign_color_;
     }
 
     private static boolean check_x_or_y = true;

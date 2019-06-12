@@ -3,6 +3,7 @@ package com.example.hangman;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -10,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,12 +18,14 @@ import android.widget.Toast;
 
 import com.example.R;
 
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Timer;
 
 
 public class HangManActivity extends AppCompatActivity implements View.OnClickListener {
@@ -45,8 +47,13 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
     private TextView output;
     private TextView score;
     private TextView guesses;
-    private Chronometer chronometer;
     private String[] words = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
+
+    private TextView timer;
+    private long timeLeft = 60000;
+    private long timeToGuess = 60000;
+    private CountDownTimer cdTimer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +67,6 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         tipButton = findViewById(R.id.btn_tip);
         input = (EditText) findViewById(R.id.txtInput);
         output = (TextView) findViewById(R.id.lblOutput);
-        chronometer = (Chronometer) findViewById(R.id.stop_Watch);
 
         ropeImage = (ImageView) findViewById(R.id.imageViewRope);
         faceImage = (ImageView) findViewById(R.id.imageViewFace);
@@ -72,7 +78,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
         rightLegImage = (ImageView) findViewById(R.id.imageViewRightLeg);
         score = (TextView) findViewById(R.id.lblScore);
         guesses = (TextView) findViewById(R.id.lblGuesses);
-
+        timer = (TextView) findViewById(R.id.lblTimer);
 
         startButton.setOnClickListener(this);
         checkButton.setOnClickListener(this);
@@ -170,6 +176,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 if(startButton.getText() == "Next Word"){
                     hangman.initialize();
                     refreshScreen();
+                    startTimer();
                     checkButton.setVisibility(View.VISIBLE);
                     retryButton.setVisibility(View.VISIBLE);
                     tipButton.setVisibility(View.VISIBLE);
@@ -188,9 +195,7 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 hangman.initialize();
 
                 refreshScreen();
-                long systemCurrTime = SystemClock.elapsedRealtime();
-                chronometer.setBase(systemCurrTime);
-                chronometer.start();
+                startTimer();
 
                 break;
 
@@ -200,9 +205,8 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                         Toast.makeText(this,"This letter is a part of the searched word!",Toast.LENGTH_SHORT).show();
                         if(hangman.wordGuessed()){
                             Toast.makeText(this,"Word Guessed!",Toast.LENGTH_SHORT).show();
-                            int elapsedTime = (int) (SystemClock.elapsedRealtime() - chronometer.getBase());
-
-                            Toast.makeText(this, "You needed " + Integer.toString(elapsedTime/1000) + " seconds ! :)",Toast.LENGTH_SHORT).show();
+                            cdTimer.cancel();
+                            cdTimer = null;
                             hangman.initialize();
 
                         }
@@ -246,6 +250,9 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
                 hangman.setScore(hangman.getScore()-2);
                 hangman.initialize();
                 refreshScreen();
+                timeLeft = timeToGuess;
+                endTimer();
+                startTimer();
 
                 break;
 
@@ -346,5 +353,55 @@ public class HangManActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+
+    void startTimer() {
+
+
+        cdTimer = new CountDownTimer(timeLeft, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished)
+            {
+                timeLeft = millisUntilFinished;
+                updateTimer();
+
+            }
+
+            @Override
+            public void onFinish()
+            {
+                Toast.makeText(HangManActivity.this, "Maybe next Time ! :)", Toast.LENGTH_SHORT).show();
+                startButton.setText("Next Word");
+                checkButton.setVisibility(View.INVISIBLE);
+                retryButton.setVisibility(View.INVISIBLE);
+                tipButton.setVisibility(View.INVISIBLE);
+                startButton.setVisibility(View.VISIBLE);
+                hangman.wordGuessed();
+                hangman.setScore(hangman.getScore()-2);
+                timeLeft = timeToGuess;
+                refreshScreen();
+            }
+        }.start();
+    }
+
+
+    void updateTimer() {
+        int min = (int) timeLeft / 600000;
+        int sec = (int) timeLeft % 600000 / 1000;
+
+        String outputTime;
+
+        outputTime = "" + min + ":";
+        if (sec < 10)
+            outputTime += "0";
+
+        outputTime += sec;
+
+        timer.setText(outputTime);
+    }
+
+    void endTimer() {
+        cdTimer.cancel();
+        cdTimer = null;
+    }
 
 }

@@ -5,6 +5,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -26,9 +27,12 @@ public class FourInARowActivity extends AppCompatActivity implements View.OnClic
 
     private FourInARow fourinarow;
     private int[][] tokenid;
+    private int player1_color;
+    private int player2_color;
+    private  boolean round_over;
 
     private TextView lbl_scoreuser1, lbl_scoreuser2;
-    private GridLayout grid;
+    private GridLayout grd_grid;
     private Button btn_start;
 
 
@@ -37,6 +41,8 @@ public class FourInARowActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fourinarow);
 
+        round_over = false;
+        fourinarow = new FourInARow();
         tokenid = new int[][]{
                 {R.id.ImageView_0_0, R.id.ImageView_0_1, R.id.ImageView_0_2, R.id.ImageView_0_3, R.id.ImageView_0_4, R.id.ImageView_0_5, R.id.ImageView_0_6,},
                 {R.id.ImageView_1_0, R.id.ImageView_1_1, R.id.ImageView_1_2, R.id.ImageView_1_3, R.id.ImageView_1_4, R.id.ImageView_1_5, R.id.ImageView_1_6,},
@@ -46,11 +52,10 @@ public class FourInARowActivity extends AppCompatActivity implements View.OnClic
                 {R.id.ImageView_5_0, R.id.ImageView_5_1, R.id.ImageView_5_2, R.id.ImageView_5_3, R.id.ImageView_5_4, R.id.ImageView_5_5, R.id.ImageView_5_6,}
         };
 
-        grid = findViewById(R.id.Grid);
-        btn_start = findViewById(R.id.btn_Start);
-        lbl_scoreuser1 = findViewById(R.id.lbl_ScoreUser_1);
-        lbl_scoreuser2 = findViewById(R.id.lbl_ScoreUser_2);
-
+        grd_grid = findViewById(R.id.GridLayout_Grid);
+        btn_start = findViewById(R.id.Button_Start);
+        lbl_scoreuser1 = findViewById(R.id.Label_ScoreUser_1);
+        lbl_scoreuser2 = findViewById(R.id.Label_ScoreUser_2);
 
         btn_start.setOnClickListener(this);
         findViewById(tokenid[5][0]).setOnClickListener(this);
@@ -61,28 +66,38 @@ public class FourInARowActivity extends AppCompatActivity implements View.OnClic
         findViewById(tokenid[5][5]).setOnClickListener(this);
         findViewById(tokenid[5][6]).setOnClickListener(this);
 
-        grid.setVisibility(View.INVISIBLE);
+        grd_grid.setVisibility(View.INVISIBLE);
+        player1_color = getResources().getColor(R.color.colorRed);
+        player2_color = getResources().getColor(R.color.colorBlue);
+
+        lbl_scoreuser1.setText(fourinarow.getScore_player1());
+        lbl_scoreuser2.setText(fourinarow.getScore_player2());
         lbl_scoreuser1.setVisibility(View.INVISIBLE);
         lbl_scoreuser2.setVisibility(View.INVISIBLE);
+        lbl_scoreuser1.setTextColor(player1_color);
+        lbl_scoreuser2.setTextColor(player2_color);
 
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.btn_Start:
+            case R.id.Button_Start:
                 btn_start.setText("Reset");
-                grid.setVisibility(View.VISIBLE);
+                grd_grid.setVisibility(View.VISIBLE);
                 lbl_scoreuser1.setVisibility(View.VISIBLE);
                 lbl_scoreuser2.setVisibility(View.VISIBLE);
-                fourinarow = new FourInARow();
+
                 if(btn_start.getText() == "Reset")
+                {
+                    round_over = false;
                     resetUI();
+                }
                 break;
             default:
                 for(int column = 0; column < GRID_WIDTH; column++) {
 
-                    if(v.getId() == tokenid[5][column]) {
+                    if(v.getId() == tokenid[5][column] && !round_over) {
                         System.out.println("Row "+column+"!");
 
                         int row = fourinarow.setToken(column);
@@ -95,15 +110,25 @@ public class FourInARowActivity extends AppCompatActivity implements View.OnClic
                             GradientDrawable backgroundGradient = (GradientDrawable) findViewById(tokenid[row][column]).getBackground();
                             if(fourinarow.selectPlayer() == PLAYER_ONE)
                             {
-                                backgroundGradient.setColor(getResources().getColor(R.color.colorLime));
+                                //Player One
+                                backgroundGradient.setColor(player1_color);
                                 if(fourinarow.checkForInARow(PLAYER_ONE))
+                                {
+                                    lbl_scoreuser1.setText(fourinarow.getScore_player1());
+                                    round_over = true;
                                     Toast.makeText(this, "PLAYER ONE WIN!", Toast.LENGTH_SHORT).show();
+                                }
                             }
                             else
                             {
-                                backgroundGradient.setColor(getResources().getColor(R.color.colorBlue));
+                                //Player Two
+                                backgroundGradient.setColor(player2_color);
                                 if(fourinarow.checkForInARow(PLAYER_TWO))
+                                {
+                                    lbl_scoreuser2.setText(fourinarow.getScore_player2());
+                                    round_over = true;
                                     Toast.makeText(this, "PLAYER TWO WIN!", Toast.LENGTH_SHORT).show();
+                                }
                             }
 
                             break;

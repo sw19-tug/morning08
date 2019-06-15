@@ -1,12 +1,6 @@
 package com.example.fourinarow;
 
 
-
-
-import android.widget.ImageView;
-import android.widget.TextView;
-
-
 public class FourInARow {
 
     private int score_player1;
@@ -19,7 +13,6 @@ public class FourInARow {
     private final static int GRID_HEIGHT = 6;
     private final static int PLAYER_ONE = 1;
     private final static int PLAYER_TWO = 2;
-    private final static int EMPTY_FIELD = 0;
 
     // Constructor
     public FourInARow() {
@@ -88,6 +81,7 @@ public class FourInARow {
                     {
                         System.out.println("Player"+current_player+"won!");
                         played_rounds++;
+                        increaseScore(current_player);
                         return true;
                     }
                 }
@@ -103,6 +97,7 @@ public class FourInARow {
                     {
                         System.out.println("Player"+current_player+"won!");
                         played_rounds++;
+                        increaseScore(current_player);
                         return true;
                     }
                 }
@@ -120,6 +115,7 @@ public class FourInARow {
                     {
                         System.out.println("Player"+current_player+"won!");
                         played_rounds++;
+                        increaseScore(current_player);
                         return true;
                     }
                 }
@@ -137,6 +133,7 @@ public class FourInARow {
                     {
                         System.out.println("Player" + current_player + "won!");
                         played_rounds++;
+                        increaseScore(current_player);
                         return true;
                     }
                 }
@@ -148,4 +145,25 @@ public class FourInARow {
         return false;
     }
 
+    private void increaseScore(int current_player)
+    {
+        System.out.println("Increase Score PLayer"+ current_player);
+        grid =  new int[GRID_HEIGHT][GRID_WIDTH];
+        if (current_player == PLAYER_ONE)
+            score_player1++;
+        else if(current_player == PLAYER_TWO)
+            score_player2++;
+        else
+            System.out.println("unknown User!");
+    }
+
+    public String getScore_player1() {
+        System.out.println("Score player1: " + score_player1);
+        return Integer.toString(score_player1);
+    }
+
+    public String getScore_player2() {
+        System.out.println("Score player2: " + score_player2);
+        return Integer.toString(score_player2);
+    }
 }

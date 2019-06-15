@@ -173,7 +173,7 @@ public class MainActivityHangManTest
     public void testTimerExists()
     {
         onView(withId(R.id.btn_start)).perform(click());
-        onView(withId(R.id.stop_Watch)).check(matches(isDisplayed()));
+        onView(withId(R.id.lblTimer)).check(matches(isDisplayed()));
     }
 
     @Test

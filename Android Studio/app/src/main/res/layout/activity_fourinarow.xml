@@ -9,45 +9,48 @@
     tools:context="com.example.fourinarow.FourInARowActivity">
 
     <TextView
-        android:id="@+id/lbl_ScoreUser_1"
-        android:layout_width="160dp"
-        android:layout_height="37dp"
+        android:id="@+id/Label_ScoreUser_1"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/lbl_ScoreUser_2"
-        android:layout_width="160dp"
-        android:layout_height="37dp"
+        android:id="@+id/Label_ScoreUser_2"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_Start"
+        android:id="@+id/Button_Start"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="Start"
-        app:layout_constraintBottom_toTopOf="@+id/Grid"
+        app:layout_constraintBottom_toTopOf="@+id/GridLayout_Grid"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 
     <GridLayout
-        android:id="@+id/Grid"
+        android:id="@+id/GridLayout_Grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

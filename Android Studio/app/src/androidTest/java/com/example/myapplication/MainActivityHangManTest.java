@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
 
-import android.renderscript.ScriptGroup;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -10,18 +10,13 @@ import android.widget.TextView;
 import com.example.R;
 import com.example.hangman.HangMan;
 import com.example.hangman.HangManActivity;
-import com.example.hangman.HangManActivity;
-
-import com.example.R;
-
-import static org.junit.Assert.assertEquals;
-
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
@@ -97,6 +92,7 @@ public class MainActivityHangManTest
         onView(withId(R.id.btn_check)).check(matches(isDisplayed()));
         onView(withId(R.id.btn_retry)).check(matches(isDisplayed()));
     }
+
     @Test
     public void testWholeWordWithGraphic()
     {
@@ -127,7 +123,8 @@ public class MainActivityHangManTest
     @Test
     public void testEveryGraphic()
     {
-        HangMan hangman = new HangMan();
+        String[] words = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
+        HangMan hangman = new HangMan(words);
         String word = "apple";
         String input = "x";
 
@@ -137,8 +134,8 @@ public class MainActivityHangManTest
         for(int i = 0; i < testOutputarray.length; i++) {
             testOutputarray[i] = '_';
         }
-        hangman.setOutputarray(testOutputarray);
-        hangman.setSearchedword(word);
+        hangman.setOutputArray(testOutputarray);
+        hangman.setSearchedWord(word);
 
         for(int i = 9; i > 0; i--) {
             hangman.checkLetter(input);
@@ -171,5 +168,29 @@ public class MainActivityHangManTest
         onView(withId(R.id.lblOutput)).check(matches(not(withText(initialoutput))));
         onView(withId(R.id.lblScore)).check(matches(not(withText(initialscore))));
 
+    }
+    @Test
+    public void testTimerExists()
+    {
+        onView(withId(R.id.btn_start)).perform(click());
+        onView(withId(R.id.lblTimer)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testMenubManageWordsIcon(){
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
+        onView(withText("Manage Words")).perform(click());
+    }
+
+    @Test
+    public void testManageWordsItemVisible(){
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
+        onView(withText("Manage Words")).perform(click());
+        onView(withId(R.id.lbl_fix_words)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btn_return)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.lbl_varying_words)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.txtInput)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btn_delete)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.btn_add)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
     }
 }

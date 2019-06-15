@@ -51,17 +51,17 @@ public class MainActivityFourInARowTest {
     @Test
     public void testMainMenueButtonsVisible()
     {
-        onView(withId(R.id.btn_Start)).check(matches(isDisplayed()));
-        onView(withId(R.id.Grid)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.Button_Start)).check(matches(isDisplayed()));
+        onView(withId(R.id.GridLayout_Grid)).check(matches(not(isDisplayed())));
     }
 
     @Test
     public void testGameElementsButtonsVisible()
     {
-        onView(withId(R.id.btn_Start)).perform(click());
-        onView(withId(R.id.Grid)).check(matches(isDisplayed()));
+        onView(withId(R.id.Button_Start)).perform(click());
+        onView(withId(R.id.GridLayout_Grid)).check(matches(isDisplayed()));
 
-        Button button = mainActivityTestRule.getActivity().findViewById(R.id.btn_Start);
+        Button button = mainActivityTestRule.getActivity().findViewById(R.id.Button_Start);
         String actualText = button.getText().toString();
         Assert.assertEquals(actualText, "Reset");
 
@@ -70,7 +70,7 @@ public class MainActivityFourInARowTest {
     @Test
     public void testSetToken()
     {
-        onView(withId(R.id.btn_Start)).perform(click());
+        onView(withId(R.id.Button_Start)).perform(click());
         onView(withId(R.id.ImageView_5_0)).perform((click()));
         onView(withId(R.id.ImageView_5_0)).perform((click()));
         onView(withId(R.id.ImageView_5_0)).perform((click()));
@@ -79,8 +79,54 @@ public class MainActivityFourInARowTest {
         GradientDrawable backgroundGradient2 = (GradientDrawable) mainActivityTestRule.getActivity().findViewById(R.id.ImageView_2_0).getBackground();
 
         Assert.assertEquals(backgroundGradient0.getColor(), backgroundGradient2.getColor());
+    }
 
+    @Test
+    public void testInitialScore()
+    {
+        String expexted_value = "0";
+
+        onView(withId(R.id.Button_Start)).perform(click());
+        onView(withId(R.id.Label_ScoreUser_1)).check(matches(isDisplayed()));
+        onView(withId(R.id.Label_ScoreUser_2)).check(matches(isDisplayed()));
+
+        TextView lbl_score_player1 = mainActivityTestRule.getActivity().findViewById(R.id.Label_ScoreUser_1);
+        TextView lbl_score_player2 = mainActivityTestRule.getActivity().findViewById(R.id.Label_ScoreUser_1);
+        String actual_text_player1 = lbl_score_player1.getText().toString();
+        String actual_text_player2 = lbl_score_player2.getText().toString();
+
+        Assert.assertEquals(actual_text_player1, actual_text_player2);
+        Assert.assertEquals(actual_text_player1, expexted_value);
+    }
+
+    @Test
+    public void testIncreaseScore()
+    {
+        String expexted_value_user1 = "1";
+        String expexted_value_user2 = "0";
+
+
+        onView(withId(R.id.Button_Start)).perform(click());
+        onView(withId(R.id.Label_ScoreUser_1)).check(matches(isDisplayed()));
+        onView(withId(R.id.Label_ScoreUser_2)).check(matches(isDisplayed()));
+
+        for(int i = 0; i<3;i++)
+        {
+            onView(withId(R.id.ImageView_5_0)).perform((click()));
+            onView(withId(R.id.ImageView_5_1)).perform((click()));
+        }
+        onView(withId(R.id.ImageView_5_0)).perform((click()));
+
+
+        TextView lbl_score_player1 = mainActivityTestRule.getActivity().findViewById(R.id.Label_ScoreUser_1);
+        TextView lbl_score_player2 = mainActivityTestRule.getActivity().findViewById(R.id.Label_ScoreUser_2);
+        String actual_text_player1 = lbl_score_player1.getText().toString();
+        String actual_text_player2 = lbl_score_player2.getText().toString();
+
+        Assert.assertEquals(actual_text_player1, expexted_value_user1);
+        Assert.assertEquals(actual_text_player2, expexted_value_user2);
 
     }
+
 
 }

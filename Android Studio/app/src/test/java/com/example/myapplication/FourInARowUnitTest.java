@@ -22,6 +22,7 @@ public class FourInARowUnitTest {
 
         Assert.assertEquals(expected, actual);
     }
+
     @Test
     public void testSetTokenOverflow()
     {
@@ -42,6 +43,38 @@ public class FourInARowUnitTest {
         Assert.assertEquals(expected_upper_threshold, actual);
     }
 
+    @Test
+    public void testInitScore()
+    {
+        String expected = fourInARow.getScore_player1();
+        String actual = fourInARow.getScore_player2();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testIncreaseScore()
+    {
+        final int PLAYER_ONE = 1;
+        final int PLAYER_TWO = 2;
+
+        String expected = "1";
+
+        for(int i = 0; i<3;i++)
+        {
+            fourInARow.setToken(0);
+            fourInARow.checkForInARow(PLAYER_ONE);
+            fourInARow.setToken(1);
+            fourInARow.checkForInARow(PLAYER_TWO);
+        }
+
+        fourInARow.setToken(0);
+        fourInARow.checkForInARow(PLAYER_ONE);
+
+        String actual = fourInARow.getScore_player1();
+
+        Assert.assertEquals(expected, actual);
+    }
 
 
 }

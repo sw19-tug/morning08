@@ -9,12 +9,12 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="16dp">
 
 
         <Button
-            android:id="@+id/btnPlayBox"
+            android:id="@+id/Button_PlayBox"
             android:layout_width="1dp"
             android:layout_height="1dp"
             android:layout_margin="0dp"
@@ -23,15 +23,23 @@
             android:translationX="20dp" />
 
         <Button
-            android:id="@+id/btn_startgame"
+            android:id="@+id/Button_StartGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/start_game"
             android:translationY="30dp" />
 
+        <Button
+            android:id="@+id/Button_Continue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/continue_game"
+            android:translationY="80dp" />
+
         <TextView
-            android:id="@+id/tv_gamelost"
+            android:id="@+id/TextView_GameLost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="clip_horizontal|center"
@@ -48,7 +56,7 @@
             app:fontFamily="sans-serif-medium" />
 
         <Button
-            android:id="@+id/btnBlockCol"
+            android:id="@+id/Button_ChoosePlayBoxColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
@@ -58,7 +66,7 @@
             android:translationY="-60dp" />
 
         <Button
-            android:id="@+id/btnBackCol"
+            android:id="@+id/Button_ChooseBackgroundColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
@@ -82,12 +90,49 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp">
 
+            <TextView
+                android:id="@+id/TextView_Score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|top"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_horizontal|top"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+
+                android:textColor="@android:color/holo_orange_dark"
+                android:textStyle="bold|italic"
+                app:fontFamily="serif"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/TextView_Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:gravity="center_horizontal|top"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+
+                android:textColor="@android:color/holo_orange_dark"
+                android:textStyle="bold|italic"
+                app:fontFamily="serif"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <Button
-                android:id="@+id/btnEndGame"
+                android:id="@+id/Button_EndGame"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="528dp"
+                android:layout_gravity="bottom"
                 android:layout_margin="0dp"
-                android:background="#ffffff"
+                android:background="#654321"
                 android:padding="0dp" />
 
 

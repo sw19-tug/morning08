@@ -1,14 +1,16 @@
-package com.example.hangman;
+package com.example.myapplication;
+
+import com.example.hangman.HangMan;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 
 public class HangManUnitTest {
 
-    private HangMan hangman = new HangMan();
+    private String[] words_ = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
+
+    private HangMan hangman = new HangMan(words_);
 
     @Test
     public void testCheckLetter()
@@ -21,8 +23,8 @@ public class HangManUnitTest {
         char[] testOutputarray = new char[word.length()];
         for(int i = 0; i < testOutputarray.length; i++)
             testOutputarray[i] = '_';
-        hangman.setOutputarray(testOutputarray);
-        hangman.setSearchedword(word);
+        hangman.setOutputArray(testOutputarray);
+        hangman.setSearchedWord(word);
 
 
         actual = hangman.checkLetter(input);
@@ -48,8 +50,8 @@ public class HangManUnitTest {
     {
         String expected = "apple";
         String actual;
-        char[] testOutputarray = {'a', 'p', 'p', 'l', 'e'};
-        hangman.setOutputarray(testOutputarray);
+        char[] test_output_array = {'a', 'p', 'p', 'l', 'e'};
+        hangman.setOutputArray(test_output_array);
 
         actual = hangman.getOutput();
 
@@ -62,9 +64,9 @@ public class HangManUnitTest {
     {
         boolean expected = false;
         boolean actual;
-        String testWord = "apple";
-        hangman.setSearchedword(testWord);
-        hangman.setLetterguessed(0);
+        String test_word = "apple";
+        hangman.setSearchedWord(test_word);
+        hangman.setLetterGuessed(0);
 
         actual = hangman.wordGuessed();
 
@@ -81,11 +83,11 @@ public class HangManUnitTest {
 
         int expected = hangman.getGuessesLeft();
 
-        char[] testOutputarray = new char[word.length()];
-        for(int i = 0; i < testOutputarray.length; i++)
-            testOutputarray[i] = '_';
-        hangman.setOutputarray(testOutputarray);
-        hangman.setSearchedword(word);
+        char[] test_output_array = new char[word.length()];
+        for(int i = 0; i < test_output_array.length; i++)
+            test_output_array[i] = '_';
+        hangman.setOutputArray(test_output_array);
+        hangman.setSearchedWord(word);
         hangman.checkLetter(input);
 
         int actual = hangman.getGuessesLeft();
@@ -103,11 +105,11 @@ public class HangManUnitTest {
 
         int expected = hangman.getGuessesLeft();
 
-        char[] testOutputarray = new char[word.length()];
-        for(int i = 0; i < testOutputarray.length; i++)
-            testOutputarray[i] = '_';
-        hangman.setOutputarray(testOutputarray);
-        hangman.setSearchedword(word);
+        char[] test_output_array = new char[word.length()];
+        for(int i = 0; i < test_output_array.length; i++)
+            test_output_array[i] = '_';
+        hangman.setOutputArray(test_output_array);
+        hangman.setSearchedWord(word);
         hangman.checkLetter(input);
 
 
@@ -127,11 +129,11 @@ public class HangManUnitTest {
 
         int expected = hangman.getScore();
 
-        char[] testOutputarray = new char[word.length()];
-        for(int i = 0; i < testOutputarray.length; i++)
-            testOutputarray[i] = '_';
-        hangman.setOutputarray(testOutputarray);
-        hangman.setSearchedword(word);
+        char[] test_output_array = new char[word.length()];
+        for(int i = 0; i < test_output_array.length; i++)
+            test_output_array[i] = '_';
+        hangman.setOutputArray(test_output_array);
+        hangman.setSearchedWord(word);
         for(int i = 9; i > 0; i--) {
             hangman.checkLetter(input);
             hangman.wordGuessed();
@@ -148,28 +150,28 @@ public class HangManUnitTest {
     {
         hangman.initialize();
 
-        int initoutputcounter = 0;
-        int initialscore = hangman.getScore();
-        String initialoutput = hangman.getOutput();
+        int init_output_counter = 0;
+        int initial_score = hangman.getScore();
+        String initial_output = hangman.getOutput();
 
         hangman.showrandomLetter();
 
-        int finaloutputcounter = 0;
-        String finaloutput = hangman.getOutput();
+        int final_output_counter = 0;
+        String final_output = hangman.getOutput();
 
-        for(int i = 0; i< initialoutput.length(); i++){
-            if(initialoutput.charAt(i) == '_')
-                initoutputcounter++;
+        for(int i = 0; i< initial_output.length(); i++){
+            if(initial_output.charAt(i) == '_')
+                init_output_counter++;
         }
-        for(int i = 0; i< finaloutput.length(); i++){
-            if(finaloutput.charAt(i) == '_')
-                finaloutputcounter++;
+        for(int i = 0; i< final_output.length(); i++){
+            if(final_output.charAt(i) == '_')
+                final_output_counter++;
         }
 
         int actual = hangman.getScore();
 
-        Assert.assertEquals(initoutputcounter, finaloutputcounter+1);
-        Assert.assertEquals(initialscore, actual+3);
+        Assert.assertEquals(init_output_counter, final_output_counter+1);
+        Assert.assertEquals(initial_score, actual+3);
     }
 
 }

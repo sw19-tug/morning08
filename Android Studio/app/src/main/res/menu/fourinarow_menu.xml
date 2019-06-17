@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/settings"
-        android:title="Settings"
+        android:title="Color Settings"
         app:showAsAction="never"/>
 
     <item android:id="@+id/auto_player"
-        android:title="Autoplayer"
+        android:title="Player vs Computer"
         app:showAsAction="never"/>
 
     <item android:id="@+id/two_player"
-        android:title="Two Player"
+        android:title="Player vs Player"
         app:showAsAction="never"/>
 
 </menu>

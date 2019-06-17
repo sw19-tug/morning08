@@ -31,41 +31,45 @@ public class TicTacToeEspressoTest
     @Rule
     public ActivityTestRule<TicTacToe> mainActivityTestRule = new ActivityTestRule<>(TicTacToe.class);
 
+
+    //Test for two Player Mode
     @Test
     public void testButtonsVisible()
     {
-        onView(withId(R.id.button_1)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_2)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_3)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_4)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_5)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_6)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_7)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_8)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_9)).check(matches(isDisplayed()));
+        onView(withId(R.id.label_sc)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_0_0)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_0_1)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_0_2)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_1_0)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_1_1)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_1_2)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_2_0)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_2_1)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_2_2)).check(matches(isDisplayed()));
 
     }
 
 
    @Test
     public void testButtonFunction(){
-        onView(withId(R.id.button_1)).perform(click());
-        onView(withId(R.id.button_1)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_2)).perform(click());
-        onView(withId(R.id.button_2)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_3)).perform(click());
-        onView(withId(R.id.button_3)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_4)).perform(click());
-        onView(withId(R.id.button_4)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_5)).perform(click());
-        onView(withId(R.id.button_5)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_6)).perform(click());
-        onView(withId(R.id.button_6)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_8)).perform(click());
-        onView(withId(R.id.button_8)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_7)).perform(click());
-        onView(withId(R.id.button_7)).check(matches(not(isEnabled())));
-        onView(withId(R.id.button_9)).perform(click());
+        onView(withId(R.id.button_0_0)).perform(click());
+        onView(withId(R.id.button_0_0)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_0_1)).perform(click());
+        onView(withId(R.id.button_0_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_0_2)).perform(click());
+        onView(withId(R.id.button_0_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_0)).perform(click());
+        onView(withId(R.id.button_1_0)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_1)).perform(click());
+        onView(withId(R.id.button_1_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_1_2)).perform(click());
+        onView(withId(R.id.button_1_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_1)).perform(click());
+        onView(withId(R.id.button_2_1)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_2)).perform(click());
+        onView(withId(R.id.button_2_2)).check(matches(not(isEnabled())));
+        onView(withId(R.id.button_2_0)).perform(click());
     }
+
 }
 

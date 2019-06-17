@@ -1,18 +1,41 @@
 package com.example.hangman;
 
+
+import android.content.Context;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class HangMan {
 
-    private String searchedword;
-    private char[] outputarray;
-    private int score;
-    private int letterguessed;
-    private int guessesleft;
+    private String searched_word_;
+    private char[] output_array_;
+    private int score_;
+    private int letter_guessed_;
+    private int guesses_left_;
+    private String[] words_;
+    private Context context_;
+    private ArrayList <String> connected_words_ = new ArrayList();
+
+    public HangMan(String[] words, Context context){
+        score_ = 0;
+        letter_guessed_ = 0;
+        this.words_ = words;
+        this.context_ = context;
+    }
+
+    public HangMan(String[] words){
+        score_ =0;
+        letter_guessed_ = 0;
+        this.words_ = words;
+    }
 
     public HangMan(){
-        score =0;
-        letterguessed = 0;
+        score_ =0;
+        letter_guessed_ = 0;
     }
 
     // initialize a new searchedword for hangman
@@ -21,18 +44,66 @@ public class HangMan {
         System.out.println("Hangman.initialize()!");
 
         Random random = new Random();
-        String[] words = {"apple", "banana", "cherry", "fig", "lemon", "mango", "orange", "pear"};
-        int randomnumber = random.nextInt(words.length);
-        searchedword = words[randomnumber];
-        guessesleft = 8;
 
-        System.out.println("Searchedword: " + searchedword);
+        addVaryingWords();
 
-        outputarray = new char[searchedword.length()];
-        for(int i = 0; i < outputarray.length; i++)
-            outputarray[i] = '_';
 
-        letterguessed = 0;
+        int random_number = random.nextInt(connected_words_.size());
+        searched_word_ = connected_words_.get(random_number);
+        guesses_left_ = 8;
+
+        System.out.println("Searchedword: " + searched_word_);
+
+        output_array_ = new char[searched_word_.length()];
+        for(int i = 0; i < output_array_.length; i++)
+            output_array_[i] = '_';
+
+        letter_guessed_ = 0;
+
+    }
+
+    //import all varying word to list word[]
+    public void addVaryingWords()
+    {
+
+        for(int i = 0; i < words_.length; i++){
+            connected_words_.add(words_[i]);
+        }
+
+        try {
+            File path = context_.getFilesDir();
+            File file = new File(path, "Added_words.txt");
+
+            FileReader reader = new FileReader(file);
+            BufferedReader breader = new BufferedReader(reader);
+
+            String line = breader.readLine();
+
+            if(line != null) {
+                do {
+                    String [] new_words = split_line(line, " ");
+
+                    for(int i=0; i<new_words.length;i++){
+                        connected_words_.add(new_words[i]);
+                    }
+
+                    line = breader.readLine();
+                } while (line != null);
+            }
+
+            reader.close();
+            breader.close();
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
+    }
+
+    public String [] split_line(String line, String seperator){
+
+        String[] seperated_words = line.split(seperator);
+        return seperated_words;
 
     }
 
@@ -40,34 +111,34 @@ public class HangMan {
     public boolean checkLetter(String input) {
 
         char [] letter = input.toCharArray();
-        char [] searchedwordarray = searchedword.toCharArray();
-        boolean letterfound = false;
+        char [] searched_word_array = searched_word_.toCharArray();
+        boolean letter_found = false;
 
-        for(int i = 0; i<searchedword.length(); i++)
+        for(int i = 0; i < searched_word_.length(); i++)
         {
-            if(letter[0] == searchedwordarray[i]) {
-                if(letter[0] == outputarray[i])
+            if(letter[0] == searched_word_array[i]) {
+                if(letter[0] == output_array_[i])
                     break;
 
-                for (int j = 0; j < searchedword.length();j++){
+                for (int j = 0; j < searched_word_.length();j++){
                     if(j == i) {
-                        outputarray[j] = letter[0];
-                        letterguessed++;
+                        output_array_[j] = letter[0];
+                        letter_guessed_++;
                     }
 
-                    else if(outputarray[j] != '_')
+                    else if(output_array_[j] != '_')
                         continue;
                 }
 
-                letterfound = true;
+                letter_found = true;
             }
         }
 
-        if(letterfound)
+        if(letter_found)
             return true;
 
         else {
-            guessesleft--;
+            guesses_left_--;
             return false;
         }
 
@@ -87,12 +158,12 @@ public class HangMan {
 
     // verify if the word is completly guessed & manage the score
     public boolean wordGuessed() {
-        if(letterguessed == searchedword.length()){
-            score++;
+        if(letter_guessed_ == searched_word_.length()){
+            score_++;
             return true;
         }
-        else if(guessesleft == 0) {
-            score = score - 2;     //deduct two points if not guessed word
+        else if(guesses_left_ == 0) {
+            score_ = score_ - 2;     //deduct two points if not guessed word
             return false;
         }
         return false;
@@ -101,42 +172,42 @@ public class HangMan {
     public void showrandomLetter() {
 
         Random random = new Random();
-        int randomletter = random.nextInt(searchedword.length());
+        int randomletter = random.nextInt(searched_word_.length());
 
-        while(outputarray[randomletter] != '_')     //get next index if letter there
-            randomletter = random.nextInt(searchedword.length());
+        while(output_array_[randomletter] != '_')     //get next index if letter there
+            randomletter = random.nextInt(searched_word_.length());
 
-        outputarray[randomletter] = searchedword.charAt(randomletter);
+        output_array_[randomletter] = searched_word_.charAt(randomletter);
 
-        letterguessed++;
-        score = score - 3;
+        letter_guessed_++;
+        score_ = score_ - 3;
     }
 
     public String getOutput() {
-        return new String(outputarray);
+        return new String(output_array_);
     }
 
     public int getScore() {
-        return score;
+        return score_;
     }
 
     public int getGuessesLeft() {
-        return guessesleft;
+        return guesses_left_;
     }
 
-    public void setSearchedword(String searchedword) {
-        this.searchedword = searchedword;
+    public void setSearchedWord(String searchedword) {
+        this.searched_word_ = searchedword;
     }
 
-    public void setOutputarray(char[] outputarray) {
-        this.outputarray = outputarray;
+    public void setOutputArray(char[] output_array) {
+        this.output_array_ = output_array;
     }
 
-    public void setLetterguessed(int letterguessed) {
-        this.letterguessed = letterguessed;
+    public void setLetterGuessed(int letter_guessed) {
+        this.letter_guessed_ = letter_guessed;
     }
     public void setScore(int score) {
-        this.score = score;
+        this.score_ = score;
     }
 
 }

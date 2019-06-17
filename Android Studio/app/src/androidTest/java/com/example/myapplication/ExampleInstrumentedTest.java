@@ -29,17 +29,33 @@ public class ExampleInstrumentedTest {
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void testButtonsVisible() {
+    public void testButtonsVisible()
+    {
         onView(withId(R.id.bt_tictac)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_hangman)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_touchbox)).check(matches(isDisplayed()));
+        onView(withId(R.id.bt_fourinarow)).check(matches(isDisplayed()));
     }
 
     @Test
-    public void testButtonClick() {
+    public void testButtonClick()
+    {
         onView(withId(R.id.bt_tictac)).perform(click());
         onView(withId(R.id.bt_hangman)).perform(click());
         onView(withId(R.id.bt_touchbox)).perform(click());
+        onView(withId(R.id.bt_fourinarow)).perform(click());
+    }
+
+    @Test
+    public void testHelpButtonVisible()
+    {
+        onView(withId(R.id.bt_instructions)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testHelpButtonClick()
+    {
+        onView(withId(R.id.bt_instructions)).perform(click());
     }
 
 }
